@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-9">
+  <link rel="stylesheet" href="styles.css?v=20260922-10">
 </head>
 <body class="article-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -198,10 +198,61 @@
         </div>
       </section>
 
+      <section class="case-section evidence-notebook">
+        <div class="section-shell">
+          <div class="case-heading reveal">
+            <p class="section-number">05 / EVIDENCE NOTEBOOK</p>
+            <h2>这五个 Google Sheet tab，是项目的原始实验账本。</h2>
+            <p>它们不是事后写出的成功故事，而是一边做、一边截图、一边记录对话和命令留下的过程证据。早期的低成功率、失败的控制器、观察空间争论、工程迁移和后来的实验纪律都被保留下来。</p>
+          </div>
+
+          <div class="evidence-tabs reveal">
+            <article>
+              <small>01 · 空房间</small>
+              <h3>先学会直走，也先暴露训练不稳定。</h3>
+              <strong>8 / 54</strong>
+              <p><code>stage1_timepenalty_5k</code> 的完整记录显示成功率仅 14.8%。相邻训练快照甚至从 50% success 变成 0%，说明单看某一轮 reward 很容易误判。</p>
+            </article>
+            <article>
+              <small>02 · 加障碍物</small>
+              <h3>主动制造一个必然失败的对照组。</h3>
+              <strong>0 / 20</strong>
+              <p>中央圆柱与双柱强制绕行场景中，Direct Controller 20 次全部碰撞、0 timeout，多数在 12–22 步撞柱。PPO 因此得到一个明确、可证伪的任务。</p>
+            </article>
+            <article>
+              <small>03 · RL 一个障碍物</small>
+              <h3>保护基线，再让学习只承担新增能力。</h3>
+              <strong>10 / 10</strong>
+              <p>验证过的 <code>direct_goal_v1_heading_comp_v1</code> 被单独冻结；新实验只输出有界 residual correction。零 residual 必须精确复现原始直行基线。</p>
+            </article>
+            <article>
+              <small>04 · VIBE CODING / CODEX</small>
+              <h3>人的方向盘，接上 Agent 的执行循环。</h3>
+              <strong>WIN → WSL</strong>
+              <p>Windows 端负责高层规划、spec、分析和 next step；WSL Codex Agent 直接修改共享项目，再挂载进 Docker 执行 ROS / Gazebo，减少反复复制命令和补丁。</p>
+            </article>
+            <article>
+              <small>05 · 神经网络</small>
+              <h3>维度不是越多越好，关键是任务所需信息是否完整。</h3>
+              <strong>16D</strong>
+              <p>LiDAR 摘要、目标相对几何和上一动作组成早期观察。记录随后进一步定义 seed 61129、50/50 在线场景生成、12 个永久 OOD 题和几何泄漏排除。</p>
+            </article>
+          </div>
+
+          <div class="evidence-protocol reveal">
+            <div><span>ONLINE GENERATION</span><b>50 / 50</b><p>两类场景按回合严格交替生成，不把验证题混回训练。</p></div>
+            <div><span>LEAKAGE FILTER</span><b>L∞</b><p>柱子 x ≤ 0.08 m、柱子 y ≤ 0.06 m、目标 y ≤ 0.06 m、初始 yaw ≤ 4° 时拒绝近似重复样本。</p></div>
+            <div><span>REPRODUCIBILITY</span><b>5 / 5</b><p>静态检查与单元测试通过；固定 seed 下 100 个场景完全复现。</p></div>
+          </div>
+
+          <p class="evidence-reading reveal">这批记录改变了项目的叙述方式：真正有价值的不只是最后的 29/30，而是能够回答“当时为什么这样改、改之前失败成什么样、下一步凭什么成立”。Google Sheet 因此被视为实验原始档案；网站只做归纳，不把不同阶段的数据混成一条漂亮曲线。</p>
+        </div>
+      </section>
+
       <section class="case-section case-timeline-wrap">
         <div class="section-shell">
           <div class="case-heading reveal">
-            <p class="section-number">05 / BUILD LOG</p>
+            <p class="section-number">06 / BUILD LOG</p>
             <h2>项目不是一条漂亮的上升曲线。</h2>
             <p>每一步都先提出一个可证伪的问题，再决定是否允许进入下一阶段。</p>
           </div>
@@ -220,7 +271,7 @@
 
       <section class="case-results section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">06 / CLEAN-START RESULT</p>
+          <p class="section-number">07 / CLEAN-START RESULT</p>
           <h2>最后留下的，不只是一个成功率。</h2>
         </div>
         <div class="result-grid reveal">
@@ -243,7 +294,7 @@
 
       <section class="case-section section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">07 / WHAT I LEARNED</p>
+          <p class="section-number">08 / WHAT I LEARNED</p>
           <h2>真正困难的是定义证据。</h2>
         </div>
         <div class="lesson-grid">
@@ -257,7 +308,7 @@
       <section class="case-dark case-next">
         <div class="section-shell case-next-grid">
           <div class="reveal">
-            <p class="section-number">08 / LIMITS</p>
+            <p class="section-number">09 / LIMITS</p>
             <h2>现在还不能声称什么。</h2>
           </div>
           <ul class="reveal">
@@ -272,7 +323,7 @@
 
       <section class="case-section section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">09 / WHERE IT GOES NEXT</p>
+          <p class="section-number">10 / WHERE IT GOES NEXT</p>
           <h2>把学习闭环接到更大的机器人宇宙。</h2>
         </div>
         <div class="next-path reveal">
