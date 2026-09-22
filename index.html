@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-4">
+  <link rel="stylesheet" href="styles.css?v=20260922-5">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -48,10 +48,10 @@
           <span>ROBOT</span>
           <strong>LEARNING</strong>
         </div>
-        <div class="planet planet-navbot"><span>01</span>NAVBOT</div>
-        <div class="planet planet-usd"><span>03</span>OPENUSD</div>
-        <div class="planet planet-world"><span>02</span>WORLD BUILDING</div>
-        <div class="planet planet-sim"><span>04</span>SIMULATION</div>
+        <a class="planet planet-navbot" href="#projects" aria-label="前往 NavBot 项目"><span>01</span>NAVBOT</a>
+        <a class="planet planet-usd" href="#usd" aria-label="前往 OpenUSD 学习路径"><span>03</span>OPENUSD</a>
+        <a class="planet planet-world" href="#world-building" aria-label="前往 World Building 与 SimForge Agent"><span>02</span>WORLD BUILDING</a>
+        <a class="planet planet-sim" href="#simulation" aria-label="前往仿真工具栈"><span>04</span>SIMULATION</a>
         <div class="coordinate coord-a">X 1.204 / Y 0.884</div>
         <div class="coordinate coord-b">STAGE: EXPLORING</div>
       </div>
@@ -79,7 +79,7 @@
           <p>Gazebo、ROS、PPO、行为克隆、残差控制与泛化测试。</p>
           <div class="tag-row"><span>Gazebo</span><span>ROS</span><span>PPO</span></div>
         </article>
-        <article class="universe-card card-orange reveal">
+        <article class="universe-card card-orange reveal" id="world-building">
           <div class="card-index">02</div>
           <p class="card-kicker">WORLD BUILDING</p>
           <h3>SimForge Agent</h3>
@@ -93,7 +93,7 @@
           <p>从 Stage、Prim 和 Layer，到 Composition、Variant 与认证考试。</p>
           <div class="tag-row"><span>OpenUSD</span><span>USD</span><span>Certificate</span></div>
         </article>
-        <article class="universe-card card-violet reveal">
+        <article class="universe-card card-violet reveal" id="simulation">
           <div class="card-index">04</div>
           <p class="card-kicker">SIMULATION STACK</p>
           <h3>Omniverse</h3>
