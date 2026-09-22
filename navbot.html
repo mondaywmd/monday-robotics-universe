@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-7">
+  <link rel="stylesheet" href="styles.css?v=20260922-8">
 </head>
 <body class="article-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -128,10 +128,66 @@
         </div>
       </section>
 
+      <section class="experiment-reset">
+        <div class="section-shell">
+          <div class="case-heading reveal">
+            <p class="section-number">04 / STARTING OVER</p>
+            <h2>最重要的一次迭代，是把之前的路全部推倒。</h2>
+            <p>项目早期没有先建立高层实验计划。单边路线一旦走通，就直接进入 RL；没有 mirror 成对的基础行驶数据，也没有冻结的验收协议。结果不好时，第一反应是继续改训练、加条件、加几何寻路和数学规则，系统却越来越难解释。</p>
+          </div>
+          <div class="reset-contrast">
+            <article class="reset-old reveal">
+              <small>EARLY ROUTE · WHAT WENT WRONG</small>
+              <h3>单边成功，被误当成了可学习的基础。</h3>
+              <ol>
+                <li>只验证一个方向能到达终点</li>
+                <li>没有左右 mirror 成对数据</li>
+                <li>直接让 RL 接管并期待它自动修正</li>
+                <li>结果异常后继续叠加 reward、条件和路径算法</li>
+                <li>系统越来越复杂，失败原因越来越难分辨</li>
+              </ol>
+            </article>
+            <article class="reset-new reveal">
+              <small>REBUILD · DATA BEFORE OPTIMIZATION</small>
+              <h3>先证明任务与数据闭环，再允许学习介入。</h3>
+              <ol>
+                <li>从控制器与场景生成重新设计</li>
+                <li>所有基础路线同时生成左右 mirror</li>
+                <li>在没有 RL 时验证 1、2、3、4、5 柱均能完成</li>
+                <li>冻结成功轨迹、seed、场景合法性和安全阈值</li>
+                <li>先 BC 预训练，再做冻结推理与 PPO 微调</li>
+              </ol>
+            </article>
+          </div>
+
+          <div class="training-ladder reveal">
+            <div><span>01</span><strong>程序化生成</strong><small>随机障碍 + mirror 场景 + 可行路径检查</small></div>
+            <i>→</i>
+            <div><span>02</span><strong>专家数据闭环</strong><small>成对成功轨迹 + observation/action 样本</small></div>
+            <i>→</i>
+            <div><span>03</span><strong>BC 预训练</strong><small>先让 Actor 复现安全的基础行为</small></div>
+            <i>→</i>
+            <div><span>04</span><strong>冻结评估</strong><small>Deterministic / inference-only；不更新权重</small></div>
+            <i>→</i>
+            <div><span>05</span><strong>PPO 介入</strong><small>约 1k → 5k → 10k → 20k 级别预算迭代</small></div>
+            <i>→</i>
+            <div><span>06</span><strong>盲测与报告</strong><small>Baseline → 新鲜随机环境 → failure analysis</small></div>
+          </div>
+
+          <div class="evaluation-terms reveal">
+            <div><strong>Zero-residual control</strong><p>把学习修正设为零，确认 residual 接口不会改变原始 baseline。</p></div>
+            <div><strong>Deterministic evaluation</strong><p>冻结 policy、关闭探索、不做 optimizer update，只检查它已经学到的行为。</p></div>
+            <div><strong>Zero-shot evaluation</strong><p>让冻结 policy 进入训练时未见过的新场景，检验迁移与泛化，而不是继续训练。</p></div>
+          </div>
+
+          <p class="reset-reflection reveal">TensorBoard 也在这个阶段进入工作流：不再只看 Gazebo 里“小车好像会走了”，而是把 reward、episode length、success、collision、timeout、critic loss、KL 与 checkpoint 放在一起比较。随后再让生成的 policy 盲跑固定 baseline 和随机障碍环境，由 AI 协助汇总轨迹与指标，最后写成实验报告。整个实验路线、参数试验、记录与判断，都是你一轮一轮亲手推进出来的。</p>
+        </div>
+      </section>
+
       <section class="case-section case-timeline-wrap">
         <div class="section-shell">
           <div class="case-heading reveal">
-            <p class="section-number">04 / BUILD LOG</p>
+            <p class="section-number">05 / BUILD LOG</p>
             <h2>项目不是一条漂亮的上升曲线。</h2>
             <p>每一步都先提出一个可证伪的问题，再决定是否允许进入下一阶段。</p>
           </div>
@@ -150,7 +206,7 @@
 
       <section class="case-results section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">05 / CLEAN-START RESULT</p>
+          <p class="section-number">06 / CLEAN-START RESULT</p>
           <h2>最后留下的，不只是一个成功率。</h2>
         </div>
         <div class="result-grid reveal">
@@ -173,7 +229,7 @@
 
       <section class="case-section section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">06 / WHAT I LEARNED</p>
+          <p class="section-number">07 / WHAT I LEARNED</p>
           <h2>真正困难的是定义证据。</h2>
         </div>
         <div class="lesson-grid">
@@ -187,7 +243,7 @@
       <section class="case-dark case-next">
         <div class="section-shell case-next-grid">
           <div class="reveal">
-            <p class="section-number">07 / LIMITS</p>
+            <p class="section-number">08 / LIMITS</p>
             <h2>现在还不能声称什么。</h2>
           </div>
           <ul class="reveal">
@@ -202,7 +258,7 @@
 
       <section class="case-section section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">08 / WHERE IT GOES NEXT</p>
+          <p class="section-number">09 / WHERE IT GOES NEXT</p>
           <h2>把学习闭环接到更大的机器人宇宙。</h2>
         </div>
         <div class="next-path reveal">

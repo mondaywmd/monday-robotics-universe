@@ -220,6 +220,19 @@ footer { padding: 55px 0; color: white; background: #030907; }
 .agent-stack > div { min-height: 125px; padding: 18px; border: 1px solid rgba(255,255,255,.15); display: flex; flex-direction: column; }
 .agent-stack span { color: var(--cyan); font: 500 10px var(--mono); }.agent-stack strong { margin-top: auto; font: 500 12px var(--mono); }.agent-stack small { margin-top: 8px; color: #9eadab; line-height: 1.4; }.agent-stack i { color: var(--lime); font-style: normal; }
 .workflow-outcome { max-width: 880px; margin: 42px 0 0 auto; font-size: 20px; line-height: 1.7; }
+.experiment-reset { padding: 120px 0; color: white; background: #101916; }
+.experiment-reset .section-number { color: var(--orange); }.experiment-reset .case-heading > p:last-child { color: #b2bfba; }
+.reset-contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.reset-contrast article { min-height: 440px; padding: 38px; display: flex; flex-direction: column; }
+.reset-old { color: white; background: #6b342d; }.reset-new { color: var(--ink); background: var(--cyan); }
+.reset-contrast small { font: 500 10px var(--mono); letter-spacing: .12em; }.reset-old small { color: #ffc0a2; }.reset-new small { color: #285e59; }
+.reset-contrast h3 { margin: auto 0 24px; max-width: 540px; font-size: 34px; line-height: 1.25; }.reset-contrast ol { margin: 0; padding-left: 20px; }.reset-contrast li { padding: 5px 0; }
+.training-ladder { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr; gap: 9px; align-items: center; margin-top: 16px; padding: 24px; border: 1px solid rgba(255,255,255,.16); }
+.training-ladder > div { min-height: 150px; padding: 15px; display: flex; flex-direction: column; background: rgba(255,255,255,.055); }
+.training-ladder span { color: var(--orange); font: 500 10px var(--mono); }.training-ladder strong { margin-top: auto; font-size: 15px; }.training-ladder small { margin-top: 8px; color: #a9b7b2; line-height: 1.45; }.training-ladder i { color: var(--lime); font-style: normal; }
+.evaluation-terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.evaluation-terms > div { padding: 26px; border: 1px solid rgba(255,255,255,.14); }.evaluation-terms strong { color: var(--lime); font: 500 12px var(--mono); }.evaluation-terms p { margin-bottom: 0; color: #aebbb7; }
+.reset-reflection { max-width: 920px; margin: 45px 0 0 auto; color: #d0d9d6; font-size: 19px; line-height: 1.75; }
 .case-timeline-wrap { background: #d7dedb; }
 .case-timeline { margin: 0; padding: 0; list-style: none; }
 .case-timeline li { display: grid; grid-template-columns: 85px 1fr; gap: 35px; padding: 40px 0; border-top: 1px solid rgba(7,17,15,.18); }
@@ -252,7 +265,7 @@ footer { padding: 55px 0; color: white; background: #030907; }
   .project-feature { grid-template-columns: 1fr; }.project-image { min-height: 420px; }
   .journal-grid { grid-template-columns: 1fr 1fr; }.journal-feature { grid-column: 1 / -1; }
   .footer-grid { grid-template-columns: 1fr; }.footer-links { justify-self: start; }
-  .case-hero-grid, .case-intro, .case-next-grid { grid-template-columns: 1fr; }.case-hero-media { max-width: 650px; }.result-grid { grid-template-columns: repeat(2, 1fr); }.result-grid > div:nth-child(2) { border-right: 0; }.result-grid > div { border-bottom: 1px solid var(--line); }.agent-stack { grid-template-columns: 1fr 1fr; }.agent-stack i { display: none; }
+  .case-hero-grid, .case-intro, .case-next-grid { grid-template-columns: 1fr; }.case-hero-media { max-width: 650px; }.result-grid { grid-template-columns: repeat(2, 1fr); }.result-grid > div:nth-child(2) { border-right: 0; }.result-grid > div { border-bottom: 1px solid var(--line); }.agent-stack { grid-template-columns: 1fr 1fr; }.agent-stack i { display: none; }.training-ladder { grid-template-columns: repeat(3, 1fr); }.training-ladder i { display: none; }
 }
 
 @media (max-width: 620px) {
@@ -265,7 +278,7 @@ footer { padding: 55px 0; color: white; background: #030907; }
   .project-copy { padding: 30px 22px; }.project-copy h3 { font-size: 29px; }.project-stats { gap: 8px; }.project-stats dt { font-size: 16px; }
   .journal-grid { grid-template-columns: 1fr; }.journal-feature { grid-column: auto; grid-template-columns: 1fr; }.journal-feature img { min-height: 260px; }
   .now-panel { padding: 28px 20px; }.now-grid { grid-template-columns: 1fr; }
-  .article-back { font-size: 9px; }.case-hero { padding: 115px 0 70px; }.case-hero h1 { font-size: 52px; }.case-hero-media { box-shadow: 10px 10px 0 var(--cyan); }.case-intro, .case-section, .case-results { padding-top: 75px; padding-bottom: 75px; }.case-dark, .workflow-pivot { padding: 75px 0; }.branch-grid, .case-columns, .lesson-grid, .comparison, .workflow-before-after { grid-template-columns: 1fr; }.branch-card { min-height: 330px; padding: 26px; }.agent-stack { grid-template-columns: 1fr; padding: 16px; }.case-timeline li { grid-template-columns: 52px 1fr; gap: 18px; }.case-timeline > li > span { width: 42px; height: 42px; }.result-grid { grid-template-columns: 1fr; }.result-grid > div { min-height: 185px; border-right: 0; }.case-actions { flex-direction: column; align-items: flex-start; }
+  .article-back { font-size: 9px; }.case-hero { padding: 115px 0 70px; }.case-hero h1 { font-size: 52px; }.case-hero-media { box-shadow: 10px 10px 0 var(--cyan); }.case-intro, .case-section, .case-results { padding-top: 75px; padding-bottom: 75px; }.case-dark, .workflow-pivot, .experiment-reset { padding: 75px 0; }.branch-grid, .case-columns, .lesson-grid, .comparison, .workflow-before-after, .reset-contrast, .evaluation-terms { grid-template-columns: 1fr; }.branch-card { min-height: 330px; padding: 26px; }.agent-stack, .training-ladder { grid-template-columns: 1fr; padding: 16px; }.case-timeline li { grid-template-columns: 52px 1fr; gap: 18px; }.case-timeline > li > span { width: 42px; height: 42px; }.result-grid { grid-template-columns: 1fr; }.result-grid > div { min-height: 185px; border-right: 0; }.case-actions { flex-direction: column; align-items: flex-start; }
 }
 
 @media (prefers-reduced-motion: reduce) {
