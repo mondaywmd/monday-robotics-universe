@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-11">
+  <link rel="stylesheet" href="styles.css?v=20260922-12">
 </head>
 <body class="article-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -198,7 +198,7 @@
         </div>
       </section>
 
-      <section class="case-section evidence-notebook">
+      <section class="case-section evidence-notebook" id="evidence-notebook">
         <div class="section-shell">
           <div class="case-heading reveal">
             <p class="section-number">05 / EVIDENCE NOTEBOOK</p>
@@ -207,36 +207,41 @@
           </div>
 
           <div class="evidence-tabs reveal">
-            <article>
+            <a href="navbot-notebook.html#empty-room">
               <small>01 · 空房间</small>
               <h3>先学会直走，也先暴露训练不稳定。</h3>
               <strong>8 / 54</strong>
               <p><code>stage1_timepenalty_5k</code> 的完整记录显示成功率仅 14.8%。相邻训练快照甚至从 50% success 变成 0%，说明单看某一轮 reward 很容易误判。</p>
-            </article>
-            <article>
+              <em>查看空场训练记录 →</em>
+            </a>
+            <a href="navbot-notebook.html#obstacle">
               <small>02 · 加障碍物</small>
               <h3>主动制造一个必然失败的对照组。</h3>
               <strong>0 / 20</strong>
               <p>中央圆柱与双柱强制绕行场景中，Direct Controller 20 次全部碰撞、0 timeout，多数在 12–22 步撞柱。PPO 因此得到一个明确、可证伪的任务。</p>
-            </article>
-            <article>
+              <em>查看障碍物基线 →</em>
+            </a>
+            <a href="navbot-notebook.html#residual-ppo">
               <small>03 · RL 一个障碍物</small>
               <h3>保护基线，再让学习只承担新增能力。</h3>
               <strong>10 / 10</strong>
               <p>验证过的 <code>direct_goal_v1_heading_comp_v1</code> 被单独冻结；新实验只输出有界 residual correction。零 residual 必须精确复现原始直行基线。</p>
-            </article>
-            <article>
+              <em>查看 PPO 迭代时间线 →</em>
+            </a>
+            <a href="navbot-notebook.html#workflow">
               <small>04 · VIBE CODING / CODEX</small>
               <h3>人的方向盘，接上 Agent 的执行循环。</h3>
               <strong>WIN → WSL</strong>
               <p>Windows 端负责高层规划、spec、分析和 next step；WSL Codex Agent 直接修改共享项目，再挂载进 Docker 执行 ROS / Gazebo，减少反复复制命令和补丁。</p>
-            </article>
-            <article>
+              <em>查看 Agent 工作流 →</em>
+            </a>
+            <a href="navbot-notebook.html#training-design">
               <small>05 · 神经网络</small>
               <h3>维度不是越多越好，关键是任务所需信息是否完整。</h3>
               <strong>16D</strong>
               <p>LiDAR 摘要、目标相对几何和上一动作组成早期观察。记录随后进一步定义 seed 61129、50/50 在线场景生成、12 个永久 OOD 题和几何泄漏排除。</p>
-            </article>
+              <em>查看网络、指标与设置 →</em>
+            </a>
           </div>
 
           <div class="evidence-protocol reveal">

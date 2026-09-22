@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NavBot 实验笔记本：空场标定、障碍基线、Residual PPO、训练设置、指标与逐轮设计决策。">
+  <meta name="theme-color" content="#07110f">
+  <title>NavBot 实验笔记本 · Monday’s Robotics Universe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260922-12">
+</head>
+<body class="article-page notebook-page" id="top">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html"><img class="profile-avatar" src="assets/monday-profile.jpg" alt="Monday 的头像" width="42" height="42" style="width:42px;height:42px;box-sizing:border-box;object-fit:cover;object-position:72% 38%;padding:3px;border-radius:50%;background:#d8ef8b"><span class="brand-text">Monday’s<br><strong>Robotics Universe</strong></span></a>
+    <a class="article-back" href="navbot.html#evidence-notebook">← 返回 NavBot 档案</a>
+  </header>
+
+  <main>
+    <header class="notebook-hero"><div class="section-shell"><p class="eyebrow"><span class="status-dot"></span> NAVBOT · RAW EXPERIMENT NOTEBOOK</p><h1>不是一条漂亮曲线，<br>而是一连串可以追问的决定。</h1><p>这份详细记录把 Google Sheet 截图、训练 CSV、TensorBoard 事件、评估 JSON 和 WSL 报告放回同一条时间线。每一轮都按“设置 → 结果 → 判断 → 下一步”整理；训练数据、冻结评估与 OOD 考试不会混用。</p></div></header>
+
+    <nav class="notebook-tabs" aria-label="实验笔记章节"><div class="section-shell"><a href="#empty-room">01 空房间</a><a href="#obstacle">02 加障碍物</a><a href="#residual-ppo">03 PPO 迭代</a><a href="#workflow">04 Agent 工作流</a><a href="#training-design">05 网络与指标</a></div></nav>
+
+    <section class="notebook-section section-shell" id="empty-room">
+      <div class="notebook-heading reveal"><span>01 / EMPTY ROOM</span><h2>先证明机器人能稳定地走，再讨论它能不能学。</h2><p>最早期直接提高速度，希望缩短训练时间。结果是仿真跑得更快，数据却更差。回到直线、转向和重复到达测试后，速度从约 0.80 m/s 退到 0.30，再冻结在 0.25 m/s。</p></div>
+      <div class="decision-strip reveal"><div><b>0.80</b><span>m/s · too fast</span></div><i>→</i><div><b>0.30</b><span>m/s · drift</span></div><i>→</i><div class="chosen"><b>0.25</b><span>m/s · retained</span></div></div>
+      <div class="archive-warning reveal"><strong>档案差异</strong><p>Google Sheet 截图保存的是训练中途状态：54 回合、8 次成功、14.8%。当前同名 CSV 则包含 74 回合、6 次成功、8.1%。这说明同名日志后来可能被继续写入或重新运行。两组数字各自保留，不把它们伪装成同一次最终结果。</p></div>
+      <div class="run-table reveal" role="table" aria-label="早期训练对比">
+        <div class="run-row run-head"><span>Run</span><span>Steps</span><span>Episodes</span><span>Success</span><span>Collision</span><span>Timeout</span></div>
+        <div class="run-row"><span>timepenalty_5k · CSV archive</span><span>7,003</span><span>74</span><span>6 · 8.1%</span><span>0</span><span>68</span></div>
+        <div class="run-row"><span>speed25_stabletargets_10k</span><span>10,072</span><span>130</span><span>26 · 20.0%</span><span>37</span><span>67</span></div>
+        <div class="run-row"><span>headless_fixedtargets_20k</span><span>19,112</span><span>221</span><span>30 · 13.6%</span><span>40</span><span>151</span></div>
+        <div class="run-row"><span>turnfirst_aggressive_20k</span><span>20,071</span><span>227</span><span>63 · 27.8%</span><span>0</span><span>164</span></div>
+      </div>
+      <div class="iteration-note reveal"><strong>读数如何改变设计</strong><p>增加训练预算并没有自动提高成功率：固定目标 20k 反而从 20.0% 降到 13.6%。Turn-first aggressive 把碰撞降为 0，却留下 164 次 timeout。下一步因此不再是“继续跑更多 batch”，而是分离安全、前进效率和到达能力，并重新设计可诊断的障碍任务。</p></div>
+    </section>
+
+    <section class="notebook-section notebook-dark" id="obstacle"><div class="section-shell">
+      <div class="notebook-heading reveal"><span>02 / FORCED OBSTACLE</span><h2>如果基线偶尔也能绕过去，PPO 的贡献就无法被证明。</h2><p>场景被故意设计成必然失败：机器人、圆柱和目标共线。纯 Goal-Seeking 只知道目标方向，不知道如何绕行。</p></div>
+      <div class="geometry-grid reveal"><div><span>ROBOT</span><b>(0, 0)</b></div><div><span>PILLAR</span><b>(1, 0)</b></div><div><span>TARGET</span><b>(2, 0)</b></div><div><span>SAFETY STOP</span><b>LiDAR &lt; 0.20 m</b></div></div>
+      <div class="obstacle-proof"><video class="reveal" autoplay muted loop playsinline preload="auto" poster="assets/navbot/videos/02-forced-obstacle-baseline.jpg"><source src="assets/navbot/videos/02-forced-obstacle-baseline.mp4" type="video/mp4"></video><div class="proof-copy reveal"><small>4× SPEED · NOT REAL TIME</small><strong>0 / 20 success</strong><p>20/20 碰撞，0 timeout，多数在 12–22 步终止。另一次零 residual 集成测试在第 13 步碰撞，总 return −255.484。失败稳定、位置明确，才适合作为学习任务。</p><p>下一轮不是让 PPO 从零学会导航，而是保留 Direct Goal，只学习小幅速度与转向修正。</p></div></div>
+    </div></section>
+
+    <section class="notebook-section section-shell" id="residual-ppo">
+      <div class="notebook-heading reveal"><span>03 / RESIDUAL PPO ITERATIONS</span><h2>每次训练都必须解释：结果为什么不好，下一次究竟改什么。</h2><p>下面不是版本号清单，而是连续的因果链。每一轮只在前一轮暴露的问题上增加新的证据或约束。</p></div>
+      <div class="experiment-chain">
+        <article class="reveal"><span>V1 · CONNECT THE LOOP</span><h3>5k checkpoint：接口通了，行为没学会。</h3><b>0/10 success · 10/10 collision</b><p>确定性评估平均 15.6 步撞柱。动作确实送进 Gazebo，但 residual 幅度与策略结构不足以形成绕行。</p></article>
+        <article class="reveal"><span>V2 · CONTROL GATE</span><h3>先证明物理上存在一条可行方向。</h3><b>−ω：214 steps success</b><p>最大正转向仍碰撞；最大负转向能绕行并到达。零 residual 在 30 步碰撞。旧的 200-step 上限也被证明太短。</p></article>
+        <article class="reveal"><span>V3 · REWARD SHAPING</span><h3>方向对了，幅度仍然太弱。</h3><b>35-step collision</b><p>平均 residual 约 (−0.219, −0.086)。角速度符号与成功专家一致，但远弱于验证过的 [+1, −1]。继续调 reward 无法替代成功动作锚点。</p></article>
+        <article class="reveal"><span>V4 · BEHAVIOR CLONING</span><h3>先教会一次，再让 PPO 微调。</h3><b>648 samples · 1,200 epochs</b><p>3 条专家轨迹全部成功；BC MSE 从 0.9293 降到 0.0000176。随后 5,299 steps、24/24 训练成功，最终固定场景 10/10。</p></article>
+        <article class="reveal"><span>V4 HELD-OUT</span><h3>固定场景成功以后，第一次认真测试泛化。</h3><b>59/60 · 98.33%</b><p>六个未训练的小扰动场景中只有 pillar-right 一次早期碰撞。局部泛化很强，但出现轻微左右敏感性。</p></article>
+        <article class="reveal"><span>V5 · CURRICULUM</span><h3>10k 柱子横向课程没有提高总可靠性。</h3><b>10,421 steps · 46/50 train success</b><p>Held-out 仍为 59/60，只是唯一失败从 pillar-right 转移到 yaw-left。“修好一个 case”不等于系统能力提高。</p></article>
+        <article class="reveal"><span>V5 · ADVERSARIAL OOD</span><h3>更难的考试把漂亮数字拉回现实。</h3><b>43/60 success · 11 collision · 6 timeout</b><p>task 06/07 各有 4 次碰撞，task 02 有 4 次 timeout。小扰动的 98.33% 不能代表更大分布。</p></article>
+        <article class="reveal"><span>V6 · FAILURE MODES</span><h3>用失败家族生成训练场景，同时隔离永久考题。</h3><b>10,001 steps · 54 episodes</b><p>seed 61129，两个场景族 50/50 交替；31 success、15 collision、8 timeout。训练 rollout 不能当 acceptance。</p></article>
+        <article class="reveal"><span>V7 → V8 → CLEAN START</span><h3>输出更对称仍可能更差，于是再次重构数据。</h3><b>mirror loss 3.20 → 0.19，OOD 却降到 38.33%</b><p>只约束输出对称没有正确动作锚点。随后改为成对成功轨迹、严格 mirror 数据与 78D 时序 LiDAR；最终 clean-start PPO 在公平评估中达到 29/30。</p></article>
+      </div>
+    </section>
+
+    <section class="notebook-section workflow-detail" id="workflow"><div class="section-shell">
+      <div class="notebook-heading reveal"><span>04 / AGENT WORKFLOW</span><h2>效率提升来自职责分工，不是把判断交给 AI。</h2><p>Windows 端负责 high-level plan、spec、结果解释和 next step；WSL Codex Agent 直接修改共享源码并在 Docker 中执行 ROS / Gazebo。</p></div>
+      <div class="workflow-loop reveal"><div><span>01</span><b>Human</b><small>定义问题与验收门</small></div><i>→</i><div><span>02</span><b>ChatGPT Work</b><small>整理证据、写 spec</small></div><i>→</i><div><span>03</span><b>WSL Codex</b><small>实现、运行、收集日志</small></div><i>→</i><div><span>04</span><b>Human</b><small>看 Gazebo / TensorBoard，决定继续或推倒</small></div></div>
+      <div class="guardrail-grid reveal"><div><strong>不可覆盖基线</strong><p>10/10 Direct Goal baseline 单独保存并校验。</p></div><div><strong>每个实验独立目录</strong><p>checkpoint、CSV、TensorBoard 与评估结果不互相污染。</p></div><div><strong>训练后冻结评估</strong><p>关闭探索、禁止 optimizer update，再测固定、held-out 与 OOD。</p></div><div><strong>失败也必须归档</strong><p>0/10、碰撞轨迹和 timeout 与成功模型同样重要。</p></div></div>
+    </div></section>
+
+    <section class="notebook-section section-shell" id="training-design">
+      <div class="notebook-heading reveal"><span>05 / NETWORK & METRICS</span><h2>TensorBoard 的作用不是证明“训练在动”，而是判断它在学什么。</h2><p>早期 Actor 使用 16 维输入：LiDAR 摘要、目标相对几何与上一动作。维度选择遵循信息充分性，而不是越多越好；clean-start 路线升级为 78D 时序观察。</p></div>
+      <div class="observation-grid reveal"><div><b>LiDAR</b><p>最近障碍与方向摘要</p></div><div><b>Goal</b><p>距离与相对角度</p></div><div><b>Action history</b><p>上一时刻的线/角动作</p></div><div><b>78D upgrade</b><p>36 LiDAR + 36 range-rate + history + goal</p></div></div>
+      <div class="metric-figures"><figure class="reveal"><img src="assets/navbot/notebook/actor-update-deltas.png" alt="Actor 参数更新量对比图"><figcaption><strong>Actor update deltas</strong><p>大幅初始变化后逐渐围绕零波动。仅凭“变小”不能判断策略更好，必须与行为评估同时阅读。</p></figcaption></figure><figure class="reveal"><img src="assets/navbot/notebook/critic-update-deltas.png" alt="Critic 参数更新量对比图"><figcaption><strong>Critic update deltas</strong><p>Critic 更新迅速进入小幅波动，但 V1 仍可能 0/10。优化稳定不等于任务成功。</p></figcaption></figure></div>
+      <div class="training-settings reveal"><div><span>EARLY PPO</span><b>γ 0.99 · clip 0.2 · lr 3e−4</b><p>200 timesteps/batch，50 updates/iteration，100-step episode。</p></div><div><span>TURN-FIRST</span><b>lr 2e−4 · 400/batch · 10 updates</b><p>碰撞归零但 timeout 增多，显示安全和完成任务是不同指标。</p></div><div><span>SYMMETRY STAGE</span><b>600/batch · 150-step episode</b><p>增加 episode 长度并要求完整回合，但仍需检查日志是否真的跑满预算。</p></div><div><span>WHAT TO WATCH</span><b>success · collision · timeout · KL</b><p>同时记录 episode length、return、critic loss、explained variance 与 checkpoint。</p></div></div>
+      <div class="iteration-note reveal"><strong>最终原则</strong><p>训练曲线回答“优化器发生了什么”；冻结 Gazebo 评估回答“机器人会做什么”；永久 OOD 回答“它在没见过的环境里还能做什么”。三个问题必须分开。</p></div>
+    </section>
+
+    <section class="notebook-closing"><div class="section-shell reveal"><p class="section-number">SOURCE DISCIPLINE</p><h2>这里记录的是证据边界，而不是英雄叙事。</h2><p>来源包括 Google Sheet 五个过程 tab、项目 CSV、TensorBoard event、评估 JSON、checkpoint 报告和 WSL 状态文档。页面明确标注截图快照与当前存档不一致之处；没有证据的推断不会写成结论。</p><a class="button button-primary" href="navbot.html#evidence-notebook">返回 NavBot 主档案</a></div></section>
+  </main>
+
+  <footer><div class="section-shell footer-grid"><div><img class="profile-avatar" src="assets/monday-profile.jpg" alt="Monday 的头像" width="42" height="42" style="width:42px;height:42px;box-sizing:border-box;object-fit:cover;object-position:72% 38%;padding:3px;border-radius:50%;background:#d8ef8b"><p>Monday’s Robotics Universe</p></div><p>Building digital worlds where robots learn.</p><div class="footer-links"><a href="navbot.html">NavBot 档案</a><a href="#top">回到顶部 ↑</a></div></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
