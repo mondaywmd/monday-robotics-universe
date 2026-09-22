@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-14">
+  <link rel="stylesheet" href="styles.css?v=20260922-15">
 </head>
 <body class="article-page notebook-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -81,6 +81,18 @@
     <section class="notebook-section section-shell" id="training-design">
       <div class="notebook-heading reveal"><span>05 / NETWORK & METRICS</span><h2>TensorBoard 的作用不是证明“训练在动”，而是判断它在学什么。</h2><p>早期 Actor 使用 16 维输入：LiDAR 摘要、目标相对几何与上一动作。维度选择遵循信息充分性，而不是越多越好；clean-start 路线升级为 78D 时序观察。</p></div>
       <div class="observation-grid reveal"><div><b>LiDAR</b><p>最近障碍与方向摘要</p></div><div><b>Goal</b><p>距离与相对角度</p></div><div><b>Action history</b><p>上一时刻的线/角动作</p></div><div><b>78D upgrade</b><p>36 LiDAR + 36 range-rate + history + goal</p></div></div>
+      <div class="network-question reveal">
+        <a href="assets/navbot/notebook/neural-network-16d-question.png" target="_blank"><img src="assets/navbot/notebook/neural-network-16d-question.png" alt="Google Sheet 神经网络 tab 中关于 16 维观察空间的学习记录"></a>
+        <div><small>NEURAL NETWORK TAB · ORIGINAL QUESTION</small><h3>“为什么神经网络是 16 维？怎么决定需要多少维？”</h3><p>这里的 16 维不是地图坐标，也不是“网络越大越聪明”。它是每个控制时刻交给 Actor 的<strong>传感器摘要</strong>：障碍在哪里、目标相对机器人在哪里，以及上一拍采取了什么动作。具体分量应以当时环境代码中的 observation 构造为准。</p><p>这种相对观察不会要求网络死记一张固定地图，因此比绝对坐标更容易迁移到不同障碍布局。</p></div>
+      </div>
+      <div class="dimension-questions reveal">
+        <article><span>01 · TASK VISIBILITY</span><strong>删掉以后，任务会不会变得不可观察？</strong><p>没有前方 LiDAR，策略无法预判柱子；没有目标相对方向，它只知道避障，却不知道最终往哪里走。</p></article>
+        <article><span>02 · REDUNDANCY</span><strong>它是否与已有信息高度重复？</strong><p>相邻激光束几乎相同时，全塞进去只会增加学习难度。早期 16D 用压缩摘要降低样本需求。</p></article>
+        <article><span>03 · MEMORY</span><strong>单帧能否解释运动趋势？</strong><p>单帧距离无法区分“正在靠近”与“正在远离”。上一动作补充控制连续性；后期 78D 又加入 range-rate，让变化方向可见。</p></article>
+        <article><span>04 · GENERALIZATION</span><strong>特征是在描述关系，还是背诵场景？</strong><p>相对目标、局部 LiDAR 和变化率描述的是可迁移关系；绝对位置更容易把策略绑定在训练地图上。</p></article>
+      </div>
+      <div class="network-evolution reveal"><div><span>EARLY · 16D</span><b>少量、压缩、够用</b><p>障碍摘要 + 目标相对几何 + 动作历史。网络更容易训练，但压缩也可能丢掉几何细节和时间趋势。</p></div><i>→</i><div><span>CLEAN START · 78D</span><b>空间结构 + 时间变化</b><p>36 路 LiDAR、36 路距离变化率，再加动作历史与目标信息。升级不是为了“更大”，而是因为失败分析证明策略需要看见更完整的局部形状与运动趋势。</p></div></div>
+      <div class="iteration-note reveal"><strong>这次学习形成的原则</strong><p>观察维度应该从任务最低信息需求出发：先确保可观察，再删除重复项；只有当失败证据显示信息不足时才增加维度。16D 与 78D 不是优劣排名，而是两个阶段对“策略究竟需要知道什么”的不同答案。</p></div>
       <div class="metric-figures"><figure class="reveal"><img src="assets/navbot/notebook/actor-update-deltas.png" alt="Actor 参数更新量对比图"><figcaption><strong>Actor update deltas</strong><p>大幅初始变化后逐渐围绕零波动。仅凭“变小”不能判断策略更好，必须与行为评估同时阅读。</p></figcaption></figure><figure class="reveal"><img src="assets/navbot/notebook/critic-update-deltas.png" alt="Critic 参数更新量对比图"><figcaption><strong>Critic update deltas</strong><p>Critic 更新迅速进入小幅波动，但 V1 仍可能 0/10。优化稳定不等于任务成功。</p></figcaption></figure></div>
       <div class="training-settings reveal"><div><span>EARLY PPO</span><b>γ 0.99 · clip 0.2 · lr 3e−4</b><p>200 timesteps/batch，50 updates/iteration，100-step episode。</p></div><div><span>TURN-FIRST</span><b>lr 2e−4 · 400/batch · 10 updates</b><p>碰撞归零但 timeout 增多，显示安全和完成任务是不同指标。</p></div><div><span>SYMMETRY STAGE</span><b>600/batch · 150-step episode</b><p>增加 episode 长度并要求完整回合，但仍需检查日志是否真的跑满预算。</p></div><div><span>WHAT TO WATCH</span><b>success · collision · timeout · KL</b><p>同时记录 episode length、return、critic loss、explained variance 与 checkpoint。</p></div></div>
 
