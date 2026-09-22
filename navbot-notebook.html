@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-12">
+  <link rel="stylesheet" href="styles.css?v=20260922-13">
 </head>
 <body class="article-page notebook-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -69,6 +69,15 @@
       <div class="observation-grid reveal"><div><b>LiDAR</b><p>最近障碍与方向摘要</p></div><div><b>Goal</b><p>距离与相对角度</p></div><div><b>Action history</b><p>上一时刻的线/角动作</p></div><div><b>78D upgrade</b><p>36 LiDAR + 36 range-rate + history + goal</p></div></div>
       <div class="metric-figures"><figure class="reveal"><img src="assets/navbot/notebook/actor-update-deltas.png" alt="Actor 参数更新量对比图"><figcaption><strong>Actor update deltas</strong><p>大幅初始变化后逐渐围绕零波动。仅凭“变小”不能判断策略更好，必须与行为评估同时阅读。</p></figcaption></figure><figure class="reveal"><img src="assets/navbot/notebook/critic-update-deltas.png" alt="Critic 参数更新量对比图"><figcaption><strong>Critic update deltas</strong><p>Critic 更新迅速进入小幅波动，但 V1 仍可能 0/10。优化稳定不等于任务成功。</p></figcaption></figure></div>
       <div class="training-settings reveal"><div><span>EARLY PPO</span><b>γ 0.99 · clip 0.2 · lr 3e−4</b><p>200 timesteps/batch，50 updates/iteration，100-step episode。</p></div><div><span>TURN-FIRST</span><b>lr 2e−4 · 400/batch · 10 updates</b><p>碰撞归零但 timeout 增多，显示安全和完成任务是不同指标。</p></div><div><span>SYMMETRY STAGE</span><b>600/batch · 150-step episode</b><p>增加 episode 长度并要求完整回合，但仍需检查日志是否真的跑满预算。</p></div><div><span>WHAT TO WATCH</span><b>success · collision · timeout · KL</b><p>同时记录 episode length、return、critic loss、explained variance 与 checkpoint。</p></div></div>
+
+      <div class="question-heading reveal"><small>QUESTIONS FROM THE ORIGINAL LOG</small><h3>真正推动项目向前的，往往不是答案，而是你及时问出的那个问题。</h3><p>下面保留 Google Sheet 中的原始截图。点击图片可以查看完整尺寸；旁边的文字说明这张截图怎样改变了实验判断。</p></div>
+      <div class="source-screenshot-grid">
+        <figure class="reveal"><a href="assets/navbot/notebook/hybrid-smoke-timeouts.png" target="_blank"><img src="assets/navbot/notebook/hybrid-smoke-timeouts.png" alt="Hybrid PPO smoke test 三个回合全部 timeout 的原始记录"></a><figcaption><span>HYBRID SMOKE · 400 STEPS</span><strong>网络已经接通，不代表策略已经有效。</strong><p>16D state、2D action；Actor 52,466 参数、Critic 52,433，总计 104,899。400-step smoke test 的前三回合全部 timeout。这个阶段验证的是训练链路、checkpoint 和 TensorBoard 输出，而不是性能。</p></figcaption></figure>
+        <figure class="reveal"><a href="assets/navbot/notebook/hybrid-fast-mask-result.png" target="_blank"><img src="assets/navbot/notebook/hybrid-fast-mask-result.png" alt="Hybrid fast-mask smoke test 的训练汇总"></a><figcaption><span>FAST MASK · 699 TIMESTEPS</span><strong>2 次成功并不能掩盖 3 次 timeout。</strong><p>6 个回合中 2 success、1 collision、3 timeout；success 33.3%，collision 16.7%，timeout 50%。Actor residual 只在 101/699 步激活，说明 hybrid PPO 只在小部分 edge-case 时间窗真正介入。</p></figcaption></figure>
+        <figure class="reveal"><a href="assets/navbot/notebook/formal-20k-question.png" target="_blank"><img src="assets/navbot/notebook/formal-20k-question.png" alt="正式 20k 训练与 66.7% 目标的原始讨论"></a><figcaption><span>BEFORE THE 20K RUN</span><strong>“目标就是超过 66.7% 吗？”</strong><p>这个提问迫使实验先定义公平比较：相同随机场景、相同 target 生成规则、相同超时与碰撞标准。没有统一协议，20k 只会产生更多不可比较的数据。</p></figcaption></figure>
+        <figure class="reveal"><a href="assets/navbot/notebook/evaluation-reflection.png" target="_blank"><img src="assets/navbot/notebook/evaluation-reflection.png" alt="关于 66.7% 小样本和 paired comparison 的思考"></a><figcaption><span>THE EVALUATION BLIND SPOT</span><strong>66.7% 只是 3 次测试里的 2 次成功。</strong><p>样本太小，不能称为稳定 baseline。于是评估被拆成两层：20–50 个常规随机场景看总体表现；专门的困难场景看 PPO 是否真的修正 edge case。纯 LiDAR 与 hybrid PPO 必须跑同一组初始条件。</p></figcaption></figure>
+      </div>
+      <div class="beginner-lessons reveal"><strong>给刚开始做 Robot RL 的人</strong><ul><li>Smoke test 的目标是验证管线，不是宣布模型成功。</li><li>成功率必须同时写出分母；2/3 和 40/60 都是 66.7%，证据强度完全不同。</li><li>Hybrid policy 可能只介入少数步骤，所以总体成功率变化很小并不代表它没有价值。</li><li>公平比较需要 paired scenes：同一个机器人起点、柱子和目标，再比较 baseline 与 PPO。</li><li>把 collision、timeout、路径长度和安全净空分开看，避免用单一 reward 掩盖失败机制。</li></ul></div>
       <div class="iteration-note reveal"><strong>最终原则</strong><p>训练曲线回答“优化器发生了什么”；冻结 Gazebo 评估回答“机器人会做什么”；永久 OOD 回答“它在没见过的环境里还能做什么”。三个问题必须分开。</p></div>
     </section>
 
