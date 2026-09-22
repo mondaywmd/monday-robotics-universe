@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-13">
+  <link rel="stylesheet" href="styles.css?v=20260922-14">
 </head>
 <body class="article-page notebook-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -45,6 +45,20 @@
 
     <section class="notebook-section section-shell" id="residual-ppo">
       <div class="notebook-heading reveal"><span>03 / RESIDUAL PPO ITERATIONS</span><h2>每次训练都必须解释：结果为什么不好，下一次究竟改什么。</h2><p>下面不是版本号清单，而是连续的因果链。每一轮只在前一轮暴露的问题上增加新的证据或约束。</p></div>
+      <div class="reward-note reveal"><a href="assets/navbot/notebook/reward-logic-original-note.png" target="_blank"><img src="assets/navbot/notebook/reward-logic-original-note.png" alt="Google Sheet 中关于 PPO reward 与 penalty 逻辑的原始记录"></a><div><small>ORIGINAL QUESTION · REWARD DESIGN</small><h3>“现在 PPO 得奖励和惩罚逻辑大概是什么？”</h3><code>100 × distance_rate − 1<br>+ 12 × heading_improvement<br>+ 0.5 × heading_alignment</code><p>成功到达 +500；碰撞与当时的 150-step timeout 均记 −150。关键盲点是：这个 reward 强烈鼓励接近目标与对准目标，却没有直接奖励“离障碍越来越远”；真正的硬安全仍由 LiDAR 终止规则负责。</p></div></div>
+      <div class="logic-table reveal" role="table" aria-label="PPO 版本逻辑演化">
+        <div class="logic-row logic-head"><span>阶段</span><span>控制 / Action</span><span>Reward 或数据变化</span><span>为什么改</span><span>结果与新问题</span></div>
+        <div class="logic-row"><span>Early direct PPO</span><span>Actor 直接输出线速度与角速度</span><span><code>500×Δdistance</code>；collision −100，success +120</span><span>先让策略学会朝目标走</span><span>信号集中在距离，成功终奖偏弱；高速动作还会放大物理漂移</span></div>
+        <div class="logic-row"><span>Reward / motion fix</span><span>线速度缩放、turn-first、近目标减速</span><span><code>100×Δdistance −1 + heading terms</code>；success +500，collision −150</span><span>减少绕圈、鼓励尽快结束并改善车头方向</span><span>直达能力改善，但“对准目标”与“绕开障碍”仍可能冲突</span></div>
+        <div class="logic-row"><span>V1 residual</span><span>Direct Goal + bounded Δv / Δω；±0.05 m/s、±0.30 rad/s</span><span>保持基础 reward；zero residual 必须复现 baseline</span><span>不让 PPO 重新学习已经会的目标追踪</span><span>接口正确但 5k 后仍 0/10，修正动作太弱</span></div>
+        <div class="logic-row"><span>V2 control gate</span><span>LiDAR &lt;0.80 m 接管；连续 3 扫描 &gt;1.10 m 退出</span><span>Gate 外完全保留 Direct Goal</span><span>只在危险窗口允许 PPO 干预，保护正常路径</span><span>手工 −ω 可成功，证明可解；但路线超过旧 200-step 上限</span></div>
+        <div class="logic-row"><span>V3 clearance shaping</span><span>沿用 V2 gate</span><span>Gate 内 heading 奖励缩为 10%；新增 <code>40×clip(Δclearance,±0.10)</code>；collision −300</span><span>障碍附近不应继续被“朝目标对齐”拉回柱子</span><span>策略方向正确但幅度不足，35 步仍碰撞；reward 不能代替动作示范</span></div>
+        <div class="logic-row"><span>V4 BC → PPO</span><span>Actor 先模仿 [+1,−1] 专家动作，再微调</span><span>Reward 基本不变；新增 648 个 16D 成功样本</span><span>给策略正确方向与幅度的锚点</span><span>BC 3/3，PPO 24/24 train，固定评估 10/10；但仍需 held-out</span></div>
+        <div class="logic-row"><span>V5 curriculum</span><span>仍是 16D residual Actor</span><span>不改 reward，改成柱子 y 的 ±0.03 → ±0.06 m 课程</span><span>用数据分布修复 pillar-right 敏感性</span><span>Held-out 仍 59/60，失败只是转移到 yaw-left</span></div>
+        <div class="logic-row"><span>V6 failure modes</span><span>继续使用 V5 Actor 与安全边界</span><span>两类失败场景 50/50 在线生成；永久 OOD 防泄漏</span><span>直接训练真实失败家族，而不是继续调单一 reward</span><span>10,001 steps 后训练 rollout 57.4%；仍必须冻结 acceptance</span></div>
+        <div class="logic-row"><span>V7 / V8 / clean start</span><span>严格 mirror 数据；最终升级 78D 时序 LiDAR</span><span>从“输出对称损失”转向“成对成功轨迹 + BC + PPO”</span><span>V7 证明对称输出不等于安全动作</span><span>V8 重做数据闭环；clean-start 公平评估 29/30</span></div>
+      </div>
+      <div class="iteration-note reveal"><strong>这条演化线最重要的变化</strong><p>早期主要修改 reward，希望一个公式同时解决前进、朝向、安全与效率；后期逐渐把问题拆开：基础控制器负责去目标，LiDAR gate 负责何时介入，residual Actor 负责怎么避障，BC 提供正确动作锚点，curriculum 改训练分布，held-out 与 OOD 单独负责验收。</p></div>
       <div class="experiment-chain">
         <article class="reveal"><span>V1 · CONNECT THE LOOP</span><h3>5k checkpoint：接口通了，行为没学会。</h3><b>0/10 success · 10/10 collision</b><p>确定性评估平均 15.6 步撞柱。动作确实送进 Gazebo，但 residual 幅度与策略结构不足以形成绕行。</p></article>
         <article class="reveal"><span>V2 · CONTROL GATE</span><h3>先证明物理上存在一条可行方向。</h3><b>−ω：214 steps success</b><p>最大正转向仍碰撞；最大负转向能绕行并到达。零 residual 在 30 步碰撞。旧的 200-step 上限也被证明太短。</p></article>
