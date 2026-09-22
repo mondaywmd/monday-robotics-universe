@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-8">
+  <link rel="stylesheet" href="styles.css?v=20260922-9">
 </head>
 <body class="article-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -134,6 +134,20 @@
             <p class="section-number">04 / STARTING OVER</p>
             <h2>最重要的一次迭代，是把之前的路全部推倒。</h2>
             <p>项目早期没有先建立高层实验计划。单边路线一旦走通，就直接进入 RL；没有 mirror 成对的基础行驶数据，也没有冻结的验收协议。结果不好时，第一反应是继续改训练、加条件、加几何寻路和数学规则，系统却越来越难解释。</p>
+          </div>
+          <div class="speed-calibration reveal">
+            <div class="speed-story">
+              <small>THE FIRST PHYSICS LESSON</small>
+              <h3>为了训练更快，我先把机器人开得太快。</h3>
+              <p>早期把巡航指令一度提高到约 <strong>0.80 m/s</strong>。画面里机器人确实更快，但长期训练数据变差。回到空场做直线标定后才发现：到 <strong>0.30 m/s</strong> 时，横向与朝向偏移已经不可接受；最终退回并冻结在 <strong>0.25 m/s</strong>，重复测试才达到可用于训练的稳定程度。</p>
+            </div>
+            <div class="speed-scale" aria-label="速度标定结果">
+              <div class="speed-bad"><b>0.80</b><span>m/s</span><small>明显超出可信范围</small></div>
+              <div class="speed-warn"><b>0.30</b><span>m/s</span><small>直线偏移不可接受</small></div>
+              <div class="speed-kept"><b>0.25</b><span>m/s</span><small>项目中的保守验证值</small></div>
+            </div>
+            <p class="speed-caveat">ROBOTIS 为 TurtleBot3 Burger 标称的最大平移速度约为 0.22 m/s。这个实验不能单独证明问题来自实体 actuator；差速驱动、轮地摩擦与打滑、控制频率、加速度和 Gazebo 模型都可能参与。但它证明了一件事：如果训练命令超出原机器人和仿真模型的可信物理包线，RL 会把大量时间花在适应伪影，而不是学习任务。</p>
+            <a class="speed-source" href="https://emanual.robotis.com/docs/en/platform/turtlebot3/features/" target="_blank" rel="noreferrer">ROBOTIS TurtleBot3 官方规格 ↗</a>
           </div>
           <div class="reset-contrast">
             <article class="reset-old reveal">
