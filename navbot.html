@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-15">
+  <link rel="stylesheet" href="styles.css?v=20260922-16">
 </head>
 <body class="article-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -37,6 +37,21 @@
           </figure>
         </div>
       </header>
+
+      <section class="workspace-tour" id="workspace-tour">
+        <div class="section-shell">
+          <div class="workspace-heading reveal"><p class="section-number">00 / MY ROBOT TRAINING DESK</p><h2>第一次看这个项目，先认识我每天切换的六个界面。</h2><p>这不是一套全自动的“AI 替我训练机器人”。人的工作是定方向、写验收标准、看行为和判断证据；Agent 缩短实现与运行的反馈循环，Gazebo 和 TensorBoard 则分别回答“机器人做了什么”和“训练内部发生了什么”。</p></div>
+          <div class="workspace-grid">
+            <article class="workspace-card reveal"><img src="assets/navbot/workspace/windows-planning-log.png" alt="Windows 中的 ChatGPT 项目规划与 Google Sheet 实验日志"><div><span>01 · WINDOWS / CHATGPT</span><h3>掌握方向盘</h3><p>在 Windows 端讨论 high-level plan、实验规格、失败解释和 next step；重要问答与截图随手放入 Google Sheet，成为项目的原始实验账本。</p></div></article>
+            <article class="workspace-card reveal"><img src="assets/navbot/workspace/wsl-training-run.png" alt="WSL Ubuntu 终端中的 NavBot PPO 训练输出"><div><span>02 · WSL / UBUNTU</span><h3>真正执行训练的工作间</h3><p>ROS、Gazebo、Python 环境、项目源码与训练命令运行在 Ubuntu 环境中。每次启动都会留下配置、checkpoint、CSV 与 TensorBoard event。</p></div></article>
+            <article class="workspace-card reveal"><img src="assets/navbot/videos/03-multi-obstacle-navigation.jpg" alt="Gazebo 中 NavBot 在多障碍环境导航"><div><span>03 · GAZEBO / NAVBOT</span><h3>看机器人到底做了什么</h3><p>场景、机器人、LiDAR、目标和障碍物都在这里变成可观察行为：直线是否漂移、是否撞柱、在哪里犹豫、左右镜像是否一致。</p></div></article>
+            <article class="workspace-card reveal"><img src="assets/navbot/workspace/codex-analysis-feedback.png" alt="训练结果与 Agent 分析反馈的记录"><div><span>04 · CODEX AGENT</span><h3>把规格变成代码与实验</h3><p>Codex Agent 接入同一个 WSL 项目，修改代码、运行 smoke test、收集日志并返回证据；我负责判断结果是否可信，以及下一轮该改什么。</p></div></article>
+            <article class="workspace-card reveal"><video autoplay muted loop playsinline preload="metadata" poster="assets/navbot/videos/04-randomized-evaluation.jpg"><source src="assets/navbot/videos/04-randomized-evaluation.mp4" type="video/mp4"></video><div><span>05 · TRAIN / REPLAY / REVIEW</span><h3>跑训练，也要回看行为</h3><p>先 smoke test，再扩大到 1k、5k、10k、20k；训练后冻结 policy，在 baseline、镜像、随机障碍和 OOD 场景盲跑。录像以 4× 展示，便于快速对比路线、碰撞与 timeout。</p></div></article>
+            <article class="workspace-card reveal"><img src="assets/navbot/notebook/actor-update-deltas.png" alt="TensorBoard 中 Actor 参数更新量曲线"><div><span>06 · TENSORBOARD</span><h3>看数据，但不被曲线骗</h3><p>同时观察 success、collision、timeout、return、episode length、KL、clip fraction、Actor/Critic loss 与参数更新量。曲线稳定只说明优化在运行，不能代替 Gazebo 行为验收。</p></div></article>
+          </div>
+          <p class="workspace-caption reveal">这六个界面构成一条可重复的 Vibe Robotics 循环：<strong>提出问题 → 写规格 → Agent 实现 → Gazebo 运行 → 录像与 TensorBoard 取证 → 人做下一轮判断。</strong></p>
+        </div>
+      </section>
 
       <section class="case-intro section-shell">
         <p class="section-number">00 / WHY THIS PROJECT</p>
