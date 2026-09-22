@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922-6">
+  <link rel="stylesheet" href="styles.css?v=20260922-7">
 </head>
 <body class="article-page" id="top">
   <div class="noise" aria-hidden="true"></div>
@@ -96,10 +96,42 @@
         </div>
       </section>
 
+      <section class="workflow-pivot">
+        <div class="section-shell">
+          <div class="case-heading reveal">
+            <p class="section-number">03 / WORKFLOW PIVOT</p>
+            <h2>真正的加速，来自重新分配工作。</h2>
+            <p>项目早期依靠对话、复制代码、粘贴截图和手动执行。信息虽然完整，但每次迭代都要跨窗口搬运上下文，反馈回路很长。后来把执行 Agent 放进 WSL Ubuntu，工作方式发生了根本变化。</p>
+          </div>
+          <div class="workflow-before-after">
+            <article class="workflow-before reveal">
+              <small>BEFORE · MANUAL LOOP</small>
+              <h3>对话 → 复制 → 粘贴 → 执行 → 截图 → 再解释</h3>
+              <p>ChatGPT 能参与分析，但看不到真实工程环境。代码和日志要由人手动来回传递，调试常常消耗在上下文搬运，而不是实验本身。</p>
+            </article>
+            <article class="workflow-after reveal">
+              <small>AFTER · AGENT LOOP</small>
+              <h3>规划与执行分层，人在回路中掌握方向。</h3>
+              <p>Windows 端负责高层计划、规格、实验分析与 next step；WSL Ubuntu 中的 Codex Agent 直接读取工程、修改代码、执行命令和检查结果。</p>
+            </article>
+          </div>
+          <div class="agent-stack reveal" aria-label="AI Agent 协作工作流">
+            <div><span>01</span><strong>YOU</strong><small>目标 · 判断 · 验收 · 方向盘</small></div>
+            <i>↕</i>
+            <div><span>02</span><strong>CHATGPT WORK / WINDOWS</strong><small>High-level plan · Specs · Analysis · Next step</small></div>
+            <i>↕</i>
+            <div><span>03</span><strong>CODEX AGENT / WSL</strong><small>Read code · Edit · Execute · Inspect logs</small></div>
+            <i>↕</i>
+            <div><span>04</span><strong>ROS + GAZEBO</strong><small>Run experiment · Return evidence</small></div>
+          </div>
+          <p class="workflow-outcome reveal">效率提升并不是因为把项目“交给 AI”。相反，你把自己的角色提升到系统负责人：定义问题、冻结基线、决定实验是否通过、拒绝不可靠结论；Agent 则把代码修改和实验执行压缩成更短的反馈循环。</p>
+        </div>
+      </section>
+
       <section class="case-section case-timeline-wrap">
         <div class="section-shell">
           <div class="case-heading reveal">
-            <p class="section-number">03 / BUILD LOG</p>
+            <p class="section-number">04 / BUILD LOG</p>
             <h2>项目不是一条漂亮的上升曲线。</h2>
             <p>每一步都先提出一个可证伪的问题，再决定是否允许进入下一阶段。</p>
           </div>
@@ -118,7 +150,7 @@
 
       <section class="case-results section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">04 / CLEAN-START RESULT</p>
+          <p class="section-number">05 / CLEAN-START RESULT</p>
           <h2>最后留下的，不只是一个成功率。</h2>
         </div>
         <div class="result-grid reveal">
@@ -141,7 +173,7 @@
 
       <section class="case-section section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">05 / WHAT I LEARNED</p>
+          <p class="section-number">06 / WHAT I LEARNED</p>
           <h2>真正困难的是定义证据。</h2>
         </div>
         <div class="lesson-grid">
@@ -155,7 +187,7 @@
       <section class="case-dark case-next">
         <div class="section-shell case-next-grid">
           <div class="reveal">
-            <p class="section-number">06 / LIMITS</p>
+            <p class="section-number">07 / LIMITS</p>
             <h2>现在还不能声称什么。</h2>
           </div>
           <ul class="reveal">
@@ -170,7 +202,7 @@
 
       <section class="case-section section-shell">
         <div class="case-heading reveal">
-          <p class="section-number">07 / WHERE IT GOES NEXT</p>
+          <p class="section-number">08 / WHERE IT GOES NEXT</p>
           <h2>把学习闭环接到更大的机器人宇宙。</h2>
         </div>
         <div class="next-path reveal">
