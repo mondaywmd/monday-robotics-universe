@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NavBot 项目完整档案：从 Gazebo 导航基线、Residual PPO、行为克隆与 OOD 诊断，到 clean-start 时序 LiDAR 机器人学习闭环。">
+  <meta name="theme-color" content="#07110f">
+  <title>NavBot 项目档案 · Monday’s Robotics Universe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260922-6">
+</head>
+<body class="article-page" id="top">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="返回 Monday’s Robotics Universe 首页">
+      <img class="profile-avatar" src="assets/monday-profile.jpg" alt="Monday 的头像" width="42" height="42" style="width:42px;height:42px;box-sizing:border-box;object-fit:cover;object-position:72% 38%;padding:3px;border-radius:50%;background:#d8ef8b">
+      <span class="brand-text">Monday’s<br><strong>Robotics Universe</strong></span>
+    </a>
+    <a class="article-back" href="index.html">← 返回宇宙地图</a>
+  </header>
+
+  <main>
+    <article>
+      <header class="case-hero">
+        <div class="section-shell case-hero-grid">
+          <div class="reveal">
+            <p class="eyebrow"><span class="status-dot"></span> CASE FILE 001 · NAVBOT</p>
+            <h1>从撞向柱子，<br>到学会绕过去。</h1>
+            <p class="case-deck">一个为补上 Robot Learning 真实闭环而开始的项目，后来成长为一套包含可复现场景、行为克隆、PPO、安全层、镜像协议与 OOD 诊断的移动机器人实验系统。</p>
+            <div class="case-tags"><span>ROS Noetic</span><span>Gazebo Classic</span><span>TurtleBot3</span><span>PPO</span><span>LiDAR</span></div>
+          </div>
+          <figure class="case-hero-media reveal">
+            <img src="assets/navbot-navigation-preview.gif" alt="NavBot 在 Blender 导航测试场中运动">
+            <figcaption>NavBot / TurtleBot3 · navigation study</figcaption>
+          </figure>
+        </div>
+      </header>
+
+      <section class="case-intro section-shell">
+        <p class="section-number">00 / WHY THIS PROJECT</p>
+        <div class="case-intro-copy reveal">
+          <h2>它不是为了证明机器人能从 A 点走到 B 点。</h2>
+          <p class="lead">真正的目标，是第一次亲手走完一条 Robot RL 链路：机器人观察环境，策略产生动作，环境返回奖励，轨迹被收集，PPO 更新策略，然后再用冻结场景判断它究竟学会了什么。</p>
+          <p>我原本的能力来自 Houdini、VFX、procedural simulation、USD 与 production pipeline。NavBot 是一座桥，把这些“创造和调试数字世界”的经验，接到 observation、action、reward、policy、rollout 与 evaluation 上。项目采用移动机器人，是因为它足够直观：LiDAR 能看见什么、轮子执行什么、碰撞为什么发生，都可以被观察和解释。</p>
+        </div>
+      </section>
+
+      <section class="case-dark">
+        <div class="section-shell">
+          <div class="case-heading reveal">
+            <p class="section-number">01 / THE LOOP</p>
+            <h2>先把学习闭环看清楚。</h2>
+          </div>
+          <div class="loop-strip reveal" aria-label="机器人强化学习闭环">
+            <span>Gazebo 场景</span><i>→</i><span>LiDAR + 目标</span><i>→</i><span>Policy</span><i>→</i><span>线/角速度</span><i>→</i><span>Reward</span><i>→</i><span>PPO Update</span>
+          </div>
+          <div class="case-columns">
+            <div class="case-note reveal">
+              <strong>最初的实验假设</strong>
+              <p>基础 Rule Controller 只负责朝目标前进；PPO 不接管全部导航，而是输出小幅 <code>Δv</code> 与 <code>Δω</code>。没有障碍时 correction 接近零，遇到障碍时减速、转向，绕过后再把控制权还给目标控制器。</p>
+            </div>
+            <div class="case-note reveal">
+              <strong>为什么这样设计</strong>
+              <p>如果规则控制器已经会完整避障，PPO 的贡献就很难看见。让 Rule 只知道“去哪里”，才能清楚验证 PPO 是否真的从传感器中学会“怎么绕过去”。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section section-shell">
+        <div class="case-heading reveal">
+          <p class="section-number">02 / TWO EXPERIMENT LINES</p>
+          <h2>同一个问题，走出了两条路线。</h2>
+        </div>
+        <div class="branch-grid">
+          <article class="branch-card branch-orange reveal">
+            <p>LINE A · RESIDUAL LEARNING</p>
+            <h3>保留会朝目标走的控制器，只让 PPO 学避障修正。</h3>
+            <ul>
+              <li>16 维观察，动作是有界的速度修正</li>
+              <li>从固定单柱开始，再逐步加入扰动与 OOD</li>
+              <li>重点研究失败机制、镜像偏差和安全边界</li>
+            </ul>
+          </article>
+          <article class="branch-card branch-cyan reveal">
+            <p>LINE B · CLEAN START</p>
+            <h3>不继承旧权重，从时序 LiDAR 与严格镜像 Actor 重新开始。</h3>
+            <ul>
+              <li>78 维观察：当前 LiDAR、变化率、动作历史与目标几何</li>
+              <li>1–5 柱在线随机场景与可行路径检查</li>
+              <li>行为克隆打底，再用 PPO 修正复杂失败</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-section case-timeline-wrap">
+        <div class="section-shell">
+          <div class="case-heading reveal">
+            <p class="section-number">03 / BUILD LOG</p>
+            <h2>项目不是一条漂亮的上升曲线。</h2>
+            <p>每一步都先提出一个可证伪的问题，再决定是否允许进入下一阶段。</p>
+          </div>
+          <ol class="case-timeline">
+            <li class="reveal"><span>01</span><div><small>CONTROL BASELINE</small><h3>先保护一个真的能工作的基线</h3><p>无障碍 Direct Goal + heading compensation 在重启后验证为 10/10 成功、0 碰撞、0 超时，平均 71.5 步。它被冻结，后续实验不得覆盖。</p></div></li>
+            <li class="reveal"><span>02</span><div><small>FIXED FAILURE</small><h3>让失败变得清楚：机器人必须撞上正中的柱子</h3><p>起点 (0,0)、柱子 (1,0)、目标 (2,0)。纯 Goal-Seeking 沿中心线前进，并在 LiDAR 低于 0.20 m 时终止。这个场景证明“只朝目标走”必然失败，也给 PPO 一个明确任务。</p></div></li>
+            <li class="reveal"><span>03</span><div><small>RESIDUAL PPO V1–V3</small><h3>连通动作接口，不等于学会避障</h3><p>Residual action 被限制在 ±0.05 m/s 与 ±0.30 rad/s，零 residual 精确复现基线。5k 训练后的首个 checkpoint 仍是 0/10 成功、10/10 碰撞。随后控制门证明至少一个转向方向在物理上可绕过柱子，但早期策略学到的正确方向幅度太弱。</p></div></li>
+            <li class="reveal"><span>04</span><div><small>BEHAVIOR CLONING + PPO</small><h3>先给策略一个成功动作的锚点</h3><p>3 条固定场景专家轨迹生成 648 个样本；BC Actor 在 Gazebo 中 3/3 成功。以 BC 初始化的 PPO 微调收集 5,299 步，训练回合 24/24 成功；最终固定场景评估 10/10 成功。</p></div></li>
+            <li class="reveal"><span>05</span><div><small>HELD-OUT & CURRICULUM</small><h3>固定场景成功，不代表泛化成立</h3><p>六个未参与训练的小扰动场景中，V4 达到 59/60 成功。V5 加入柱子横向课程后仍为 59/60，只是失败从 pillar-right 转移到 yaw-left：总体可靠性没有真正提高。</p></div></li>
+            <li class="reveal"><span>06</span><div><small>ADVERSARIAL OOD</small><h3>更难的考试揭开了真正边界</h3><p>12 个永久 OOD 任务、每个 5 次确定性执行：V5 为 43/60 成功，11 次碰撞、6 次超时。成功率 71.67%，说明小扰动上的 98.33% 不能代表更广泛的泛化。</p></div></li>
+            <li class="reveal"><span>07</span><div><small>MIRROR CONSISTENCY V7</small><h3>更对称的输出，反而更差的机器人</h3><p>镜像一致性损失从 3.20 降至 0.19，但永久 OOD 成功率降到 38.33%，碰撞升至 48.33%。原因不是“对称性无用”，而是仅约束输出对称，没有提供正确安全动作的锚点，并且成对轨迹没有被严格执行。</p></div></li>
+            <li class="reveal"><span>08</span><div><small>V8 + CLEAN START</small><h3>从成功的左右成对轨迹重新构造问题</h3><p>V8 收集 24 对镜像成功路线、48 个回合、5,617 个 16 维样本；后续 clean-start 路线升级为 360° dense LiDAR 与 78 维时序观察，并从随机权重重新训练，不再依赖旧 Actor。</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="case-results section-shell">
+        <div class="case-heading reveal">
+          <p class="section-number">04 / CLEAN-START RESULT</p>
+          <h2>最后留下的，不只是一个成功率。</h2>
+        </div>
+        <div class="result-grid reveal">
+          <div><strong>78D</strong><span>时序观察</span><small>36 LiDAR + 36 range-rate + action history + goal geometry</small></div>
+          <div><strong>60</strong><span>BC 成功回合</span><small>30 对镜像 · 5,518 样本</small></div>
+          <div><strong>29/30</strong><span>PPO 公平评估成功</span><small>96.67% · 0 timeout</small></div>
+          <div><strong>0</strong><span>最大镜像误差</span><small>1,000 样本结构级检查</small></div>
+        </div>
+        <div class="comparison reveal">
+          <div><span>BC-only</span><b>27 / 30</b><small>1 collision · 2 timeout · 成功中位 93 步</small></div>
+          <div><span>Clean-start PPO</span><b>29 / 30</b><small>1 collision · 0 timeout · 成功中位 91 步</small></div>
+        </div>
+        <p class="result-reading reveal">PPO 把两个复杂四柱超时转成 160/161 步成功，同时没有增加超时。但 BC 与 PPO 都在同一个五柱镜像场景触发 0.20 m 安全阈值。这是当前最重要的未解决问题：性能提高了，安全失败并没有被完全消除。</p>
+      </section>
+
+      <section class="case-image-break section-shell reveal">
+        <img src="assets/navbot-arena-overview.png" alt="NavBot 导航实验场景概览">
+        <p>从 Gazebo 中的学习与诊断，到 Blender 中可展示、可复用的数字场景，NavBot 也成为 SimForge Agent 的第一个真实机器人资产来源。</p>
+      </section>
+
+      <section class="case-section section-shell">
+        <div class="case-heading reveal">
+          <p class="section-number">05 / WHAT I LEARNED</p>
+          <h2>真正困难的是定义证据。</h2>
+        </div>
+        <div class="lesson-grid">
+          <article class="reveal"><span>01</span><h3>训练成功 ≠ 泛化成功</h3><p>固定场景、轻微扰动与 adversarial OOD 必须分开报告。59/60 的 held-out 成绩与 43/60 的 OOD 成绩同时成立。</p></article>
+          <article class="reveal"><span>02</span><h3>失败需要轨迹，而不只是标签</h3><p>超时可能是没前进，也可能是接近目标后擦边离开。逐步记录 goal angle、速度、gate 状态和 LiDAR 才能区分机制。</p></article>
+          <article class="reveal"><span>03</span><h3>对称约束需要正确动作锚点</h3><p>让左右输出更一致并不自动等于更安全。没有成对成功轨迹，对称损失甚至会破坏原本有用的一侧行为。</p></article>
+          <article class="reveal"><span>04</span><h3>仿真基础设施也是研究对象</h3><p>目标模型缓存、跨进程柱子残留、gzclient 与 gzserver 不一致，都可能伪造训练信号。重置协议与服务端验证不是“杂活”。</p></article>
+        </div>
+      </section>
+
+      <section class="case-dark case-next">
+        <div class="section-shell case-next-grid">
+          <div class="reveal">
+            <p class="section-number">06 / LIMITS</p>
+            <h2>现在还不能声称什么。</h2>
+          </div>
+          <ul class="reveal">
+            <li>没有真机与 sim-to-real 证据。</li>
+            <li>障碍主要仍是静态圆柱，没有复杂形状与动态行人。</li>
+            <li>0.40 m 期望净空没有被严格保持。</li>
+            <li>最终评估是新鲜非 OOD 场景，不是永久 OOD 认证。</li>
+            <li>10k PPO 规模仍小，同一个五柱镜像安全失败尚未解决。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="case-section section-shell">
+        <div class="case-heading reveal">
+          <p class="section-number">07 / WHERE IT GOES NEXT</p>
+          <h2>把学习闭环接到更大的机器人宇宙。</h2>
+        </div>
+        <div class="next-path reveal">
+          <span>NavBot / Gazebo</span><i>→</i><span>程序化场景</span><i>→</i><span>OpenUSD</span><i>→</i><span>Isaac Sim</span><i>→</i><span>Domain Randomization</span><i>→</i><span>Sim-to-Real</span>
+        </div>
+        <p class="case-closing reveal">下一步不是盲目延长训练，而是先复盘重复安全失败，再把 Houdini / Blender 的程序化环境、USD 资产组织、传感器模拟与批量评估接进同一个可审计管线。AI Agent 可以帮助生成与整理资产，但实验协议、证据边界和最终判断仍必须由人负责。</p>
+        <div class="case-actions reveal">
+          <a class="button button-primary" href="index.html">返回 Robotics Universe</a>
+          <a class="button button-ghost" href="https://github.com/mondaywmd/simforge-agent" target="_blank" rel="noreferrer">查看 SimForge Agent ↗</a>
+        </div>
+        <p class="source-note">整理依据：三份 NavBot/PPO 项目存档（2026-09）及 WSL 项目中的实验 README、冻结评估结果与最终报告。数字均按其原始实验语境呈现，不混用训练统计、held-out 与 OOD 结果。</p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="section-shell footer-grid">
+      <div><img class="profile-avatar" src="assets/monday-profile.jpg" alt="Monday 的头像" width="42" height="42" style="width:42px;height:42px;box-sizing:border-box;object-fit:cover;object-position:72% 38%;padding:3px;border-radius:50%;background:#d8ef8b"><p>Monday’s Robotics Universe</p></div>
+      <p>Building digital worlds where robots learn.</p>
+      <div class="footer-links"><a href="index.html">宇宙地图</a><a href="#top">回到顶部 ↑</a></div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
