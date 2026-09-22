@@ -67,7 +67,7 @@ h1 { margin: 22px 0 24px; font-size: clamp(49px, 6.2vw, 84px); line-height: 1.08
 .button-primary:hover { background: #1c3b34; }
 .button-ghost { border: 1px solid var(--line); }
 
-.orbit-stage { position: relative; aspect-ratio: 1; max-width: 570px; margin-left: auto; }
+.orbit-stage { position: relative; width: 100%; aspect-ratio: 1; max-width: 570px; margin-left: auto; }
 .orbit-stage::after { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, rgba(134,220,224,.26), transparent 64%); filter: blur(25px); }
 .orbit { position: absolute; border: 1px solid rgba(7,17,15,.2); border-radius: 50%; transform: rotate(-18deg); z-index: 2; }
 .orbit-1 { inset: 34%; }
@@ -199,4 +199,3 @@ footer { padding: 55px 0; color: white; background: #030907; }
   html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
-
