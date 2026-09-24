@@ -38,6 +38,17 @@
       </div>
       <div class="isaac-boundary reveal"><b>这次完成了什么，下一步还缺什么？</b><p>已完成 Isaac Sim 安装、room USD 导入，以及局部 collider + rigid-body sanity test。接下来先补查穿透位置，再导入 NavBot 的 URDF + meshes，检查 link、joint、mass / inertia 和 collision。机器人导航、RTX LiDAR / Camera、ROS2、Isaac Lab 与 RL 都尚未在这个场景验证；Rule-only + PPO correction policy 的复用和 Gazebo 对比属于后续阶段。</p></div>
     </div></section>
+    <section class="isaac-physics" id="isaac-bounce"><div class="section-shell">
+      <div class="capture-heading reveal"><p class="section-number">10 / PHYSICS MATERIAL · 2026.09.24</p><h2>给方块物理材质，<br>让它落地后弹起来。</h2></div>
+      <p class="isaac-lead reveal">落地测试之后，继续尝试接触材质。创建并绑定 Cube_PhysicsMaterial，调高 Restitution，绿色方块现在出现明显反弹。Omniverse / Isaac Sim 的实验，也从碰撞是否成立，进入接触行为的调整。</p>
+      <figure class="isaac-film reveal"><video controls playsinline preload="metadata" poster="assets/worldbuilding/isaac-physics/bounce-poster.jpg" aria-label="绿色方块物理材质与反弹测试录屏"><source src="assets/worldbuilding/isaac-physics/cube-bounce.mp4" type="video/mp4">你的浏览器不支持视频播放，请使用下方链接打开录屏。</video><figcaption><div><b>第二次实验：保留绿色，让方块弹起来</b><p>约 10 秒实机录屏，保留完整时间线。右侧属性面板同时记录此次材质参数。</p></div><a href="assets/worldbuilding/isaac-physics/cube-bounce.mp4">打开反弹录屏 ↗</a></figcaption></figure>
+      <div class="isaac-results reveal">
+        <article><span>01 / CREATE</span><h3>创建 Rigid Body Material</h3><p>通过 Create → Physics → Physics Material，在创建窗口勾选 Rigid Body Material，命名为 Cube_PhysicsMaterial。</p></article>
+        <article><span>02 / BIND</span><h3>外观和物理分别绑定</h3><p>选中 Cube，在 Physics materials on selected models 中绑定新材质；外观材质栏继续保留 OmniPBR。绿色由 shader 决定，摩擦与反弹由 Physics Material 决定。</p></article>
+        <article><span>03 / TUNE</span><h3>本次录屏中的参数</h3><p>Static Friction：<b>0.4</b><br>Dynamic Friction：<b>0.3</b><br>Restitution：<b>0.8</b><br>Friction Combine Mode：<b>average</b><br>Restitution Combine Mode：<b>max</b></p></article>
+      </div>
+      <div class="isaac-boundary reveal"><b>观察结果：外观保留，反弹明显。</b><p>这次验证了物理材质绑定和恢复系数设置能够改变接触后的运动。它是一次定性演示，尚未测量反弹高度或校准真实材料；前一次实验中原投放位置的穿透问题仍待排查。</p></div>
+    </div></section>
     <section class="capture-next section-shell reveal"><small>NEXT TRANSMISSION</small><h2>Reality Capture → Clean Digital Twin → Sim-ready Environment</h2><p>下一步：补查原投放位置的碰撞覆盖，再通过 Isaac Sim URDF Importer 导入 NavBot，逐步验证机器人与环境的交互。</p><a class="button button-primary" href="index.html#journal">返回开发日志</a></section>
   </main><footer><div class="section-shell footer-grid"><div><img class="profile-avatar" src="assets/monday-profile.jpg" alt="Monday 的头像" width="42" height="42" style="width:42px;height:42px;box-sizing:border-box;object-fit:cover;object-position:72% 38%;padding:3px;border-radius:50%;background:#d8ef8b"><p>Monday’s Robotics Universe</p></div><p>Building digital worlds where robots learn.</p><div class="footer-links"><a href="about.html">关于我</a><a href="#top">回到顶部 ↑</a></div></div></footer><script src="script.js"></script>
 </body></html>
