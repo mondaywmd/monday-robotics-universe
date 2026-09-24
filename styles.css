@@ -368,3 +368,15 @@ footer { padding: 55px 0; color: white; background: #030907; }
   html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Isaac Sim runtime experiment */
+.isaac-physics { padding: 110px 0; background: #edf2e8; color: #17231f; scroll-margin-top: 95px; }
+.isaac-lead { max-width: 850px; font-size: 20px; line-height: 1.8; margin-bottom: 38px; }
+.isaac-film { margin: 0; border: 1px solid #becbc1; background: #fff; }
+.isaac-film video { display: block; width: 100%; aspect-ratio: 1872/1104; background: #101713; }
+.isaac-film figcaption { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 26px; }
+.isaac-film b { font-size: 22px; }.isaac-film p { color: #52615c; margin-bottom: 0; }.isaac-film a { white-space: nowrap; text-decoration: underline; }
+.isaac-results { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 24px; background: #becbc1; border: 1px solid #becbc1; }
+.isaac-results article { padding: 28px; background: #fff; }.isaac-results span { font: 500 11px var(--mono); color: #427666; }.isaac-results h3 { font-size: 23px; margin-top: 28px; }.isaac-results p { line-height: 1.8; color: #52615c; }
+.isaac-boundary { margin-top: 24px; padding: 30px; background: #17231f; color: #edf2e8; }.isaac-boundary b { color: #d8ef8b; font-size: 22px; }.isaac-boundary p { line-height: 1.85; margin-bottom: 0; }
+@media(max-width: 750px) { .isaac-physics { padding: 75px 0; }.isaac-results { grid-template-columns: 1fr; }.isaac-film figcaption { flex-direction: column; align-items: flex-start; }.isaac-lead { font-size: 17px; } }
