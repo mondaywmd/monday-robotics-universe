@@ -380,3 +380,12 @@ footer { padding: 55px 0; color: white; background: #030907; }
 .isaac-results article { padding: 28px; background: #fff; }.isaac-results span { font: 500 11px var(--mono); color: #427666; }.isaac-results h3 { font-size: 23px; margin-top: 28px; }.isaac-results p { line-height: 1.8; color: #52615c; }
 .isaac-boundary { margin-top: 24px; padding: 30px; background: #17231f; color: #edf2e8; }.isaac-boundary b { color: #d8ef8b; font-size: 22px; }.isaac-boundary p { line-height: 1.85; margin-bottom: 0; }
 @media(max-width: 750px) { .isaac-physics { padding: 75px 0; }.isaac-results { grid-template-columns: 1fr; }.isaac-film figcaption { flex-direction: column; align-items: flex-start; }.isaac-lead { font-size: 17px; } }
+
+/* NavBot experiment article */
+.navbot-log .isaac-film video { aspect-ratio: 16/9; }
+.navbot-log #ui-guide .capture-steps { border-color: #becbc1; }
+.navbot-log #ui-guide .capture-steps li { border-color: #becbc1; }
+.navbot-log #ui-guide .capture-steps b, .navbot-log #ui-guide .capture-steps li > span { color: #356654; }
+.navbot-log #scripts a { overflow-wrap: anywhere; }
+.navbot-log .capture-intro { padding-top: 70px; }
+.navbot-log #ui-guide .capture-steps p { color: #52615c; }
