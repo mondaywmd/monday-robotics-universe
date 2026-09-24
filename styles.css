@@ -389,3 +389,13 @@ footer { padding: 55px 0; color: white; background: #030907; }
 .navbot-log #scripts a { overflow-wrap: anywhere; }
 .navbot-log .capture-intro { padding-top: 70px; }
 .navbot-log #ui-guide .capture-steps p { color: #52615c; }
+
+/* Stack journal media and copy independently on narrow screens. */
+@media (max-width: 1000px) {
+  .journal .section-heading { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .journal-grid { grid-template-columns: minmax(0, 1fr); }
+  .journal-feature { grid-column: auto; display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+  .journal-feature > img { flex: none; width: 100%; height: auto; min-height: 0; object-fit: contain; }
+  .journal-feature > .journal-content { flex: none; min-width: 0; padding: 26px 22px; overflow-wrap: anywhere; }
+  .journal-feature .journal-content > a { margin-top: 20px; }
+}
