@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260924-01">
+  <link rel="stylesheet" href="styles.css?v=20260924-02">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -37,7 +37,18 @@
         <p class="hero-intro">这里记录我从 Gazebo 导航实验出发，沿着 AI Agent、Blender、OpenUSD、Omniverse 与机器人学习一路探索的过程。</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#journal">开始阅读日志</a>
-          <a class="button button-ghost" href="#projects">浏览项目 →</a>
+          <details class="repo-menu">
+            <summary class="button button-ghost">GitHub 项目 <span aria-hidden="true">＋</span></summary>
+            <div class="repo-menu-panel">
+              <p>PROJECT REPOSITORIES</p>
+              <a href="https://github.com/mondaywmd/navbot-ppo-navigation" target="_blank" rel="noreferrer">
+                <span>01</span><strong>NavBot</strong><i>↗</i>
+              </a>
+              <a href="https://github.com/mondaywmd/simforge-agent" target="_blank" rel="noreferrer">
+                <span>02</span><strong>SimForge Agent</strong><i>↗</i>
+              </a>
+            </div>
+          </details>
         </div>
       </div>
 

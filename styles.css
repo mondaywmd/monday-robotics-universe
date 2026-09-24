@@ -66,6 +66,18 @@ h1 { margin: 22px 0 24px; font-size: clamp(49px, 6.2vw, 84px); line-height: 1.08
 .button-primary { background: var(--ink); color: white; }
 .button-primary:hover { background: #1c3b34; }
 .button-ghost { border: 1px solid var(--line); }
+.repo-menu { position: relative; }
+.repo-menu summary { display: flex; align-items: center; gap: 14px; cursor: pointer; list-style: none; user-select: none; }
+.repo-menu summary::-webkit-details-marker { display: none; }
+.repo-menu summary span { font: 500 17px/1 var(--mono); transition: transform .2s ease; }
+.repo-menu[open] summary span { transform: rotate(45deg); }
+.repo-menu-panel { position: absolute; top: calc(100% + 12px); left: 0; z-index: 20; width: 310px; padding: 12px; border: 1px solid var(--ink); background: rgba(247,245,238,.98); box-shadow: 12px 12px 0 rgba(7,17,15,.1); }
+.repo-menu-panel p { margin: 2px 8px 10px; color: #61716c; font: 500 9px var(--mono); letter-spacing: .13em; }
+.repo-menu-panel a { display: grid; grid-template-columns: 34px 1fr 20px; align-items: center; gap: 10px; min-height: 52px; padding: 8px; border-top: 1px solid var(--line); transition: background .2s ease; }
+.repo-menu-panel a:hover, .repo-menu-panel a:focus-visible { background: var(--lime); }
+.repo-menu-panel a > span { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: white; background: var(--ink); font: 500 9px var(--mono); }
+.repo-menu-panel strong { font-size: 13px; }
+.repo-menu-panel i { font: normal 13px var(--mono); text-align: right; }
 
 .orbit-stage { position: relative; width: 100%; aspect-ratio: 1; max-width: 570px; margin-left: auto; }
 .orbit-stage::after { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, rgba(134,220,224,.26), transparent 64%); filter: blur(25px); }
@@ -337,6 +349,7 @@ footer { padding: 55px 0; color: white; background: #030907; }
   .section-shell { width: min(100% - 28px, 1180px); }
   .site-header { height: 70px; padding: 0 14px; }.site-nav { top: 70px; }
   .hero { min-height: auto; padding: 120px 0 70px; }.hero-intro { font-size: 16px; }.orbit-stage { margin-top: 35px; }
+  .repo-menu-panel { right: 0; left: auto; width: min(310px, calc(100vw - 28px)); }
   .planet { font-size: 7px; padding: 5px; }.planet span { width: 18px; height: 18px; }.coordinate { display: none; }
   .manifesto, .universe, .projects, .journal, .usd-path, .now { padding: 80px 0; }
   .universe-card { min-height: 270px; padding: 24px; }.universe-card h3 { font-size: 34px; }
