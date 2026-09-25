@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260924-04">
+  <link rel="stylesheet" href="styles.css?v=20260925-usd">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -221,23 +221,45 @@
     <section class="usd-path" id="usd">
       <div class="section-shell usd-grid">
         <div class="usd-intro reveal">
-          <p class="section-number">04 / OPENUSD CERTIFICATE JOURNEY</p>
-          <h2>不只拿到证书。<br>把理解过程留下来。</h2>
-          <p>官方资料、视频、实验、踩坑、备考与考试经历都会成为这条公开学习路径的一部分。最终目标不是记住答案，而是能用 USD 组织真实的机器人世界。</p>
-          <div class="usd-progress" aria-label="OpenUSD 学习进度">
-            <div><span>当前阶段</span><strong>FOUNDATIONS</strong></div>
-            <div class="progress-track"><i></i></div>
-            <p>Stage · Prim · Layer · Composition</p>
+          <p class="section-number">04 / THE ROAD TO USD</p>
+          <h2>通过认证之后，<br>把学习资料分享出来。</h2>
+          <p>在 Discord 分享通过 NVIDIA OpenUSD Development 认证的消息后，有朋友来问学习方法。这里整理了我分享给他们的两个主要入口，以及用 AI 辅助练习的建议。</p>
+          <div class="usd-progress" aria-label="OpenUSD 认证状态">
+            <div><span>认证已通过 · 继续实践</span><strong>CERTIFIED</strong></div>
+            <p class="usd-status-note">从 VFX 中的 USD 经验，继续走向机器人与数字场景。</p>
           </div>
         </div>
         <ol class="learning-track reveal">
-          <li class="done"><span>01</span><div><strong>为什么是 USD</strong><small>机器人世界的组合语言</small></div></li>
-          <li class="active"><span>02</span><div><strong>核心概念</strong><small>Stage / Prim / Layer</small></div></li>
-          <li><span>03</span><div><strong>Composition</strong><small>Reference / Payload / Variant</small></div></li>
-          <li><span>04</span><div><strong>Python 实验</strong><small>从最小场景到资产管线</small></div></li>
-          <li><span>05</span><div><strong>机器人应用</strong><small>Isaac Sim / Physics / Semantics</small></div></li>
-          <li><span>06</span><div><strong>认证考试</strong><small>备考、经过与通过记录</small></div></li>
+          <li class="done"><span>01</span><div><strong>先看 NVIDIA 官方学习路径</strong><small>按模块学习，对照考试范围查漏补缺。</small></div></li>
+          <li class="done"><span>02</span><div><strong>配合认证系列视频</strong><small>用讲解和演示帮助理解复杂概念。</small></div></li>
+          <li class="done"><span>03</span><div><strong>请 AI 出题，再核对答案</strong><small>练习解释原因，把不确定的地方带回官方资料。</small></div></li>
         </ol>
+      </div>
+      <div class="section-shell usd-resources">
+        <div class="usd-resource-heading reveal"><p class="section-number">MY SHARED RESOURCES</p><h3>从这两个链接开始。</h3><p>官方模块 + 视频讲解 + 主动练习。</p></div>
+        <div class="usd-resource-grid">
+          <article class="usd-resource-card reveal">
+            <p class="usd-resource-label">01 / NVIDIA · OFFICIAL LEARNING PATH</p>
+            <h3>OpenUSD Development 认证与学习模块</h3>
+            <p>打开官网的 Certification Learning Path，逐个查看学习模块。内容从 Stage、Prim 等基础概念，延伸到组合、资产组织、数据交换和实例化。Exam Blueprint 可用来核对复习范围。</p>
+            <a href="https://www.nvidia.com/en-us/learn/certification/openusd-development-professional/" target="_blank" rel="noopener noreferrer">打开 NVIDIA 官方认证与学习路径 ↗</a>
+            <a class="usd-secondary-link" href="https://docs.nvidia.com/learn-openusd/latest/stage-setting/index.html" target="_blank" rel="noopener noreferrer">从第一个基础模块开始 ↗</a>
+          </article>
+          <article class="usd-resource-card reveal">
+            <p class="usd-resource-label">02 / YOUTUBE · NVIDIA OMNIVERSE</p>
+            <h3>The Path to OpenUSD Certification</h3>
+            <p>我分享的 Community Office Hours 播放列表。配合官方模块观看，重点理解组合机制、内容聚合，以及场景渲染与可视化等主题；遇到没理解的部分，可以暂停并回到文档对照。</p>
+            <a href="https://www.youtube.com/playlist?list=PL3jK4xNnlCVf3HuZD4qOWlKlouJyh6Prb" target="_blank" rel="noopener noreferrer">观看完整认证系列播放列表 ↗</a>
+          </article>
+        </div>
+        <article class="usd-practice reveal">
+          <p class="usd-resource-label">03 / PRACTICE WITH AN AI AGENT</p>
+          <h3>学完以后，让自己解释一次。</h3>
+          <p>我还建议让 AI Agent 生成模拟题辅助练习。下面是一段可直接使用的练习提示词：</p>
+          <blockquote>请根据我提供的 NVIDIA OpenUSD 官方学习模块，生成 10 道原创练习题，混合概念判断、场景分析和代码阅读。每次只出一题，先等我回答，再解释正确答案与其他选项的问题，并给出可核对的官方资料链接。最后总结我的薄弱知识点。</blockquote>
+          <p class="usd-resource-note">AI 练习不是官方模拟考试或真实题库，答案需要对照文档或小实验验证。这些链接和方法是个人学习分享，不代表通过保证；课程和考试信息以 NVIDIA 官网为准。</p>
+        </article>
+        <p class="usd-follow-through reveal">认证之后的实践：<a href="scanned-assets-physics.html">扫描资产 → Blender → USD → Isaac Sim</a>。这些项目记录属于后续应用，可以继续看 USD 如何组织真实场景。</p>
       </div>
     </section>
 

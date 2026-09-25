@@ -399,3 +399,23 @@ footer { padding: 55px 0; color: white; background: #030907; }
   .journal-feature > .journal-content { flex: none; min-width: 0; padding: 26px 22px; overflow-wrap: anywhere; }
   .journal-feature .journal-content > a { margin-top: 20px; }
 }
+
+/* OpenUSD learning resources */
+.usd-path { scroll-margin-top: 90px; }
+.usd-status-note { margin-top: 18px !important; line-height: 1.8; }
+.usd-resources { margin-top: 64px; }
+.usd-resource-heading h3 { font-size: clamp(26px, 3vw, 40px); margin: 12px 0; }
+.usd-resource-heading > p:last-child { color: #aebbb7; }
+.usd-resource-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; margin-top: 28px; }
+.usd-resource-card { min-width: 0; padding: 32px; border: 1px solid #43534b; background: #13221d; display: flex; flex-direction: column; }
+.usd-resource-label { color: var(--lime); font: 11px var(--mono); letter-spacing: .08em; line-height: 1.7; }
+.usd-resource-card h3, .usd-practice h3 { font-size: clamp(21px,2.3vw,29px); line-height: 1.45; margin: 12px 0; overflow-wrap: anywhere; }
+.usd-resource-card > p:not(.usd-resource-label), .usd-practice > p:not(.usd-resource-label), .usd-follow-through { color: #c1cdc7; line-height: 1.9; }
+.usd-resource-card a { color: var(--lime); text-decoration: underline; text-underline-offset: 4px; line-height: 1.8; margin-top: auto; padding-top: 20px; overflow-wrap: anywhere; }
+.usd-resource-card .usd-secondary-link { font-size: 13px; margin-top: 0; padding-top: 12px; color: #c1cdc7; }
+.usd-practice { margin-top: 24px; padding: 32px; border: 1px solid #43534b; }
+.usd-practice blockquote { margin: 24px 0; border-left: 3px solid var(--lime); padding: 6px 0 6px 22px; line-height: 1.9; color: #edf3ef; }
+.usd-resource-note { font-size: 13px; }
+.usd-follow-through { margin-top: 26px; }.usd-follow-through a { color: var(--lime); text-decoration: underline; }
+.usd-resources a:focus-visible { outline: 2px solid var(--lime); outline-offset: 5px; }
+@media(max-width:700px) { .usd-resource-grid { grid-template-columns: 1fr; } .usd-resource-card,.usd-practice { padding: 24px; } .usd-progress > div:first-child { gap: 16px; flex-wrap: wrap; } .usd-grid > * { min-width: 0; } }
