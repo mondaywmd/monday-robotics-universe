@@ -53,12 +53,13 @@
       <p>在这一帧，目标相对车头约在 <strong>+21.8°</strong>，A* 给出的局部方向却约为 <strong>−158.0°</strong>。图把“明明可以往前”与“地图判断前路受阻”之间的矛盾具体化了。地垫在这次诊断场景中没有参与碰撞，不能继续把掉头直接归咎于它。灰色区域也不是机器人的真实外形，而是障碍点按中心距离 14 cm 膨胀后的规划禁区；两侧障碍点和旧观测累积可能让通道在网格里显得比肉眼看到的窄。</p>
       <p>后续测试<strong>同时</strong>把规划中心距离调到 12 cm，并让每次扫描重建当前 LiDAR 占据点，不再永久累积旧点。相同第二组在新版本中 21.9 秒到达目标，102 次 PPO 动作、7 次 A* 接管，接触力采样 0 N。因为这次一起改了两个因素，结果支持“过宽的禁区和旧点累积值得修正”，但不能单独证明是哪一项造成原掉头。</p>
       <figure class="isaac-film"><img src="assets/omniverse/cruise-living-room/case02-route-comparison.png" alt="第二组修正前后路线对比：修正后的测试沿走廊前进并到达目标。" loading="lazy"><figcaption><p>同一第二组布局的路线对比。我们保留失败记录，再用地图与路线图检验修改是否改变了行为。</p></figcaption></figure>
+      <figure class="isaac-film"><video controls playsinline preload="metadata" poster="assets/omniverse/cruise-living-room/case02-poster.png" aria-label="第二组调整规划包络和地图更新后沿走廊到达目标的完整录像"><source src="assets/omniverse/cruise-living-room/case02-clearance12cm.mp4" type="video/mp4">浏览器不支持内嵌视频，请使用下面的直接链接。</video><figcaption><p>第二组修正后完整录像：沿走廊前进，21.9 秒到达目标；它与上方诊断图对应同一布局。</p><a href="assets/omniverse/cruise-living-room/case02-clearance12cm.mp4">打开第二组成功录像 ↗</a></figcaption></figure>
     </div></section>
 
     <section class="isaac-physics"><div class="section-shell">
       <div class="capture-heading"><p class="section-number">03 / LIVING ROOM</p><h2>从沙发旁，走到电脑桌下。</h2></div>
       <p>走廊之外，我想测试机器人能否在家具更复杂、路线会转弯的客厅里工作。第一段目标放在沙发旁，经过初期几次“地图无路”停车后，调整局部地图范围与感知处理，最终以 13.1 秒到达，57 次 PPO 动作、8 次 A* 接管。第二段从这个停点出发，把目标放在电脑桌下面的地面；椅子在场景中移开一些，给桌腿之间留下实际通路。</p>
-      <figure class="isaac-film"><img src="assets/omniverse/cruise-living-room/living-room-poster.png" alt="NavBot 穿过客厅茶几与电视柜之间的地毯，向电脑桌下方行驶。" loading="lazy"><figcaption><p>第二段实测画面：车已经进入客厅，在茶几和电视柜之间驶向桌下。</p></figcaption></figure>
+      <figure class="isaac-film"><video controls playsinline preload="metadata" poster="assets/omniverse/cruise-living-room/living-room-poster.png" aria-label="NavBot 从沙发旁出发，绕过茶几并驶入电脑桌下的客厅全景录像"><source src="assets/omniverse/cruise-living-room/living-room-desk-overview.mp4" type="video/mp4">浏览器不支持内嵌视频，请使用下面的直接链接。</video><figcaption><p>第二段客厅全景录像：从沙发旁出发，经过茶几与地毯，驶入电脑桌下；26.7 秒到达目标。</p><a href="assets/omniverse/cruise-living-room/living-room-desk-overview.mp4">打开客厅全景录像 ↗</a></figcaption></figure>
       <p>这次把地毯视为可碾过的低矮表面：测试层关闭地毯碰撞，并过滤它对应的低矮深度点，不把它作为接触失败对象。桌下区域最初两次因“地图无路”停车；缩短深度障碍的历史保留时间后，旧观测不再长时间堵住窄入口，第三次在 <strong>26.7 秒到达桌下目标</strong>，90 次执行 PPO、32 次 A* 路线接管，接触力采样 0 N。机器人视角复跑的第一次又在桌前报“地图无路”；改回成功测试的 5 Hz 取帧节奏后，复跑再次以 26.7 秒到达。两次结果都留在记录中，说明这个入口对地图时序仍敏感，不能写成“已经稳定通过所有客厅摆设”。</p>
       <div class="note"><p>本次客厅试验采用仿真器真实位姿定位；地毯被显式设为可通行，未测试实体车轮实际爬过地毯边缘的能力。0 N 是离散接触力采样结果。</p></div>
     </div></section>
