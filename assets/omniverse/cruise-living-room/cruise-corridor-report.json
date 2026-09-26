@@ -1,0 +1,2842 @@
+{
+  "case": "01_passage",
+  "seed": 2026092601,
+  "expected_outcome": "goal_reached",
+  "passed": true,
+  "reason": "goal_reached",
+  "goal": [
+    -0.28,
+    0.85
+  ],
+  "obstacles": [
+    {
+      "asset": "chair_01",
+      "x": -0.064988296196358,
+      "y": -2.1956606280794464,
+      "yaw_deg": -6.687764687212317
+    },
+    {
+      "asset": "dumbbell_01",
+      "x": -0.05721305842344716,
+      "y": -1.4055717598938886,
+      "yaw_deg": 7.295018829720547
+    },
+    {
+      "asset": "book_01",
+      "x": -0.05560785358333539,
+      "y": -0.7222629079444832,
+      "yaw_deg": 4.724603310398985
+    },
+    {
+      "asset": "shoe_01",
+      "x": -0.03016691224774999,
+      "y": -0.014164869589227393,
+      "yaw_deg": 4.677713218819994
+    }
+  ],
+  "final": [
+    -0.2932101786136627,
+    0.7612830996513367,
+    0.010013003833591938
+  ],
+  "duration_s": 22.699999999999907,
+  "braking_drift_m": 0.004062781062122781,
+  "max_contact_force_n": 0.0,
+  "contact_body_count": 6,
+  "monitored_colliders": [
+    "/World/Scattered/chair_01/Collision/Collider_SeatCushion",
+    "/World/Scattered/chair_01/Collision/Collider_SeatFrame",
+    "/World/Scattered/chair_01/Collision/Collider_FrontLeg_Left",
+    "/World/Scattered/chair_01/Collision/Collider_RearLeg_Left",
+    "/World/Scattered/chair_01/Collision/Collider_BackStile_Left",
+    "/World/Scattered/chair_01/Collision/Collider_FrontLeg_Right",
+    "/World/Scattered/chair_01/Collision/Collider_RearLeg_Right",
+    "/World/Scattered/chair_01/Collision/Collider_BackStile_Right",
+    "/World/Scattered/chair_01/Collision/BackCollider_0",
+    "/World/Scattered/chair_01/Collision/BackCollider_1",
+    "/World/Scattered/chair_01/Collision/BackCollider_2",
+    "/World/Scattered/chair_01/Collision/BackCollider_3",
+    "/World/Scattered/chair_01/Collision/BackCollider_4",
+    "/World/Scattered/dumbbell_01/Collision/HeadCollider_0",
+    "/World/Scattered/dumbbell_01/Collision/HeadCollider_1",
+    "/World/Scattered/dumbbell_01/Collision/GripCollider",
+    "/World/Scattered/book_01/Collision/BookBox",
+    "/World/Scattered/shoe_01/Collision/Collider_Left_0",
+    "/World/Scattered/shoe_01/Collision/Collider_Left_1",
+    "/World/Scattered/shoe_01/Collision/Collider_Left_2",
+    "/World/Scattered/shoe_01/Collision/Collider_Right_0",
+    "/World/Scattered/shoe_01/Collision/Collider_Right_1",
+    "/World/Scattered/shoe_01/Collision/Collider_Right_2",
+    "/World/Corridor/Collision/Walls",
+    "/World/Corridor/Collision/Ceiling_and_beams",
+    "/World/Corridor/Collision/Inferred_partitions",
+    "/World/Corridor/Collision/Skirting",
+    "/World/Corridor/Collision/Door_frames",
+    "/World/Corridor/Collision/Decorated_door",
+    "/World/Corridor/Collision/Folding_door",
+    "/World/Corridor/Collision/Pull_up_bar",
+    "/World/Corridor/Collision/Kettlebell_and_dumbbells",
+    "/World/Corridor/Collision/Vent",
+    "/World/Corridor/Collision/Robot_vacuum",
+    "/World/Corridor/Collision/Waste_basket",
+    "/World/Corridor/Collision/Shoes",
+    "/World/Corridor/Collision/Dining",
+    "/World/Corridor/Collision/Wall_clock",
+    "/World/Corridor/Collision/Sofa",
+    "/World/Corridor/Collision/Side_table",
+    "/World/Corridor/Collision/Rug",
+    "/World/Corridor/Collision/Coffee_table",
+    "/World/Corridor/Collision/Media_cabinet",
+    "/World/Corridor/Collision/Television",
+    "/World/Corridor/Collision/Floor_chair",
+    "/World/Corridor/Collision/Coat_stand",
+    "/World/Corridor/Collision/Shoe_cabinet",
+    "/World/Corridor/Collision/Dining_table",
+    "/World/Corridor/Collision/Dining_seating",
+    "/World/Corridor/Collision/Work_desk",
+    "/World/Corridor/Collision/Office_chair",
+    "/World/Corridor/Collision/Air_conditioner",
+    "/World/Corridor/Collision/Living_curtains",
+    "/World/Corridor/Collision/Shelf_and_photo_panels",
+    "/World/Corridor/Collision/Shelf_contents",
+    "/World/Corridor/Collision/Bed",
+    "/World/Corridor/Collision/Study_desk",
+    "/World/Corridor/Collision/Bunk_bed",
+    "/World/Corridor/Collision/Child_table_and_chair",
+    "/World/Corridor/Collision/Windows_and_curtains",
+    "/World/Corridor/Collision/Living_fixtures",
+    "/World/Corridor/Collision/Hall_fixtures",
+    "/World/Corridor/Collision/Bedroom_fan_light",
+    "/World/Corridor/Collision/Tiles",
+    "/World/Corridor/Collision/Vanity",
+    "/World/Corridor/Collision/Mirror_cabinet",
+    "/World/Corridor/Collision/Toilet",
+    "/World/Corridor/Collision/Toiletries",
+    "/World/Corridor/Collision/Step_stool",
+    "/World/Corridor/Collision/Shower_curtain"
+  ],
+  "trajectory": [
+    {
+      "time_s": 0.2666666666666657,
+      "x": -0.2799828350543976,
+      "y": -3.0000741481781006,
+      "yaw_rad": 1.5705714949963576,
+      "goal_distance_m": 3.8500741482163643,
+      "heading_deg": 32.35220580951872,
+      "free_distance_m": 0.5062114182829147,
+      "v_mps": 0.1858504120400485,
+      "w_radps": 0.55,
+      "selection": "isaac_route",
+      "actor_action": [
+        0.29198870062828064,
+        0.17319029569625854
+      ],
+      "actor_requested": [
+        0.1260980226099491,
+        0.13855223655700685
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": false
+    },
+    {
+      "time_s": 0.2833333333333323,
+      "x": -0.27998238801956177,
+      "y": -2.9993104934692383,
+      "yaw_rad": 1.5702177363992833,
+      "goal_distance_m": 3.849310493509529,
+      "heading_deg": 32.5048465653388,
+      "free_distance_m": 0.5062114182829147,
+      "v_mps": 0.1773895263671875,
+      "w_radps": 0.507909631729126,
+      "selection": "policy",
+      "actor_action": [
+        0.5850830078125,
+        0.6348870396614075
+      ],
+      "actor_requested": [
+        0.1773895263671875,
+        0.507909631729126
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 0.4999999999999982,
+      "x": -0.28141871094703674,
+      "y": -2.9647064208984375,
+      "yaw_rad": 1.6511528921410659,
+      "goal_distance_m": 3.814706684711751,
+      "heading_deg": 35.72014252371323,
+      "free_distance_m": 0.5153882032022076,
+      "v_mps": 0.16873090863227844,
+      "w_radps": 0.48955340385437013,
+      "selection": "policy",
+      "actor_action": [
+        0.5356051921844482,
+        0.6119417548179626
+      ],
+      "actor_requested": [
+        0.16873090863227844,
+        0.48955340385437013
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 0.6999999999999975,
+      "x": -0.2854810655117035,
+      "y": -2.9322872161865234,
+      "yaw_rad": 1.7319678627704789,
+      "goal_distance_m": 3.7822911876013916,
+      "heading_deg": 32.33963165583644,
+      "free_distance_m": 0.525,
+      "v_mps": 0.1623772293329239,
+      "w_radps": 0.31794018745422364,
+      "selection": "policy",
+      "actor_action": [
+        0.49929845333099365,
+        0.39742523431777954
+      ],
+      "actor_requested": [
+        0.1623772293329239,
+        0.31794018745422364
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 0.8999999999999968,
+      "x": -0.2914257347583771,
+      "y": -2.9014570713043213,
+      "yaw_rad": 1.7848229243399227,
+      "goal_distance_m": 3.7514744708253,
+      "heading_deg": 34.05225136628025,
+      "free_distance_m": 0.5,
+      "v_mps": 0.18227599879042533,
+      "w_radps": 0.55,
+      "selection": "isaac_route",
+      "actor_action": [
+        0.5428467988967896,
+        0.2130972445011139
+      ],
+      "actor_requested": [
+        0.16999818980693812,
+        0.17047779560089113
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": false
+    },
+    {
+      "time_s": 1.099999999999996,
+      "x": -0.30038294196128845,
+      "y": -2.867892026901245,
+      "yaw_rad": 1.8723766204838532,
+      "goal_distance_m": 3.717947900121631,
+      "heading_deg": 29.037768372078872,
+      "free_distance_m": 0.47500000000000003,
+      "v_mps": 0.15704379826784134,
+      "w_radps": 0.34691658020019533,
+      "selection": "policy",
+      "actor_action": [
+        0.4688217043876648,
+        0.43364572525024414
+      ],
+      "actor_requested": [
+        0.15704379826784134,
+        0.34691658020019533
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 1.2999999999999954,
+      "x": -0.31040871143341064,
+      "y": -2.838968515396118,
+      "yaw_rad": 1.9303492352074842,
+      "goal_distance_m": 3.6890938450132817,
+      "heading_deg": 24.527231183530954,
+      "free_distance_m": 0.45,
+      "v_mps": 0.1678351730108261,
+      "w_radps": 0.11859908103942872,
+      "selection": "policy",
+      "actor_action": [
+        0.5304867029190063,
+        0.1482488512992859
+      ],
+      "actor_requested": [
+        0.1678351730108261,
+        0.11859908103942872
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 1.4999999999999947,
+      "x": -0.32209697365760803,
+      "y": -2.809006929397583,
+      "yaw_rad": 1.9515048361461906,
+      "goal_distance_m": 3.659249084794674,
+      "heading_deg": 22.065905989111442,
+      "free_distance_m": 0.40078048854703496,
+      "v_mps": 0.15867131799459458,
+      "w_radps": -0.041569876670837405,
+      "selection": "policy",
+      "actor_action": [
+        0.478121817111969,
+        -0.05196234583854675
+      ],
+      "actor_requested": [
+        0.15867131799459458,
+        -0.041569876670837405
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 1.699999999999994,
+      "x": -0.33339542150497437,
+      "y": -2.7805821895599365,
+      "yaw_rad": 1.9460294654771189,
+      "goal_distance_m": 3.6309748148654952,
+      "heading_deg": 20.807911878229902,
+      "free_distance_m": 0.3758324094593227,
+      "v_mps": 0.1664673700928688,
+      "w_radps": -0.06619904041290284,
+      "selection": "policy",
+      "actor_action": [
+        0.5226706862449646,
+        -0.08274880051612854
+      ],
+      "actor_requested": [
+        0.1664673700928688,
+        -0.06619904041290284
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 1.8999999999999932,
+      "x": -0.34489962458610535,
+      "y": -2.7508747577667236,
+      "yaw_rad": 1.9353983505642767,
+      "goal_distance_m": 3.6014595627874235,
+      "heading_deg": 24.901066175377125,
+      "free_distance_m": 0.3535533905932738,
+      "v_mps": 0.19954795946492468,
+      "w_radps": 0.55,
+      "selection": "isaac_route",
+      "actor_action": [
+        0.5105074644088745,
+        -0.12250488996505737
+      ],
+      "actor_requested": [
+        0.16433880627155303,
+        -0.0980039119720459
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": false
+    },
+    {
+      "time_s": 2.0999999999999925,
+      "x": -0.3601136803627014,
+      "y": -2.71587872505188,
+      "yaw_rad": 2.0222254781172877,
+      "goal_distance_m": 3.566778558245364,
+      "heading_deg": 18.932495349584926,
+      "free_distance_m": 0.32882366094914767,
+      "v_mps": 0.1704320594668388,
+      "w_radps": 0.39004709720611574,
+      "selection": "policy",
+      "actor_action": [
+        0.5453260540962219,
+        0.48755887150764465
+      ],
+      "actor_requested": [
+        0.1704320594668388,
+        0.39004709720611574
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 2.299999999999992,
+      "x": -0.3755912780761719,
+      "y": -2.6866092681884766,
+      "yaw_rad": 2.085849267983302,
+      "goal_distance_m": 3.53790090424829,
+      "heading_deg": 18.051946640624315,
+      "free_distance_m": 0.2850438562747845,
+      "v_mps": 0.17382769584655758,
+      "w_radps": 0.057959055900573736,
+      "selection": "policy",
+      "actor_action": [
+        0.5647296905517578,
+        0.07244881987571716
+      ],
+      "actor_requested": [
+        0.17382769584655758,
+        0.057959055900573736
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 2.499999999999991,
+      "x": -0.392241507768631,
+      "y": -2.65771746635437,
+      "yaw_rad": 2.098008857013926,
+      "goal_distance_m": 3.50951278382537,
+      "heading_deg": 14.800398106400863,
+      "free_distance_m": 0.2692582403567252,
+      "v_mps": 0.17478209435939787,
+      "w_radps": -0.03750636577606201,
+      "selection": "policy",
+      "actor_action": [
+        0.5701833963394165,
+        -0.046882957220077515
+      ],
+      "actor_requested": [
+        0.17478209435939787,
+        -0.03750636577606201
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 2.699999999999991,
+      "x": -0.40908554196357727,
+      "y": -2.628633975982666,
+      "yaw_rad": 2.093278961989403,
+      "goal_distance_m": 3.481028212468983,
+      "heading_deg": 17.67251127771825,
+      "free_distance_m": 0.24622144504490262,
+      "v_mps": 0.16525926291942591,
+      "w_radps": -0.03944408893585205,
+      "selection": "policy",
+      "actor_action": [
+        0.5157672166824341,
+        -0.049305111169815063
+      ],
+      "actor_requested": [
+        0.16525926291942591,
+        -0.03944408893585205
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 2.89999999999999,
+      "x": -0.42490044236183167,
+      "y": -2.600972890853882,
+      "yaw_rad": 2.0874525572067353,
+      "goal_distance_m": 3.4540136119600127,
+      "heading_deg": 20.392311678980246,
+      "free_distance_m": 0.2358495283014151,
+      "v_mps": 0.16225194483995434,
+      "w_radps": -0.03258194923400879,
+      "selection": "policy",
+      "actor_action": [
+        0.49858254194259644,
+        -0.040727436542510986
+      ],
+      "actor_requested": [
+        0.16225194483995434,
+        -0.03258194923400879
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 3.0999999999999894,
+      "x": -0.44022336602211,
+      "y": -2.5738320350646973,
+      "yaw_rad": 2.082588302078063,
+      "goal_distance_m": 3.427578931455076,
+      "heading_deg": 17.70758488346403,
+      "free_distance_m": 0.2304886114323222,
+      "v_mps": 0.16025136709213253,
+      "w_radps": -0.015541625022888184,
+      "selection": "policy",
+      "actor_action": [
+        0.4871506690979004,
+        -0.01942703127861023
+      ],
+      "actor_requested": [
+        0.16025136709213253,
+        -0.015541625022888184
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 3.2999999999999887,
+      "x": -0.4552608132362366,
+      "y": -2.546980381011963,
+      "yaw_rad": 2.0804531620466915,
+      "goal_distance_m": 3.4014985023716253,
+      "heading_deg": 20.67596874859588,
+      "free_distance_m": 0.21213203435596426,
+      "v_mps": 0.20583028499900544,
+      "w_radps": 0.55,
+      "selection": "isaac_route",
+      "actor_action": [
+        0.4127057194709778,
+        -0.19764453172683716
+      ],
+      "actor_requested": [
+        0.1472235009074211,
+        -0.15811562538146973
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": false
+    },
+    {
+      "time_s": 3.499999999999988,
+      "x": -0.4759572446346283,
+      "y": -2.513810396194458,
+      "yaw_rad": 2.169304920502508,
+      "goal_distance_m": 3.3695132620707566,
+      "heading_deg": 12.743828040984395,
+      "free_distance_m": 0.21213203435596426,
+      "v_mps": 0.16502214968204496,
+      "w_radps": 0.25858707427978517,
+      "selection": "policy",
+      "actor_action": [
+        0.5144122838973999,
+        0.32323384284973145
+      ],
+      "actor_requested": [
+        0.16502214968204496,
+        0.25858707427978517
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 3.6999999999999873,
+      "x": -0.49485689401626587,
+      "y": -2.487513542175293,
+      "yaw_rad": 2.213645745525174,
+      "goal_distance_m": 3.34442224145065,
+      "heading_deg": 6.5900915112687874,
+      "free_distance_m": 0.2150581316760657,
+      "v_mps": 0.22,
+      "w_radps": -0.005879592895507813,
+      "selection": "policy",
+      "actor_action": [
+        0.461504191160202,
+        -0.007349491119384766
+      ],
+      "actor_requested": [
+        0.15576323345303536,
+        -0.005879592895507813
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 3.8999999999999866,
+      "x": -0.519752025604248,
+      "y": -2.4542534351348877,
+      "yaw_rad": 2.2119614226839053,
+      "goal_distance_m": 3.312940053393971,
+      "heading_deg": -2.430118980420186,
+      "free_distance_m": 0.21360009363293828,
+      "v_mps": 0.22,
+      "w_radps": -0.07276804447174072,
+      "selection": "policy",
+      "actor_action": [
+        0.5950255990028381,
+        -0.0909600555896759
+      ],
+      "actor_requested": [
+        0.17912947982549662,
+        -0.07276804447174072
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 4.099999999999985,
+      "x": -0.5450745224952698,
+      "y": -2.4199366569519043,
+      "yaw_rad": 2.2013747223805513,
+      "goal_distance_m": 3.280663079768157,
+      "heading_deg": -7.254893959718768,
+      "free_distance_m": 0.223606797749979,
+      "v_mps": 0.18832014203071593,
+      "w_radps": -0.13489372730255128,
+      "selection": "policy",
+      "actor_action": [
+        0.6475436687469482,
+        -0.1686171591281891
+      ],
+      "actor_requested": [
+        0.18832014203071593,
+        -0.13489372730255128
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 4.299999999999985,
+      "x": -0.5664244890213013,
+      "y": -2.390007972717285,
+      "yaw_rad": 2.1806398798491506,
+      "goal_distance_m": 3.252643640361281,
+      "heading_deg": -12.238359511089723,
+      "free_distance_m": 0.23717082451262847,
+      "v_mps": 0.15656738132238388,
+      "w_radps": -0.18680573701858522,
+      "selection": "policy",
+      "actor_action": [
+        0.4660993218421936,
+        -0.2335071712732315
+      ],
+      "actor_requested": [
+        0.15656738132238388,
+        -0.18680573701858522
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 4.499999999999984,
+      "x": -0.5832706093788147,
+      "y": -2.365140676498413,
+      "yaw_rad": 2.1538313655021346,
+      "goal_distance_m": 3.2294121186661315,
+      "heading_deg": -16.82360656888646,
+      "free_distance_m": 0.2304886114323222,
+      "v_mps": 0.15793685317039488,
+      "w_radps": -0.2538938045501709,
+      "selection": "policy",
+      "actor_action": [
+        0.4739248752593994,
+        -0.3173672556877136
+      ],
+      "actor_requested": [
+        0.15793685317039488,
+        -0.2538938045501709
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 4.699999999999983,
+      "x": -0.5990266799926758,
+      "y": -2.340139389038086,
+      "yaw_rad": 2.115350406791326,
+      "goal_distance_m": 3.206051675197928,
+      "heading_deg": -20.700642798291533,
+      "free_distance_m": 0.25124689052802224,
+      "v_mps": 0.14079093337059018,
+      "w_radps": -0.42660322189331057,
+      "selection": "policy",
+      "actor_action": [
+        0.3759481906890869,
+        -0.5332540273666382
+      ],
+      "actor_requested": [
+        0.14079093337059018,
+        -0.42660322189331057
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 4.899999999999983,
+      "x": -0.6120565533638,
+      "y": -2.3167784214019775,
+      "yaw_rad": 2.048521554321089,
+      "goal_distance_m": 3.1841399348786554,
+      "heading_deg": -22.155367341560783,
+      "free_distance_m": 0.25,
+      "v_mps": 0.14218391627073285,
+      "w_radps": -0.5106526851654053,
+      "selection": "policy",
+      "actor_action": [
+        0.38390809297561646,
+        -0.6383158564567566
+      ],
+      "actor_requested": [
+        0.14218391627073285,
+        -0.5106526851654053
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 5.099999999999982,
+      "x": -0.6234076023101807,
+      "y": -2.2922308444976807,
+      "yaw_rad": 1.9662096818887609,
+      "goal_distance_m": 3.160940281219662,
+      "heading_deg": -22.01406725452591,
+      "free_distance_m": 0.2761340254296815,
+      "v_mps": 0.14198510497808453,
+      "w_radps": -0.55,
+      "selection": "policy",
+      "actor_action": [
+        0.3827720284461975,
+        -0.833562970161438
+      ],
+      "actor_requested": [
+        0.14198510497808453,
+        -0.6668503761291504
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 5.299999999999981,
+      "x": -0.6325666308403015,
+      "y": -2.2668070793151855,
+      "yaw_rad": 1.8743705584150916,
+      "goal_distance_m": 3.1366844914417737,
+      "heading_deg": -20.447849778481356,
+      "free_distance_m": 0.2795084971874737,
+      "v_mps": 0.14659757912158963,
+      "w_radps": -0.55,
+      "selection": "policy",
+      "actor_action": [
+        0.4091290235519409,
+        -0.9445351958274841
+      ],
+      "actor_requested": [
+        0.14659757912158963,
+        -0.7556281566619873
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 5.4999999999999805,
+      "x": -0.6395389437675476,
+      "y": -2.2398369312286377,
+      "yaw_rad": 1.7844316688583703,
+      "goal_distance_m": 3.1106848946284944,
+      "heading_deg": -7.962134499971246,
+      "free_distance_m": 0.30923292192132457,
+      "v_mps": 0.17564314752817153,
+      "w_radps": -0.55,
+      "selection": "policy",
+      "actor_action": [
+        0.5751037001609802,
+        -0.8698892593383789
+      ],
+      "actor_requested": [
+        0.17564314752817153,
+        -0.6959114074707031
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 5.69999999999998,
+      "x": -0.6449033617973328,
+      "y": -2.2071356773376465,
+      "yaw_rad": 1.6923274956123917,
+      "goal_distance_m": 3.0788363082667622,
+      "heading_deg": -5.105506666995681,
+      "free_distance_m": 0.325,
+      "v_mps": 0.1724548444151878,
+      "w_radps": -0.55,
+      "selection": "policy",
+      "actor_action": [
+        0.5568848252296448,
+        -0.8053005933761597
+      ],
+      "actor_requested": [
+        0.1724548444151878,
+        -0.6442404747009278
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 5.899999999999979,
+      "x": -0.6472581624984741,
+      "y": -2.1741888523101807,
+      "yaw_rad": 1.6008037181669212,
+      "goal_distance_m": 3.0464071908329857,
+      "heading_deg": -0.6664163789195984,
+      "free_distance_m": 0.3354101966249685,
+      "v_mps": 0.16906023025512693,
+      "w_radps": -0.55,
+      "selection": "policy",
+      "actor_action": [
+        0.5374870300292969,
+        -0.820071816444397
+      ],
+      "actor_requested": [
+        0.16906023025512693,
+        -0.6560574531555177
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 6.099999999999978,
+      "x": -0.6465873718261719,
+      "y": -2.1418845653533936,
+      "yaw_rad": 1.5086209662372723,
+      "goal_distance_m": 3.014259370655134,
+      "heading_deg": 4.940206508991757,
+      "free_distance_m": 0.34731109973624513,
+      "v_mps": 0.2191827243654886,
+      "w_radps": 0.17244573862072202,
+      "selection": "isaac_route",
+      "actor_action": [
+        0.49120667576789856,
+        -0.597672700881958
+      ],
+      "actor_requested": [
+        0.16096116825938225,
+        -0.4781381607055664
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": false
+    },
+    {
+      "time_s": 6.299999999999978,
+      "x": -0.6443624496459961,
+      "y": -2.100210428237915,
+      "yaw_rad": 1.530658610697951,
+      "goal_distance_m": 2.972625365833336,
+      "heading_deg": 4.449081888604556,
+      "free_distance_m": 0.375,
+      "v_mps": 0.22,
+      "w_radps": -0.0057357788085937505,
+      "selection": "policy",
+      "actor_action": [
+        0.5949400663375854,
+        -0.0071697235107421875
+      ],
+      "actor_requested": [
+        0.1791145116090774,
+        -0.0057357788085937505
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 6.499999999999977,
+      "x": -0.6426882147789001,
+      "y": -2.0575637817382812,
+      "yaw_rad": 1.5313504083626848,
+      "goal_distance_m": 2.9300972485594605,
+      "heading_deg": 4.91700300291765,
+      "free_distance_m": 0.3758324094593227,
+      "v_mps": 0.22,
+      "w_radps": -0.07463831901550293,
+      "selection": "policy",
+      "actor_action": [
+        0.6452175378799438,
+        -0.09329789876937866
+      ],
+      "actor_requested": [
+        0.18791306912899017,
+        -0.07463831901550293
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 6.699999999999987,
+      "x": -0.6407667398452759,
+      "y": -2.0149827003479004,
+      "yaw_rad": 1.5205932997314477,
+      "goal_distance_m": 2.8876077493093373,
+      "heading_deg": -3.549917777067918,
+      "free_distance_m": 0.375,
+      "v_mps": 0.22,
+      "w_radps": -0.048427367210388185,
+      "selection": "policy",
+      "actor_action": [
+        0.5840890407562256,
+        -0.06053420901298523
+      ],
+      "actor_requested": [
+        0.17721558213233943,
+        -0.048427367210388185
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 6.899999999999997,
+      "x": -0.6384555697441101,
+      "y": -1.9724054336547852,
+      "yaw_rad": 1.5133663148296217,
+      "goal_distance_m": 2.8450769457792577,
+      "heading_deg": -11.331096663863915,
+      "free_distance_m": 0.375,
+      "v_mps": 0.18639774322509764,
+      "w_radps": -0.029047608375549316,
+      "selection": "policy",
+      "actor_action": [
+        0.6365585327148438,
+        -0.036309510469436646
+      ],
+      "actor_requested": [
+        0.18639774322509764,
+        -0.029047608375549316
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 7.100000000000007,
+      "x": -0.636271059513092,
+      "y": -1.936047911643982,
+      "yaw_rad": 1.508656432873455,
+      "goal_distance_m": 2.808734952576048,
+      "heading_deg": -24.61696277804432,
+      "free_distance_m": 0.350891721190455,
+      "v_mps": 0.17482486069202421,
+      "w_radps": -0.05458791255950928,
+      "selection": "policy",
+      "actor_action": [
+        0.5704277753829956,
+        -0.0682348906993866
+      ],
+      "actor_requested": [
+        0.17482486069202421,
+        -0.05458791255950928
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 7.300000000000017,
+      "x": -0.6340197920799255,
+      "y": -1.9023168087005615,
+      "yaw_rad": 1.5001210786441628,
+      "goal_distance_m": 2.774991500642832,
+      "heading_deg": -31.543559850854702,
+      "free_distance_m": 0.3535533905932738,
+      "v_mps": 0.18749338998450965,
+      "w_radps": -0.55,
+      "selection": "isaac_route",
+      "actor_action": [
+        0.5592915415763855,
+        -0.09734129905700684
+      ],
+      "actor_requested": [
+        0.17287601977586745,
+        -0.07787303924560547
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": false
+    },
+    {
+      "time_s": 7.500000000000027,
+      "x": -0.6298630833625793,
+      "y": -1.8667362928390503,
+      "yaw_rad": 1.4128891288221017,
+      "goal_distance_m": 2.739171455372744,
+      "heading_deg": -27.448337381566336,
+      "free_distance_m": 0.35794552658190887,
+      "v_mps": 0.1679667681455612,
+      "w_radps": -0.41635866165161134,
+      "selection": "policy",
+      "actor_action": [
+        0.5312386751174927,
+        -0.5204483270645142
+      ],
+      "actor_requested": [
+        0.1679667681455612,
+        -0.41635866165161134
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 7.700000000000037,
+      "x": -0.6235608458518982,
+      "y": -1.8348841667175293,
+      "yaw_rad": 1.3445157900844726,
+      "goal_distance_m": 2.706776134720593,
+      "heading_deg": -29.932639784897596,
+      "free_distance_m": 0.32015621187164245,
+      "v_mps": 0.15430360808968543,
+      "w_radps": -0.3502987861633301,
+      "selection": "policy",
+      "actor_action": [
+        0.4531634747982025,
+        -0.4378734827041626
+      ],
+      "actor_requested": [
+        0.15430360808968543,
+        -0.3502987861633301
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 7.9000000000000465,
+      "x": -0.6160019636154175,
+      "y": -1.8062326908111572,
+      "yaw_rad": 1.2865795264096946,
+      "goal_distance_m": 2.6773997511181062,
+      "heading_deg": -25.782225049490645,
+      "free_distance_m": 0.3010398644698074,
+      "v_mps": 0.15004813373088835,
+      "w_radps": -0.2870935916900635,
+      "selection": "policy",
+      "actor_action": [
+        0.42884647846221924,
+        -0.35886698961257935
+      ],
+      "actor_requested": [
+        0.15004813373088835,
+        -0.2870935916900635
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 8.100000000000056,
+      "x": -0.6072544455528259,
+      "y": -1.7789239883422852,
+      "yaw_rad": 1.2395789705429778,
+      "goal_distance_m": 2.6492143757377575,
+      "heading_deg": -26.635840945425183,
+      "free_distance_m": 0.3010398644698074,
+      "v_mps": 0.1466470472514629,
+      "w_radps": -0.19250319004058838,
+      "selection": "policy",
+      "actor_action": [
+        0.4094116985797882,
+        -0.24062898755073547
+      ],
+      "actor_requested": [
+        0.1466470472514629,
+        -0.19250319004058838
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 8.300000000000066,
+      "x": -0.5976927280426025,
+      "y": -1.7526159286499023,
+      "yaw_rad": 1.2079934805114032,
+      "goal_distance_m": 2.621934084128231,
+      "heading_deg": -23.273716591053823,
+      "free_distance_m": 0.28284271247461906,
+      "v_mps": 0.15544884353876112,
+      "w_radps": -0.16701810359954836,
+      "selection": "policy",
+      "actor_action": [
+        0.45970767736434937,
+        -0.20877262949943542
+      ],
+      "actor_requested": [
+        0.15544884353876112,
+        -0.16701810359954836
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 8.500000000000076,
+      "x": -0.5867889523506165,
+      "y": -1.725111961364746,
+      "yaw_rad": 1.1811254784984972,
+      "goal_distance_m": 2.5933224008688502,
+      "heading_deg": -20.014732757683586,
+      "free_distance_m": 0.28284271247461906,
+      "v_mps": 0.1421998545527458,
+      "w_radps": -0.0720524549484253,
+      "selection": "policy",
+      "actor_action": [
+        0.38399916887283325,
+        -0.09006556868553162
+      ],
+      "actor_requested": [
+        0.1421998545527458,
+        -0.0720524549484253
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 8.700000000000086,
+      "x": -0.5762439966201782,
+      "y": -1.6999326944351196,
+      "yaw_rad": 1.168993862203387,
+      "goal_distance_m": 2.5670834134641294,
+      "heading_deg": -17.075942543561318,
+      "free_distance_m": 0.26575364531836626,
+      "v_mps": 0.13584240972995756,
+      "w_radps": -0.02612757682800293,
+      "selection": "policy",
+      "actor_action": [
+        0.34767091274261475,
+        -0.03265947103500366
+      ],
+      "actor_requested": [
+        0.13584240972995756,
+        -0.02612757682800293
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 8.900000000000096,
+      "x": -0.5661216378211975,
+      "y": -1.6763020753860474,
+      "yaw_rad": 1.1619044167076147,
+      "goal_distance_m": 2.542453100399167,
+      "heading_deg": -14.07781336378915,
+      "free_distance_m": 0.24748737341529164,
+      "v_mps": 0.1442679092288017,
+      "w_radps": 0.08529226779937744,
+      "selection": "policy",
+      "actor_action": [
+        0.3958166241645813,
+        0.1066153347492218
+      ],
+      "actor_requested": [
+        0.1442679092288017,
+        0.08529226779937744
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 9.100000000000106,
+      "x": -0.555377185344696,
+      "y": -1.6510779857635498,
+      "yaw_rad": 1.1746837574199476,
+      "goal_distance_m": 2.516192298907105,
+      "heading_deg": -12.200269008450492,
+      "free_distance_m": 0.25,
+      "v_mps": 0.1484790578484535,
+      "w_radps": 0.02444741725921631,
+      "selection": "policy",
+      "actor_action": [
+        0.41988033056259155,
+        0.030559271574020386
+      ],
+      "actor_requested": [
+        0.1484790578484535,
+        0.02444741725921631
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 9.300000000000116,
+      "x": -0.5445405840873718,
+      "y": -1.624977469444275,
+      "yaw_rad": 1.1794509596745189,
+      "goal_distance_m": 2.489075168588943,
+      "heading_deg": -9.803468365133766,
+      "free_distance_m": 0.2358495283014151,
+      "v_mps": 0.16029965132474897,
+      "w_radps": 0.13039703369140626,
+      "selection": "policy",
+      "actor_action": [
+        0.4874265789985657,
+        0.1629962921142578
+      ],
+      "actor_requested": [
+        0.16029965132474897,
+        0.13039703369140626
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 9.500000000000126,
+      "x": -0.5334022641181946,
+      "y": -1.5968778133392334,
+      "yaw_rad": 1.2028963979951284,
+      "goal_distance_m": 2.459964174713123,
+      "heading_deg": -8.510284355453841,
+      "free_distance_m": 0.24622144504490262,
+      "v_mps": 0.17570973783731456,
+      "w_radps": 0.11445918083190919,
+      "selection": "policy",
+      "actor_action": [
+        0.5754842162132263,
+        0.14307397603988647
+      ],
+      "actor_requested": [
+        0.17570973783731456,
+        0.11445918083190919
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 9.700000000000136,
+      "x": -0.5218033194541931,
+      "y": -1.5658586025238037,
+      "yaw_rad": 1.221538083180811,
+      "goal_distance_m": 2.4279294949992543,
+      "heading_deg": -6.999398648702097,
+      "free_distance_m": 0.23717082451262847,
+      "v_mps": 0.22,
+      "w_radps": 0.05189468860626221,
+      "selection": "policy",
+      "actor_action": [
+        0.5444033145904541,
+        0.06486836075782776
+      ],
+      "actor_requested": [
+        0.17027058005332943,
+        0.05189468860626221
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 9.900000000000146,
+      "x": -0.5077183842658997,
+      "y": -1.5264980792999268,
+      "yaw_rad": 1.2312787934237548,
+      "goal_distance_m": 2.3873832502237495,
+      "heading_deg": -1.4031315518922878,
+      "free_distance_m": 0.25124689052802224,
+      "v_mps": 0.22,
+      "w_radps": 0.05085489749908448,
+      "selection": "policy",
+      "actor_action": [
+        0.6414921283721924,
+        0.06356862187385559
+      ],
+      "actor_requested": [
+        0.18726112246513363,
+        0.05085489749908448
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 10.100000000000156,
+      "x": -0.49368616938591003,
+      "y": -1.4861544370651245,
+      "yaw_rad": 1.2401285190827915,
+      "goal_distance_m": 2.3459069318295414,
+      "heading_deg": -4.138479468452929,
+      "free_distance_m": 0.25,
+      "v_mps": 0.22,
+      "w_radps": 0.05402255058288574,
+      "selection": "policy",
+      "actor_action": [
+        0.6370065808296204,
+        0.06752818822860718
+      ],
+      "actor_requested": [
+        0.18647615164518352,
+        0.05402255058288574
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 10.300000000000166,
+      "x": -0.48001033067703247,
+      "y": -1.4456501007080078,
+      "yaw_rad": 1.249382866188302,
+      "goal_distance_m": 2.3043466573539284,
+      "heading_deg": -2.2753265727016063,
+      "free_distance_m": 0.2761340254296815,
+      "v_mps": 0.22,
+      "w_radps": 0.07366394996643066,
+      "selection": "policy",
+      "actor_action": [
+        0.6552808284759521,
+        0.09207993745803833
+      ],
+      "actor_requested": [
+        0.18967414498329158,
+        0.07366394996643066
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 10.500000000000176,
+      "x": -0.4667830169200897,
+      "y": -1.4050216674804688,
+      "yaw_rad": 1.2618942936773687,
+      "goal_distance_m": 2.262744045670249,
+      "heading_deg": 2.6143006413024,
+      "free_distance_m": 0.2850438562747845,
+      "v_mps": 0.22,
+      "w_radps": 0.05303018093109131,
+      "selection": "policy",
+      "actor_action": [
+        0.6995787024497986,
+        0.06628772616386414
+      ],
+      "actor_requested": [
+        0.1974262729287147,
+        0.05303018093109131
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 10.700000000000186,
+      "x": -0.454006552696228,
+      "y": -1.3642675876617432,
+      "yaw_rad": 1.2711681382534048,
+      "goal_distance_m": 2.221094151572729,
+      "heading_deg": 5.402110000983932,
+      "free_distance_m": 0.29154759474226505,
+      "v_mps": 0.22,
+      "w_radps": 0.042396736145019535,
+      "selection": "policy",
+      "actor_action": [
+        0.6568390130996704,
+        0.052995920181274414
+      ],
+      "actor_requested": [
+        0.1899468272924423,
+        0.042396736145019535
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 10.900000000000196,
+      "x": -0.44155609607696533,
+      "y": -1.3233883380889893,
+      "yaw_rad": 1.2784945395008407,
+      "goal_distance_m": 2.1793846012856126,
+      "heading_deg": 10.381340505864653,
+      "free_distance_m": 0.2692582403567252,
+      "v_mps": 0.19673359394073484,
+      "w_radps": 0.03202486038208008,
+      "selection": "policy",
+      "actor_action": [
+        0.6956205368041992,
+        0.0400310754776001
+      ],
+      "actor_requested": [
+        0.19673359394073484,
+        0.03202486038208008
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 11.100000000000206,
+      "x": -0.43060529232025146,
+      "y": -1.2866042852401733,
+      "yaw_rad": 1.283991106347462,
+      "goal_distance_m": 2.1419056528665172,
+      "heading_deg": 14.446204041639753,
+      "free_distance_m": 0.2761340254296815,
+      "v_mps": 0.1771001130342483,
+      "w_radps": 0.026521801948547363,
+      "selection": "policy",
+      "actor_action": [
+        0.583429217338562,
+        0.033152252435684204
+      ],
+      "actor_requested": [
+        0.1771001130342483,
+        0.026521801948547363
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 11.300000000000216,
+      "x": -0.42095062136650085,
+      "y": -1.2535535097122192,
+      "yaw_rad": 1.2887767083665094,
+      "goal_distance_m": 2.108270486888767,
+      "heading_deg": 17.669137866360693,
+      "free_distance_m": 0.2761340254296815,
+      "v_mps": 0.18025737404823303,
+      "w_radps": 0.057396674156188966,
+      "selection": "policy",
+      "actor_action": [
+        0.6014707088470459,
+        0.0717458426952362
+      ],
+      "actor_requested": [
+        0.18025737404823303,
+        0.057396674156188966
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 11.500000000000226,
+      "x": -0.41146036982536316,
+      "y": -1.2201547622680664,
+      "yaw_rad": 1.2984887378477916,
+      "goal_distance_m": 2.0743246054019067,
+      "heading_deg": 11.087779835581816,
+      "free_distance_m": 0.26100766272276377,
+      "v_mps": 0.17954444885253903,
+      "w_radps": 0.020964121818542483,
+      "selection": "policy",
+      "actor_action": [
+        0.5973968505859375,
+        0.0262051522731781
+      ],
+      "actor_requested": [
+        0.17954444885253903,
+        0.020964121818542483
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 11.700000000000236,
+      "x": -0.402225524187088,
+      "y": -1.1867966651916504,
+      "yaw_rad": 1.3024923694952941,
+      "goal_distance_m": 2.0404606671285377,
+      "heading_deg": 23.38499012116284,
+      "free_distance_m": 0.2795084971874737,
+      "v_mps": 0.17592017948627467,
+      "w_radps": 0.11623876094818116,
+      "selection": "policy",
+      "actor_action": [
+        0.5766867399215698,
+        0.14529845118522644
+      ],
+      "actor_requested": [
+        0.17592017948627467,
+        0.11623876094818116
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 11.900000000000245,
+      "x": -0.3935485780239105,
+      "y": -1.15397310256958,
+      "yaw_rad": 1.3210729506611578,
+      "goal_distance_m": 2.0071874539747405,
+      "heading_deg": 34.44263342818498,
+      "free_distance_m": 0.29154759474226505,
+      "v_mps": 0.1814324339322942,
+      "w_radps": 0.55,
+      "selection": "isaac_route",
+      "actor_action": [
+        0.6234843730926514,
+        0.1497541069984436
+      ],
+      "actor_requested": [
+        0.18410976529121395,
+        0.11980328559875489
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": false
+    },
+    {
+      "time_s": 12.100000000000255,
+      "x": -0.38647645711898804,
+      "y": -1.11978018283844,
+      "yaw_rad": 1.4088328865047781,
+      "goal_distance_m": 1.9726558758748698,
+      "heading_deg": 32.969696025373175,
+      "free_distance_m": 0.2850438562747845,
+      "v_mps": 0.14915730059146878,
+      "w_radps": 0.40542511940002446,
+      "selection": "policy",
+      "actor_action": [
+        0.4237560033798218,
+        0.5067813992500305
+      ],
+      "actor_requested": [
+        0.14915730059146878,
+        0.40542511940002446
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 12.300000000000265,
+      "x": -0.38283851742744446,
+      "y": -1.090933084487915,
+      "yaw_rad": 1.4764255046878962,
+      "goal_distance_m": 1.9436555762599625,
+      "heading_deg": 30.887124865310277,
+      "free_distance_m": 0.3010398644698074,
+      "v_mps": 0.15272861793637274,
+      "w_radps": 0.3147969484329224,
+      "selection": "policy",
+      "actor_action": [
+        0.4441635310649872,
+        0.39349618554115295
+      ],
+      "actor_requested": [
+        0.15272861793637274,
+        0.3147969484329224
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 12.500000000000275,
+      "x": -0.38092464208602905,
+      "y": -1.0618256330490112,
+      "yaw_rad": 1.5287646378772461,
+      "goal_distance_m": 1.9144876689504808,
+      "heading_deg": 25.523477031161196,
+      "free_distance_m": 0.3010398644698074,
+      "v_mps": 0.15808817297220226,
+      "w_radps": 0.2637956142425537,
+      "selection": "policy",
+      "actor_action": [
+        0.474789559841156,
+        0.32974451780319214
+      ],
+      "actor_requested": [
+        0.15808817297220226,
+        0.2637956142425537
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 12.700000000000285,
+      "x": -0.3803769648075104,
+      "y": -1.0316022634506226,
+      "yaw_rad": 1.5723857681143467,
+      "goal_distance_m": 1.8842777430321875,
+      "heading_deg": 23.87815068207393,
+      "free_distance_m": 0.2850438562747845,
+      "v_mps": 0.1616089895367622,
+      "w_radps": 0.2927536964416504,
+      "selection": "policy",
+      "actor_action": [
+        0.49490851163864136,
+        0.365942120552063
+      ],
+      "actor_requested": [
+        0.1616089895367622,
+        0.2927536964416504
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 12.900000000000295,
+      "x": -0.38122543692588806,
+      "y": -1.0006687641143799,
+      "yaw_rad": 1.6201982582726477,
+      "goal_distance_m": 1.8534350443297125,
+      "heading_deg": 21.704373028112823,
+      "free_distance_m": 0.2704163456597992,
+      "v_mps": 0.1844800904393196,
+      "w_radps": 0.2186565399169922,
+      "selection": "policy",
+      "actor_action": [
+        0.6256005167961121,
+        0.27332067489624023
+      ],
+      "actor_requested": [
+        0.1844800904393196,
+        0.2186565399169922
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 13.100000000000305,
+      "x": -0.3836837410926819,
+      "y": -0.9655161499977112,
+      "yaw_rad": 1.6573694043151572,
+      "goal_distance_m": 1.8184744180409815,
+      "heading_deg": 20.304582909621548,
+      "free_distance_m": 0.25739075352467505,
+      "v_mps": 0.17079998552799222,
+      "w_radps": 0.18294212818145753,
+      "selection": "policy",
+      "actor_action": [
+        0.5474284887313843,
+        0.2286776602268219
+      ],
+      "actor_requested": [
+        0.17079998552799222,
+        0.18294212818145753
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 13.300000000000315,
+      "x": -0.38710126280784607,
+      "y": -0.9326262474060059,
+      "yaw_rad": 1.688390042796983,
+      "goal_distance_m": 1.785840703544371,
+      "heading_deg": 15.016214827254288,
+      "free_distance_m": 0.23717082451262847,
+      "v_mps": 0.17732788026332855,
+      "w_radps": 0.10148582458496094,
+      "selection": "policy",
+      "actor_action": [
+        0.5847307443618774,
+        0.12685728073120117
+      ],
+      "actor_requested": [
+        0.17732788026332855,
+        0.10148582458496094
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 13.500000000000325,
+      "x": -0.39142248034477234,
+      "y": -0.8989705443382263,
+      "yaw_rad": 1.706717255334159,
+      "goal_distance_m": 1.752516172276003,
+      "heading_deg": 13.677823274726709,
+      "free_distance_m": 0.25495097567963926,
+      "v_mps": 0.1722492009401321,
+      "w_radps": 0.058131527900695805,
+      "selection": "policy",
+      "actor_action": [
+        0.555709719657898,
+        0.07266440987586975
+      ],
+      "actor_requested": [
+        0.1722492009401321,
+        0.058131527900695805
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 13.700000000000335,
+      "x": -0.3960554897785187,
+      "y": -0.8662818074226379,
+      "yaw_rad": 1.7138673147149595,
+      "goal_distance_m": 1.7202011856749921,
+      "heading_deg": 12.700595463882324,
+      "free_distance_m": 0.25124689052802224,
+      "v_mps": 0.172996474802494,
+      "w_radps": -0.011293482780456544,
+      "selection": "policy",
+      "actor_action": [
+        0.5599798560142517,
+        -0.014116853475570679
+      ],
+      "actor_requested": [
+        0.172996474802494,
+        -0.011293482780456544
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 13.900000000000345,
+      "x": -0.4007822573184967,
+      "y": -0.8337504267692566,
+      "yaw_rad": 1.7158874825517287,
+      "goal_distance_m": 1.6880769690178838,
+      "heading_deg": 8.912008022972856,
+      "free_distance_m": 0.25,
+      "v_mps": 0.22,
+      "w_radps": -0.045714068412780764,
+      "selection": "policy",
+      "actor_action": [
+        0.5768094658851624,
+        -0.05714258551597595
+      ],
+      "actor_requested": [
+        0.17594165652990337,
+        -0.045714068412780764
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 14.100000000000355,
+      "x": -0.4067040681838989,
+      "y": -0.7922577857971191,
+      "yaw_rad": 1.709350154972151,
+      "goal_distance_m": 1.6471382928903107,
+      "heading_deg": -0.6099063039390173,
+      "free_distance_m": 0.25,
+      "v_mps": 0.22,
+      "w_radps": -0.039824271202087404,
+      "selection": "policy",
+      "actor_action": [
+        0.6734762787818909,
+        -0.04978033900260925
+      ],
+      "actor_requested": [
+        0.19285834878683086,
+        -0.039824271202087404
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 14.300000000000365,
+      "x": -0.4123934209346771,
+      "y": -0.7504532337188721,
+      "yaw_rad": 1.7036130931179898,
+      "goal_distance_m": 1.6059198520561297,
+      "heading_deg": -2.820176023686396,
+      "free_distance_m": 0.24622144504490262,
+      "v_mps": 0.22,
+      "w_radps": -0.060260462760925296,
+      "selection": "policy",
+      "actor_action": [
+        0.6464277505874634,
+        -0.07532557845115662
+      ],
+      "actor_requested": [
+        0.18812485635280604,
+        -0.060260462760925296
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 14.500000000000373,
+      "x": -0.41784289479255676,
+      "y": -0.7081241011619568,
+      "yaw_rad": 1.6945003768212696,
+      "goal_distance_m": 1.5642095058739887,
+      "heading_deg": -4.496133845518018,
+      "free_distance_m": 0.25495097567963926,
+      "v_mps": 0.22,
+      "w_radps": -0.031286907196044926,
+      "selection": "policy",
+      "actor_action": [
+        0.6178444623947144,
+        -0.03910863399505615
+      ],
+      "actor_requested": [
+        0.183122780919075,
+        -0.031286907196044926
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 14.700000000000362,
+      "x": -0.4229956865310669,
+      "y": -0.6656971573829651,
+      "yaw_rad": 1.6894889736943952,
+      "goal_distance_m": 1.5224275481169185,
+      "heading_deg": -5.984430973003375,
+      "free_distance_m": 0.25124689052802224,
+      "v_mps": 0.22,
+      "w_radps": -0.043521666526794435,
+      "selection": "policy",
+      "actor_action": [
+        0.656861424446106,
+        -0.05440208315849304
+      ],
+      "actor_requested": [
+        0.18995074927806851,
+        -0.043521666526794435
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 14.90000000000035,
+      "x": -0.42790353298187256,
+      "y": -0.6232385635375977,
+      "yaw_rad": 1.682752063129686,
+      "goal_distance_m": 1.4806442247085707,
+      "heading_deg": -17.074866081694367,
+      "free_distance_m": 0.25,
+      "v_mps": 0.18981005847454066,
+      "w_radps": -0.03775212764739991,
+      "selection": "policy",
+      "actor_action": [
+        0.6560574769973755,
+        -0.04719015955924988
+      ],
+      "actor_requested": [
+        0.18981005847454066,
+        -0.03775212764739991
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 15.100000000000339,
+      "x": -0.4319312870502472,
+      "y": -0.5863263607025146,
+      "yaw_rad": 1.6769152640512213,
+      "goal_distance_m": 1.4443394789431172,
+      "heading_deg": -25.51785600160437,
+      "free_distance_m": 0.25124689052802224,
+      "v_mps": 0.1756421774625778,
+      "w_radps": -0.0664320707321167,
+      "selection": "policy",
+      "actor_action": [
+        0.5750981569290161,
+        -0.08304008841514587
+      ],
+      "actor_requested": [
+        0.1756421774625778,
+        -0.0664320707321167
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 15.300000000000328,
+      "x": -0.43535327911376953,
+      "y": -0.5524551272392273,
+      "yaw_rad": 1.6666564597259395,
+      "goal_distance_m": 1.4110333182639587,
+      "heading_deg": -27.08978971363113,
+      "free_distance_m": 0.25495097567963926,
+      "v_mps": 0.17554470151662824,
+      "w_radps": -0.13114631175994873,
+      "selection": "policy",
+      "actor_action": [
+        0.5745411515235901,
+        -0.1639328896999359
+      ],
+      "actor_requested": [
+        0.17554470151662824,
+        -0.13114631175994873
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 15.500000000000316,
+      "x": -0.43821820616722107,
+      "y": -0.5187638401985168,
+      "yaw_rad": 1.6460027650948692,
+      "goal_distance_m": 1.37787787956617,
+      "heading_deg": -28.045855529523433,
+      "free_distance_m": 0.24748737341529164,
+      "v_mps": 0.16412799954414367,
+      "w_radps": -0.0962026596069336,
+      "selection": "policy",
+      "actor_action": [
+        0.5093028545379639,
+        -0.12025332450866699
+      ],
+      "actor_requested": [
+        0.16412799954414367,
+        -0.0962026596069336
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 15.700000000000305,
+      "x": -0.44032806158065796,
+      "y": -0.48714479804039,
+      "yaw_rad": 1.6304556405414357,
+      "goal_distance_m": 1.3467224280662615,
+      "heading_deg": -25.36270885150457,
+      "free_distance_m": 0.21213203435596426,
+      "v_mps": 0.15568400621414183,
+      "w_radps": -0.13186259269714357,
+      "selection": "policy",
+      "actor_action": [
+        0.46105146408081055,
+        -0.16482824087142944
+      ],
+      "actor_requested": [
+        0.15568400621414183,
+        -0.13186259269714357
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 15.900000000000293,
+      "x": -0.4417826533317566,
+      "y": -0.4572142958641052,
+      "yaw_rad": 1.6097624206737653,
+      "goal_distance_m": 1.3171874742156304,
+      "heading_deg": -25.24776687207011,
+      "free_distance_m": 0.19525624189766635,
+      "v_mps": 0.16667309701442715,
+      "w_radps": -0.1689544200897217,
+      "selection": "policy",
+      "actor_action": [
+        0.5238462686538696,
+        -0.2111930251121521
+      ],
+      "actor_requested": [
+        0.16667309701442715,
+        -0.1689544200897217
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 16.100000000000282,
+      "x": -0.4425599277019501,
+      "y": -0.42537206411361694,
+      "yaw_rad": 1.5828819909128014,
+      "goal_distance_m": 1.2856903328624243,
+      "heading_deg": -24.886130706255255,
+      "free_distance_m": 0.18027756377319948,
+      "v_mps": 0.1705537766218185,
+      "w_radps": -0.09274632930755616,
+      "selection": "policy",
+      "actor_action": [
+        0.546021580696106,
+        -0.11593291163444519
+      ],
+      "actor_requested": [
+        0.1705537766218185,
+        -0.09274632930755616
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 16.30000000000027,
+      "x": -0.4426761269569397,
+      "y": -0.3926183879375458,
+      "yaw_rad": 1.5677225275698445,
+      "goal_distance_m": 1.2532214410558957,
+      "heading_deg": -16.482802286509237,
+      "free_distance_m": 0.16770509831248426,
+      "v_mps": 0.17548755109310146,
+      "w_radps": -0.09199469089508057,
+      "selection": "policy",
+      "actor_action": [
+        0.5742145776748657,
+        -0.11499336361885071
+      ],
+      "actor_requested": [
+        0.17548755109310146,
+        -0.09199469089508057
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 16.50000000000026,
+      "x": -0.4423064589500427,
+      "y": -0.3589111268520355,
+      "yaw_rad": 1.5532171622696436,
+      "goal_distance_m": 1.219757967485173,
+      "heading_deg": -13.900692942636836,
+      "free_distance_m": 0.1520690632574555,
+      "v_mps": 0.1836042463779449,
+      "w_radps": -0.03809921741485596,
+      "selection": "policy",
+      "actor_action": [
+        0.6205956935882568,
+        -0.047624021768569946
+      ],
+      "actor_requested": [
+        0.1836042463779449,
+        -0.03809921741485596
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 16.700000000000248,
+      "x": -0.4415668845176697,
+      "y": -0.32365068793296814,
+      "yaw_rad": 1.5473044826264788,
+      "goal_distance_m": 1.184719289729966,
+      "heading_deg": -5.013298284938787,
+      "free_distance_m": 0.15000000000000002,
+      "v_mps": 0.22,
+      "w_radps": -0.04024107456207276,
+      "selection": "policy",
+      "actor_action": [
+        0.6042983531951904,
+        -0.05030134320259094
+      ],
+      "actor_requested": [
+        0.18075221180915832,
+        -0.04024107456207276
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 16.900000000000237,
+      "x": -0.44044047594070435,
+      "y": -0.28148722648620605,
+      "yaw_rad": 1.541262704459807,
+      "goal_distance_m": 1.1428055346477488,
+      "heading_deg": 5.187904215607101,
+      "free_distance_m": 0.158113883008419,
+      "v_mps": 0.22,
+      "w_radps": -0.011983299255371095,
+      "selection": "policy",
+      "actor_action": [
+        0.6757708787918091,
+        -0.014979124069213867
+      ],
+      "actor_requested": [
+        0.19325990378856658,
+        -0.011983299255371095
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 17.100000000000225,
+      "x": -0.4391496181488037,
+      "y": -0.23882479965686798,
+      "yaw_rad": 1.5398449718068852,
+      "goal_distance_m": 1.1003944953082638,
+      "heading_deg": 16.25320516419602,
+      "free_distance_m": 0.16770509831248426,
+      "v_mps": 0.1941786080598831,
+      "w_radps": -0.011628842353820801,
+      "selection": "policy",
+      "actor_action": [
+        0.6810206174850464,
+        -0.014536052942276001
+      ],
+      "actor_requested": [
+        0.1941786080598831,
+        -0.011628842353820801
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 17.300000000000214,
+      "x": -0.437948077917099,
+      "y": -0.2009553462266922,
+      "yaw_rad": 1.5383694255627158,
+      "goal_distance_m": 1.0627580792824738,
+      "heading_deg": 15.648521626826344,
+      "free_distance_m": 0.19525624189766635,
+      "v_mps": 0.17734145075082777,
+      "w_radps": -0.008591556549072265,
+      "selection": "policy",
+      "actor_action": [
+        0.5848082900047302,
+        -0.010739445686340332
+      ],
+      "actor_requested": [
+        0.17734145075082777,
+        -0.008591556549072265
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 17.500000000000203,
+      "x": -0.43680793046951294,
+      "y": -0.16656500101089478,
+      "yaw_rad": 1.5372155239721492,
+      "goal_distance_m": 1.0285879293178646,
+      "heading_deg": 17.022114489813838,
+      "free_distance_m": 0.2304886114323222,
+      "v_mps": 0.17683110237121577,
+      "w_radps": -0.01792120933532715,
+      "selection": "policy",
+      "actor_action": [
+        0.5818920135498047,
+        -0.022401511669158936
+      ],
+      "actor_requested": [
+        0.17683110237121577,
+        -0.01792120933532715
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 17.70000000000019,
+      "x": -0.435622900724411,
+      "y": -0.13247722387313843,
+      "yaw_rad": 1.5349287659035726,
+      "goal_distance_m": 0.9947260842359311,
+      "heading_deg": 16.093971984997037,
+      "free_distance_m": 0.225,
+      "v_mps": 0.17140090465545652,
+      "w_radps": 0.00015947818756103518,
+      "selection": "policy",
+      "actor_action": [
+        0.5508623123168945,
+        0.00019934773445129395
+      ],
+      "actor_requested": [
+        0.17140090465545652,
+        0.00015947818756103518
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 17.90000000000018,
+      "x": -0.43443915247917175,
+      "y": -0.09942235797643661,
+      "yaw_rad": 1.5351772197511753,
+      "goal_distance_m": 0.9619013804148644,
+      "heading_deg": 17.227858295008204,
+      "free_distance_m": 0.225,
+      "v_mps": 0.17464008927345273,
+      "w_radps": -0.014229011535644532,
+      "selection": "policy",
+      "actor_action": [
+        0.5693719387054443,
+        -0.017786264419555664
+      ],
+      "actor_requested": [
+        0.17464008927345273,
+        -0.014229011535644532
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 18.10000000000017,
+      "x": -0.4332101047039032,
+      "y": -0.06606808304786682,
+      "yaw_rad": 1.5316520327371999,
+      "goal_distance_m": 0.9287917252874157,
+      "heading_deg": 18.744156531946395,
+      "free_distance_m": 0.225,
+      "v_mps": 0.17509055435657497,
+      "w_radps": -0.019307661056518557,
+      "selection": "policy",
+      "actor_action": [
+        0.5719460248947144,
+        -0.024134576320648193
+      ],
+      "actor_requested": [
+        0.17509055435657497,
+        -0.019307661056518557
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 18.300000000000157,
+      "x": -0.43183019757270813,
+      "y": -0.032522231340408325,
+      "yaw_rad": 1.5280407081133358,
+      "goal_distance_m": 0.8954875195696592,
+      "heading_deg": 17.77563388498779,
+      "free_distance_m": 0.21360009363293828,
+      "v_mps": 0.16909834444522856,
+      "w_radps": -0.021826171875,
+      "selection": "policy",
+      "actor_action": [
+        0.5377048254013062,
+        -0.02728271484375
+      ],
+      "actor_requested": [
+        0.16909834444522856,
+        -0.021826171875
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 18.500000000000146,
+      "x": -0.4303707480430603,
+      "y": -7.103932148311287e-05,
+      "yaw_rad": 1.523897516690062,
+      "goal_distance_m": 0.8632682860850015,
+      "heading_deg": 10.139071241864771,
+      "free_distance_m": 0.20615528128088303,
+      "v_mps": 0.17059348672628402,
+      "w_radps": -0.033510661125183104,
+      "selection": "policy",
+      "actor_action": [
+        0.5462484955787659,
+        -0.04188832640647888
+      ],
+      "actor_requested": [
+        0.17059348672628402,
+        -0.033510661125183104
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 18.700000000000134,
+      "x": -0.42873165011405945,
+      "y": 0.032626643776893616,
+      "yaw_rad": 1.5181449921652808,
+      "goal_distance_m": 0.8307949850649534,
+      "heading_deg": 11.512963267734332,
+      "free_distance_m": 0.20155644370746373,
+      "v_mps": 0.17309190630912777,
+      "w_radps": -0.010972332954406739,
+      "selection": "policy",
+      "actor_action": [
+        0.5605251789093018,
+        -0.013715416193008423
+      ],
+      "actor_requested": [
+        0.17309190630912777,
+        -0.010972332954406739
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 18.900000000000123,
+      "x": -0.42694881558418274,
+      "y": 0.06583061814308167,
+      "yaw_rad": 1.5164788809176932,
+      "goal_distance_m": 0.7978192613891041,
+      "heading_deg": 2.41068548502071,
+      "free_distance_m": 0.20155644370746373,
+      "v_mps": 0.22,
+      "w_radps": -0.012700510025024415,
+      "selection": "policy",
+      "actor_action": [
+        0.5712121725082397,
+        -0.015875637531280518
+      ],
+      "actor_requested": [
+        0.17496213018894194,
+        -0.012700510025024415
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 19.10000000000011,
+      "x": -0.4246385097503662,
+      "y": 0.107521191239357,
+      "yaw_rad": 1.5146437789125633,
+      "goal_distance_m": 0.7564357738509133,
+      "heading_deg": 3.36267173393243,
+      "free_distance_m": 0.20615528128088303,
+      "v_mps": 0.22,
+      "w_radps": -0.008486104011535645,
+      "selection": "policy",
+      "actor_action": [
+        0.662944495677948,
+        -0.010607630014419556
+      ],
+      "actor_requested": [
+        0.19101528674364085,
+        -0.008486104011535645
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 19.3000000000001,
+      "x": -0.4223463833332062,
+      "y": 0.14930368959903717,
+      "yaw_rad": 1.5161525480556826,
+      "goal_distance_m": 0.7150089595645404,
+      "heading_deg": -5.303925328092932,
+      "free_distance_m": 0.223606797749979,
+      "v_mps": 0.22,
+      "w_radps": -0.00843031406402588,
+      "selection": "policy",
+      "actor_action": [
+        0.641836941242218,
+        -0.010537892580032349
+      ],
+      "actor_requested": [
+        0.18732146471738811,
+        -0.00843031406402588
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 19.50000000000009,
+      "x": -0.41999396681785583,
+      "y": 0.19196902215480804,
+      "yaw_rad": 1.515585186407267,
+      "goal_distance_m": 0.6727578156731427,
+      "heading_deg": -12.729142228588577,
+      "free_distance_m": 0.25,
+      "v_mps": 0.1897157847881317,
+      "w_radps": -0.0072795629501342775,
+      "selection": "policy",
+      "actor_action": [
+        0.6555187702178955,
+        -0.009099453687667847
+      ],
+      "actor_requested": [
+        0.1897157847881317,
+        -0.0072795629501342775
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 19.700000000000077,
+      "x": -0.41792377829551697,
+      "y": 0.22884024679660797,
+      "yaw_rad": 1.5144348679201383,
+      "goal_distance_m": 0.6362879911007356,
+      "heading_deg": -21.69609654406929,
+      "free_distance_m": 0.26575364531836626,
+      "v_mps": 0.17882897853851318,
+      "w_radps": -0.016203093528747558,
+      "selection": "policy",
+      "actor_action": [
+        0.5933084487915039,
+        -0.020253866910934448
+      ],
+      "actor_requested": [
+        0.17882897853851318,
+        -0.016203093528747558
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 19.900000000000066,
+      "x": -0.4159449338912964,
+      "y": 0.2632918953895569,
+      "yaw_rad": 1.5124906063521544,
+      "goal_distance_m": 0.6022519614466088,
+      "heading_deg": -32.2999036549672,
+      "free_distance_m": 0.2795084971874737,
+      "v_mps": 0.18595780098598197,
+      "w_radps": -0.55,
+      "selection": "isaac_route",
+      "actor_action": [
+        0.591448187828064,
+        -0.033328086137771606
+      ],
+      "actor_requested": [
+        0.1785034328699112,
+        -0.026662468910217285
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": false
+    },
+    {
+      "time_s": 20.100000000000055,
+      "x": -0.412272572517395,
+      "y": 0.29868975281715393,
+      "yaw_rad": 1.4259074375000174,
+      "goal_distance_m": 0.5669559260552626,
+      "heading_deg": -28.273983309597043,
+      "free_distance_m": 0.3010398644698074,
+      "v_mps": 0.1791828542947769,
+      "w_radps": -0.36577408313751225,
+      "selection": "policy",
+      "actor_action": [
+        0.5953305959701538,
+        -0.45721760392189026
+      ],
+      "actor_requested": [
+        0.1791828542947769,
+        -0.36577408313751225
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 20.300000000000043,
+      "x": -0.4061315059661865,
+      "y": 0.3326599597930908,
+      "yaw_rad": 1.3651461701675174,
+      "goal_distance_m": 0.5324940131105556,
+      "heading_deg": -30.870096612712963,
+      "free_distance_m": 0.29154759474226505,
+      "v_mps": 0.17652084827423095,
+      "w_radps": -0.25077352523803714,
+      "selection": "policy",
+      "actor_action": [
+        0.5801191329956055,
+        -0.3134669065475464
+      ],
+      "actor_requested": [
+        0.17652084827423095,
+        -0.25077352523803714
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 20.500000000000032,
+      "x": -0.39842912554740906,
+      "y": 0.3657969534397125,
+      "yaw_rad": 1.3241941885194697,
+      "goal_distance_m": 0.4984757246608784,
+      "heading_deg": -23.65693578617156,
+      "free_distance_m": 0.2692582403567252,
+      "v_mps": 0.171707309782505,
+      "w_radps": -0.075618314743042,
+      "selection": "policy",
+      "actor_action": [
+        0.5526131987571716,
+        -0.09452289342880249
+      ],
+      "actor_requested": [
+        0.171707309782505,
+        -0.075618314743042
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 20.70000000000002,
+      "x": -0.3901086747646332,
+      "y": 0.39783310890197754,
+      "yaw_rad": 1.3114833205099548,
+      "goal_distance_m": 0.465380293591891,
+      "heading_deg": -22.248628626227422,
+      "free_distance_m": 0.26100766272276377,
+      "v_mps": 0.17277432978153226,
+      "w_radps": -0.03286170959472656,
+      "selection": "policy",
+      "actor_action": [
+        0.5587104558944702,
+        -0.0410771369934082
+      ],
+      "actor_requested": [
+        0.17277432978153226,
+        -0.03286170959472656
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 20.90000000000001,
+      "x": -0.3814900815486908,
+      "y": 0.4299573004245758,
+      "yaw_rad": 1.3065936387813044,
+      "goal_distance_m": 0.43212973297306206,
+      "heading_deg": -21.14834749810407,
+      "free_distance_m": 0.2795084971874737,
+      "v_mps": 0.17573931962251663,
+      "w_radps": -0.005214142799377442,
+      "selection": "policy",
+      "actor_action": [
+        0.5756532549858093,
+        -0.006517678499221802
+      ],
+      "actor_requested": [
+        0.17573931962251663,
+        -0.005214142799377442
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 21.099999999999998,
+      "x": -0.37264391779899597,
+      "y": 0.46260949969291687,
+      "yaw_rad": 1.3059783787110193,
+      "goal_distance_m": 0.39831431713324,
+      "heading_deg": -15.845156261645506,
+      "free_distance_m": 0.275,
+      "v_mps": 0.17059104591608046,
+      "w_radps": -0.004793143272399903,
+      "selection": "policy",
+      "actor_action": [
+        0.5462345480918884,
+        -0.005991429090499878
+      ],
+      "actor_requested": [
+        0.17059104591608046,
+        -0.004793143272399903
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 21.299999999999986,
+      "x": -0.3640289604663849,
+      "y": 0.4943549931049347,
+      "yaw_rad": 1.3056138541456597,
+      "goal_distance_m": 0.365437049471523,
+      "heading_deg": -14.575724579533874,
+      "free_distance_m": 0.2761340254296815,
+      "v_mps": 0.1747838884592056,
+      "w_radps": 0.0002324342727661133,
+      "selection": "policy",
+      "actor_action": [
+        0.5701936483383179,
+        0.0002905428409576416
+      ],
+      "actor_requested": [
+        0.1747838884592056,
+        0.0002324342727661133
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 21.499999999999975,
+      "x": -0.3552292287349701,
+      "y": 0.5267900228500366,
+      "yaw_rad": 1.3060068558859925,
+      "goal_distance_m": 0.33184955354096574,
+      "heading_deg": -13.256311407829024,
+      "free_distance_m": 0.304138126514911,
+      "v_mps": 0.17752531468868252,
+      "w_radps": 0.006374621391296387,
+      "selection": "policy",
+      "actor_action": [
+        0.585858941078186,
+        0.007968276739120483
+      ],
+      "actor_requested": [
+        0.17752531468868252,
+        0.006374621391296387
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 21.699999999999964,
+      "x": -0.34630224108695984,
+      "y": 0.5597984790802002,
+      "yaw_rad": 1.307367510049593,
+      "goal_distance_m": 0.29767920639056794,
+      "heading_deg": -11.863148493955935,
+      "free_distance_m": 0.30923292192132457,
+      "v_mps": 0.17647336721420284,
+      "w_radps": 0.012044906616210938,
+      "selection": "policy",
+      "actor_action": [
+        0.5798478126525879,
+        0.015056133270263672
+      ],
+      "actor_requested": [
+        0.17647336721420284,
+        0.012044906616210938
+      ],
+      "cruise_boost": false,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 21.899999999999952,
+      "x": -0.33748146891593933,
+      "y": 0.5926663279533386,
+      "yaw_rad": 1.3096267483761088,
+      "goal_distance_m": 0.26367544071785065,
+      "heading_deg": -6.69545484104019,
+      "free_distance_m": 0.348209706929603,
+      "v_mps": 0.22,
+      "w_radps": 0.01404867172241211,
+      "selection": "policy",
+      "actor_action": [
+        0.5725635290145874,
+        0.017560839653015137
+      ],
+      "actor_requested": [
+        0.17519861757755276,
+        0.01404867172241211
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 22.09999999999994,
+      "x": -0.3266790211200714,
+      "y": 0.6333330869674683,
+      "yaw_rad": 1.3123903359970548,
+      "goal_distance_m": 0.22163817860597648,
+      "heading_deg": -5.236015353679963,
+      "free_distance_m": 0.35794552658190887,
+      "v_mps": 0.22,
+      "w_radps": 0.01106712818145752,
+      "selection": "policy",
+      "actor_action": [
+        0.6471933126449585,
+        0.0138339102268219
+      ],
+      "actor_requested": [
+        0.1882588297128677,
+        0.01106712818145752
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 22.29999999999993,
+      "x": -0.3158104121685028,
+      "y": 0.6746521592140198,
+      "yaw_rad": 1.3145689227611823,
+      "goal_distance_m": 0.17896717824222272,
+      "heading_deg": -0.5056962554941752,
+      "free_distance_m": 0.3816084380618437,
+      "v_mps": 0.22,
+      "w_radps": 0.0023963451385498047,
+      "selection": "policy",
+      "actor_action": [
+        0.648170530796051,
+        0.002995431423187256
+      ],
+      "actor_requested": [
+        0.1884298428893089,
+        0.0023963451385498047
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    },
+    {
+      "time_s": 22.49999999999992,
+      "x": -0.30500033497810364,
+      "y": 0.7160058617591858,
+      "yaw_rad": 1.3154287181522994,
+      "goal_distance_m": 0.13630644090400063,
+      "heading_deg": 2.011493139198835,
+      "free_distance_m": 0.40078048854703496,
+      "v_mps": 0.22,
+      "w_radps": 0.0045722961425781255,
+      "selection": "policy",
+      "actor_action": [
+        0.6438964605331421,
+        0.005715370178222656
+      ],
+      "actor_requested": [
+        0.18768188059329985,
+        0.0045722961425781255
+      ],
+      "cruise_boost": true,
+      "arc_safe": true,
+      "route_agreement": true
+    }
+  ],
+  "video_frames": [],
+  "localization": "simulator ground truth",
+  "depth_obstacle_grid_counts": [
+    247,
+    228,
+    200,
+    226,
+    231,
+    216,
+    204,
+    214,
+    174,
+    163,
+    194,
+    189,
+    171,
+    176,
+    184,
+    193,
+    195,
+    168,
+    176,
+    181,
+    185,
+    185,
+    189,
+    170,
+    143,
+    177,
+    254,
+    328,
+    332,
+    333,
+    357,
+    374,
+    394,
+    403,
+    415,
+    424,
+    429,
+    457,
+    479,
+    508,
+    498,
+    498,
+    515,
+    534,
+    534,
+    529,
+    524,
+    507,
+    506,
+    518,
+    519,
+    525,
+    529,
+    532,
+    532,
+    534,
+    540,
+    538,
+    538,
+    499,
+    483,
+    497,
+    452,
+    403,
+    406,
+    378,
+    376,
+    360,
+    378,
+    365,
+    344,
+    333,
+    313,
+    310,
+    299,
+    298,
+    285,
+    274,
+    269,
+    266,
+    266,
+    251,
+    239,
+    237,
+    223,
+    211,
+    209,
+    208,
+    195,
+    201,
+    180,
+    183,
+    184,
+    183,
+    183,
+    178,
+    180,
+    178,
+    162,
+    156,
+    172,
+    155,
+    169,
+    146,
+    139,
+    135,
+    125,
+    125,
+    111,
+    95,
+    84,
+    68,
+    55
+  ],
+  "depth_ground_threshold_m": 0.012,
+  "depth_memory_seconds": 3,
+  "planner": "PPO commands inside Isaac depth+LiDAR A-star corridor with 14 cm footprint; route fallback",
+  "policy_decisions": 105,
+  "route_fallbacks": 8,
+  "actor_weight_sha256": "afae1f29f130ca1cce44339d76520a070914555f0f3ac266cd4b76e5ceff19d5"
+}
