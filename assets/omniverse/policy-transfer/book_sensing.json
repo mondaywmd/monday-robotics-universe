@@ -1,0 +1,34 @@
+{
+  "scene": "C:\\Users\\User\\Documents\\navbot\\_isaacsim\\isaacsim\\scenes\\navbot_random_v3_02_passage.usda",
+  "book_center_m": [
+    -0.5395949778106578,
+    -2.1938093068244306
+  ],
+  "robot_xy_m": [
+    -0.2800028622150421,
+    -3.0000717639923096
+  ],
+  "lidar_total_returns": 274,
+  "lidar_book_roi_returns": 0,
+  "depth_valid_pixels": 283306,
+  "depth_book_roi_above_12mm_pixels": 2292,
+  "roi_half_extents_m": [
+    0.12,
+    0.16
+  ],
+  "book_bearing_deg": 17.207630564232428,
+  "raw_lidar_book_bearing_11deg_min_m": 1.5632591247558594,
+  "fused_book_bearing_11deg_min_m": 0.7489031553268433,
+  "fusion": {
+    "depth_points_projected": 40775,
+    "ray_bins_shortened": 60
+  },
+  "raw_actor_action": [
+    0.34465885162353516,
+    0.0992758572101593
+  ],
+  "fused_actor_action": [
+    0.33801817893981934,
+    0.08094421029090881
+  ]
+}

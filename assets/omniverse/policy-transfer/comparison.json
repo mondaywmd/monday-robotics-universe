@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-26",
+  "scene": "01_passage",
+  "seed": 2026092601,
+  "goal_m": [
+    -0.28,
+    0.85
+  ],
+  "velocity_caps": {
+    "linear_mps": 0.065,
+    "angular_radps": 0.55
+  },
+  "notes": "Single-scene deployed-controller comparison. PPO-only uses LiDAR; Isaac-only and Hybrid guard use LiDAR plus depth. Sampled contact forces are not a continuous-time safety proof.",
+  "controllers": {
+    "ppo_only": {
+      "reason": "contact",
+      "goal_reached": false,
+      "duration_s": 10.1,
+      "measured_path_m": 0.579,
+      "max_sampled_contact_force_n": 0.928,
+      "decision_count": 48
+    },
+    "isaac_only": {
+      "reason": "goal_reached",
+      "goal_reached": true,
+      "duration_s": 67.1,
+      "measured_path_m": 3.877,
+      "max_sampled_contact_force_n": 0.0,
+      "decision_count": 335
+    },
+    "hybrid": {
+      "reason": "goal_reached",
+      "goal_reached": true,
+      "duration_s": 66.9,
+      "measured_path_m": 3.878,
+      "max_sampled_contact_force_n": 0.0,
+      "decision_count": 334,
+      "ppo_executed_decisions": 272,
+      "isaac_route_decisions": 62,
+      "ppo_decision_fraction": 0.8144
+    }
+  },
+  "blocked_control": {
+    "scene": "09_blocked",
+    "reason": "blocked_no_progress",
+    "duration_s": 34.3,
+    "max_sampled_contact_force_n": 0.0,
+    "ppo_executed_decisions": 119,
+    "isaac_route_decisions": 52
+  }
+}
