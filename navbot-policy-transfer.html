@@ -50,7 +50,7 @@
     <section class="isaac-physics"><div class="section-shell">
       <div class="capture-heading"><p class="section-number">02 / THE GUARD</p><h2>把 Isaac 已验证的通行判断放回控制链。</h2></div>
       <p>我提出一个更直接的问题：既然 Isaac 已用深度与 LiDAR 建立 2.5 cm 网格，并用 14 cm 车身包络规划通路，为什么还要让 Gazebo 的固定距离规则决定这条走廊能否转弯？于是保留 PPO 提议的动作，但由 Isaac 地图判断接下来约 0.8 秒的轨迹净空，并检查转向是否与局部 A* 路线相差超过 25°。不符合时，原 Isaac 路线控制器接管。</p>
-      <figure class="isaac-film"><img src="assets/omniverse/policy-transfer/control-architecture.svg" alt="前一版由 LiDAR 和深度相机建图，A 星及手写规则直接产生线速度和角速度；接入 PPO 后，PPO 与 Isaac 地图和 A 星同时计算。只有预测净空至少 14 厘米且与路线转向差小于 25 度时才执行 PPO，否则执行 A 星备用动作。" loading="lazy"><figcaption><p>图中的上下两路<strong>同时运行</strong>，不是先选一路启动。右侧选择框在每次更新时决定这一步执行谁的 <code>v、w</code>。</p><a href="assets/omniverse/policy-transfer/control-architecture.svg">放大查看流程图 ↗</a></figcaption></figure>
+      <figure class="isaac-film"><img src="assets/omniverse/policy-transfer/control-architecture.svg?v=20260926-select" alt="前一版由 LiDAR 和深度相机建图，A 星及手写规则直接产生线速度和角速度；接入 PPO 后，PPO 与 Isaac 地图和 A 星同时计算。只有预测净空至少 14 厘米且与路线转向差小于 25 度时才执行 PPO，否则执行 A 星备用动作。" loading="lazy"><figcaption><p><strong>上路终点只是 PPO 提议的 <code>v、w</code>；下路的 A* 同时产生备用 <code>v、w</code>。</strong>两个箭头都进入右侧选择框，选定后才通过唯一出口送给车轮。</p><a href="assets/omniverse/policy-transfer/control-architecture.svg?v=20260926-select">放大查看流程图 ↗</a></figcaption></figure>
       <div class="note"><p><strong>选择规则：</strong>沿 PPO 提议的动作预测接下来约 0.8 秒，如果车身中心到地图障碍的净空始终不少于 14 cm，<em>而且</em> PPO 的转向与 A* 局部路线方向相差小于 25°，就执行 PPO 的 <code>v、w</code>。只要任一条件不满足，就执行 Isaac 已同时算好的 A* 备用动作。下一次传感更新会重新判断；地图无路或深度数据过期时则停车。</p></div>
       <p>例如接近椅子时，PPO 仍提议直行，而 A* 路线指向椅子旁的通道；两者转向差若超过 25°，这一帧就由 Isaac 接管。机器人转到通道方向后，下一帧会重新检查，PPO 可以再次取得控制。它不是一次切换后就永久锁定某一路。</p>
       <h3>换掉了哪一块？</h3>

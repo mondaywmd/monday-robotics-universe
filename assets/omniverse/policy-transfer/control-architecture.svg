@@ -1,75 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
-  <title id="title">NavBot 接入 Gazebo PPO 前后的控制程序</title>
-  <desc id="desc">接入前，LiDAR 与深度相机进入地图，由 A 星规划和手写控制器直接产生线速度与角速度。接入后，LiDAR 转换为七十八维观测，Gazebo 训练的 PPO 提议速度；原有的深度加 LiDAR 地图及 A 星路线负责检查和必要时接管。深度并未进入 PPO 输入。</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 850" role="img" aria-labelledby="title desc">
+  <title id="title">NavBot 接入 Gazebo PPO 前后的动作来源</title>
+  <desc id="desc">以前，LiDAR 和深度相机建图，A 星与手写规则直接输出速度给车轮。现在两条路径同时计算：上路由 LiDAR 观测和 Gazebo 训练的 PPO 提议线速度及角速度；下路由 LiDAR 和深度相机建图，A 星产生备用速度与安全判断依据。两路箭头都进入安全选择框。通过净空和方向检查则选择 PPO，否则选择 A 星；选定后才限速并发送给车轮。深度尚未直接输入 PPO。</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#526660"/></marker>
     <style>
-      .label{font:700 24px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#10211d}
-      .text{font:600 18px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#10211d}
-      .small{font:15px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#53645f}
+      .title{font:700 26px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#10211d}
+      .text{font:600 19px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#10211d}
+      .small{font:16px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#53645f}
       .mono{font:600 15px "DM Mono",monospace;fill:#53645f}
       .box{fill:#fff;stroke:#a5b8ae;stroke-width:2}
       .ppo{fill:#e5f1db;stroke:#64895f;stroke-width:2}
       .guard{fill:#e6f1ee;stroke:#35836f;stroke-width:2}
-      .path{fill:none;stroke:#526660;stroke-width:2.5;marker-end:url(#arrow)}
-      .dash{fill:none;stroke:#9aa9a3;stroke-width:2;stroke-dasharray:7 7}
+      .path{fill:none;stroke:#526660;stroke-width:2.6;marker-end:url(#arrow)}
     </style>
   </defs>
-  <rect width="1200" height="800" fill="#f6f6f0"/>
-  <text x="40" y="49" class="label">哪一个模块变了？</text>
-  <text x="40" y="88" class="mono">BEFORE · ISAAC RULE CONTROLLER</text>
-  <rect x="40" y="105" width="225" height="120" rx="14" class="box"/>
-  <text x="62" y="151" class="text">LiDAR + 深度相机</text><text x="62" y="183" class="small">同一走廊中的障碍观测</text>
-  <path d="M265 165H305" class="path"/>
-  <rect x="310" y="105" width="235" height="120" rx="14" class="box"/>
-  <text x="332" y="151" class="text">地面过滤 + 障碍网格</text><text x="332" y="183" class="small">2.5 cm 地图 / 14 cm 净空</text>
-  <path d="M545 165H585" class="path"/>
-  <rect x="590" y="105" width="255" height="120" rx="14" class="box"/>
-  <text x="612" y="151" class="text">A* + 手写控制规则</text><text x="612" y="183" class="small">直接计算 v 与 w</text>
-  <path d="M845 165H885" class="path"/>
-  <rect x="890" y="105" width="270" height="120" rx="14" class="box"/>
-  <text x="912" y="151" class="text">限速 → 差速车轮</text><text x="912" y="183" class="small">执行 v、w / 接触监测</text>
+  <rect width="1300" height="850" fill="#f6f6f0"/>
+  <text x="40" y="51" class="title">哪一个模块变了？</text>
+  <text x="40" y="91" class="mono">BEFORE · HAND-WRITTEN ISAAC CONTROLLER</text>
 
-  <line x1="40" y1="265" x2="1160" y2="265" stroke="#cad6cc" stroke-width="2"/>
-  <text x="40" y="313" class="mono">AFTER · GAZEBO-TRAINED PPO IN ISAAC SIM</text>
-  <text x="40" y="348" class="small">两路同时运行；每次传感更新后，在右侧选择要执行的 v、w</text>
-  <rect x="40" y="365" width="188" height="113" rx="14" class="box"/>
-  <text x="60" y="410" class="text">Isaac LiDAR</text><text x="60" y="442" class="small">扫描返回</text>
-  <path d="M228 421H263" class="path"/>
-  <rect x="268" y="365" width="208" height="113" rx="14" class="box"/>
-  <text x="288" y="410" class="text">78 维观测适配</text><text x="288" y="442" class="small">距离 / 变化 / 动作 / 目标</text>
-  <path d="M476 421H511" class="path"/>
-  <rect x="516" y="365" width="202" height="113" rx="14" class="ppo"/>
-  <text x="536" y="410" class="text">Gazebo PPO</text><text x="536" y="442" class="small">已训练权重 · 仅推理</text>
-  <path d="M718 421H753" class="path"/>
-  <rect x="758" y="365" width="163" height="113" rx="14" class="ppo"/>
-  <text x="778" y="410" class="text">提议 v、w</text><text x="778" y="442" class="small">新的动作来源</text>
-  <path d="M921 421H971" class="path"/>
-  <rect x="976" y="365" width="184" height="190" rx="14" class="guard"/>
-  <text x="992" y="402" class="text">两项都通过？</text>
-  <text x="992" y="434" class="small">① 净空 ≥ 14 cm</text>
-  <text x="992" y="462" class="small">② 转向差 &lt; 25°</text>
-  <text x="992" y="499" class="small">是 → 用 PPO v、w</text>
-  <text x="992" y="527" class="small">否 → 用 A* v、w</text>
+  <rect x="40" y="108" width="230" height="115" rx="14" class="box"/>
+  <text x="62" y="155" class="text">LiDAR + 深度相机</text><text x="62" y="186" class="small">障碍观测</text>
+  <path d="M270 166H313" class="path"/>
+  <rect x="320" y="108" width="240" height="115" rx="14" class="box"/>
+  <text x="342" y="155" class="text">地面过滤 + 障碍网格</text><text x="342" y="186" class="small">2.5 cm 地图 / 14 cm 净空</text>
+  <path d="M560 166H603" class="path"/>
+  <rect x="610" y="108" width="265" height="115" rx="14" class="box"/>
+  <text x="632" y="155" class="text">A* + 手写控制规则</text><text x="632" y="186" class="small">直接输出 v、w</text>
+  <path d="M875 166H918" class="path"/>
+  <rect x="925" y="108" width="325" height="115" rx="14" class="box"/>
+  <text x="947" y="155" class="text">限速 → 差速车轮</text><text x="947" y="186" class="small">执行速度 / 监测接触</text>
 
-  <text x="40" y="523" class="small">原 Isaac 地图和备用动作继续计算，不是等 PPO 失败后才启动</text>
-  <rect x="40" y="540" width="188" height="113" rx="14" class="box"/>
-  <text x="60" y="586" class="text">LiDAR + 深度</text><text x="60" y="618" class="small">深度看低矮物体</text>
-  <path d="M228 596H263" class="path"/>
-  <rect x="268" y="540" width="208" height="113" rx="14" class="box"/>
-  <text x="288" y="586" class="text">障碍网格</text><text x="288" y="618" class="small">地面过滤 / 14 cm 净空</text>
-  <path d="M476 596H511" class="path"/>
-  <rect x="516" y="540" width="202" height="113" rx="14" class="box"/>
-  <text x="536" y="586" class="text">A* 路线</text><text x="536" y="618" class="small">同时生成备用 v、w</text>
-  <path d="M718 596H753" class="path"/>
-  <rect x="758" y="540" width="163" height="113" rx="14" class="guard"/>
-  <text x="778" y="586" class="text">地图与路线</text><text x="778" y="618" class="small">提供两项检查依据</text>
-  <path d="M921 596H945V515H971" class="path"/>
-  <path d="M1068 555V573" class="path"/>
-  <rect x="976" y="578" width="184" height="75" rx="14" class="box"/>
-  <text x="996" y="611" class="text">限速 → 差速车轮</text><text x="996" y="637" class="small">与上一版相同的执行接口</text>
+  <line x1="40" y1="265" x2="1250" y2="265" stroke="#cbd7cd" stroke-width="2"/>
+  <text x="40" y="305" class="mono">AFTER · GAZEBO-TRAINED PPO IN ISAAC SIM</text>
+  <text x="40" y="333" class="small">两条路径每次都同时计算；上路提议，下路备选，右侧只执行其中一组动作</text>
 
-  <rect x="40" y="699" width="1120" height="64" rx="12" fill="#fff6e3" stroke="#e3c685"/>
-  <text x="61" y="727" class="text">尚未启用：深度 → 虚拟 LiDAR 扫描 → PPO 观测</text>
-  <text x="61" y="751" class="small">目前深度只参与下路的地图和接管判断；书本的深度融合仅做过静态感知试验。</text>
+  <rect x="40" y="350" width="185" height="105" rx="14" class="box"/>
+  <text x="60" y="392" class="text">Isaac LiDAR</text><text x="60" y="424" class="small">扫描返回</text>
+  <path d="M225 402H253" class="path"/>
+  <rect x="260" y="350" width="210" height="105" rx="14" class="box"/>
+  <text x="280" y="392" class="text">78 维观测</text><text x="280" y="424" class="small">距离 / 变化 / 动作 / 目标</text>
+  <path d="M470 402H498" class="path"/>
+  <rect x="505" y="350" width="195" height="105" rx="14" class="ppo"/>
+  <text x="525" y="392" class="text">Gazebo PPO</text><text x="525" y="424" class="small">已训练权重 · 仅推理</text>
+  <path d="M700 402H728" class="path"/>
+  <rect x="735" y="350" width="195" height="105" rx="14" class="ppo"/>
+  <text x="755" y="392" class="text">PPO 提议 v、w</text><text x="755" y="424" class="small">还没有送到车轮</text>
+  <path d="M930 402H968" class="path"/>
+
+  <rect x="40" y="520" width="185" height="105" rx="14" class="box"/>
+  <text x="60" y="562" class="text">LiDAR + 深度</text><text x="60" y="594" class="small">补看低矮障碍</text>
+  <path d="M225 572H253" class="path"/>
+  <rect x="260" y="520" width="210" height="105" rx="14" class="box"/>
+  <text x="280" y="562" class="text">障碍网格</text><text x="280" y="594" class="small">地面过滤 / 14 cm 净空</text>
+  <path d="M470 572H498" class="path"/>
+  <rect x="505" y="520" width="195" height="105" rx="14" class="box"/>
+  <text x="525" y="562" class="text">A* 路线</text><text x="525" y="594" class="small">仍然同时规划</text>
+  <path d="M700 572H728" class="path"/>
+  <rect x="735" y="520" width="195" height="105" rx="14" class="guard"/>
+  <text x="755" y="562" class="text">A* 备用 v、w</text><text x="755" y="594" class="small">也提供地图检查依据</text>
+  <path d="M930 572H968" class="path"/>
+
+  <rect x="975" y="350" width="275" height="275" rx="16" class="guard"/>
+  <text x="998" y="390" class="text">安全选择 · 每次更新</text>
+  <text x="998" y="427" class="small">检查 PPO 提议的动作：</text>
+  <text x="998" y="457" class="small">① 预测净空 ≥ 14 cm</text>
+  <text x="998" y="487" class="small">② 与 A* 转向差 &lt; 25°</text>
+  <line x1="998" y1="509" x2="1226" y2="509" stroke="#9cbdb1"/>
+  <text x="998" y="544" class="small">两项都通过 → PPO v、w</text>
+  <text x="998" y="574" class="small">任一未通过 → A* v、w</text>
+  <text x="998" y="604" class="small">地图无路 / 深度过期 → 停车</text>
+  <path d="M1112 625V654" class="path"/>
+  <rect x="975" y="660" width="275" height="77" rx="14" class="box"/>
+  <text x="998" y="692" class="text">限速 → 差速车轮</text><text x="998" y="719" class="small">唯一执行出口</text>
+
+  <rect x="40" y="769" width="1210" height="60" rx="12" fill="#fff6e3" stroke="#e3c685"/>
+  <text x="61" y="793" class="text">尚未启用：深度 → 虚拟 LiDAR 扫描 → PPO 观测</text>
+  <text x="61" y="818" class="small">目前深度只进入下路地图；书本的深度融合仅做过静态感知试验。</text>
 </svg>
