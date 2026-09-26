@@ -50,14 +50,16 @@
     <section class="isaac-physics"><div class="section-shell">
       <div class="capture-heading"><p class="section-number">02 / THE GUARD</p><h2>把 Isaac 已验证的通行判断放回控制链。</h2></div>
       <p>我提出一个更直接的问题：既然 Isaac 已用深度与 LiDAR 建立 2.5 cm 网格，并用 14 cm 车身包络规划通路，为什么还要让 Gazebo 的固定距离规则决定这条走廊能否转弯？于是保留 PPO 提议的动作，但由 Isaac 地图判断接下来约 0.8 秒的轨迹净空，并检查转向是否与局部 A* 路线相差超过 25°。不符合时，原 Isaac 路线控制器接管。</p>
-      <figure class="isaac-film"><img src="assets/omniverse/policy-transfer/control-architecture.svg" alt="前一版由 LiDAR 和深度相机建图，A 星及手写规则直接产生线速度和角速度；接入 PPO 后，LiDAR 观测交给 Gazebo 训练的 PPO 提议速度，原来的深度地图和 A 星路线保留，用于检查与接管。深度尚未直接输入 PPO。" loading="lazy"><figcaption><p>程序改动的边界：PPO 接手了 <code>v、w</code> 的<strong>提议</strong>，没有取代整套 Isaac 感知与规划。图中下路的深度相机、地图和 A* 仍在运行。</p><a href="assets/omniverse/policy-transfer/control-architecture.svg">放大查看流程图 ↗</a></figcaption></figure>
+      <figure class="isaac-film"><img src="assets/omniverse/policy-transfer/control-architecture.svg" alt="前一版由 LiDAR 和深度相机建图，A 星及手写规则直接产生线速度和角速度；接入 PPO 后，PPO 与 Isaac 地图和 A 星同时计算。只有预测净空至少 14 厘米且与路线转向差小于 25 度时才执行 PPO，否则执行 A 星备用动作。" loading="lazy"><figcaption><p>图中的上下两路<strong>同时运行</strong>，不是先选一路启动。右侧选择框在每次更新时决定这一步执行谁的 <code>v、w</code>。</p><a href="assets/omniverse/policy-transfer/control-architecture.svg">放大查看流程图 ↗</a></figcaption></figure>
+      <div class="note"><p><strong>选择规则：</strong>沿 PPO 提议的动作预测接下来约 0.8 秒，如果车身中心到地图障碍的净空始终不少于 14 cm，<em>而且</em> PPO 的转向与 A* 局部路线方向相差小于 25°，就执行 PPO 的 <code>v、w</code>。只要任一条件不满足，就执行 Isaac 已同时算好的 A* 备用动作。下一次传感更新会重新判断；地图无路或深度数据过期时则停车。</p></div>
+      <p>例如接近椅子时，PPO 仍提议直行，而 A* 路线指向椅子旁的通道；两者转向差若超过 25°，这一帧就由 Isaac 接管。机器人转到通道方向后，下一帧会重新检查，PPO 可以再次取得控制。它不是一次切换后就永久锁定某一路。</p>
       <h3>换掉了哪一块？</h3>
       <p>前一版由 A* 路线和手写转向规则直接算出线速度 <code>v</code> 与角速度 <code>w</code>。这一版先把 Isaac LiDAR 回波整理成 360 个方向的距离，再压成 PPO 需要的 36 个扇区距离、36 个时间变化量，加上上一步动作和目标信息，形成 78 维输入；Gazebo 训练好的 Actor 据此提出 <code>v、w</code>。如果地图净空或路线方向检查不通过，仍执行原 A* 控制动作。场景、机器人、传感器、限速、差速车轮指令与接触监测沿用原测试。</p>
       <h3>深度相机实际在哪条线上？</h3>
       <p>它没有被直接塞进 PPO。控制程序从深度图估计地面，保留高于地面约 1.2 cm、低于 25 cm 的障碍点，并把这些点与 LiDAR 障碍点放进同一张 2.5 cm 网格。这样，水平 LiDAR 看不到的书和鞋也能影响 A* 路线与 14 cm 通行判断；当前后备控制会在深度数据过期时停车。因此深度相机在<strong>下路的建图、安全审核与接管</strong>中发挥作用，而 PPO 上路仍读原来的 LiDAR 观测。</p>
       <p>未来可以把深度障碍点投影到与 LiDAR 相同的方位角，取更近的距离，生成“虚拟扫描”，再计算 36 个扇区及时间变化量，维持 78 维接口。书本的静态试验已验证这类融合能改变测距，但<strong>行驶测试尚未启用</strong>；它也会改变 PPO 所见输入的分布，需要单独验证，不能把本页结果写成“深度已经喂给 PPO”。</p>
       <p>限速与原测试一致：线速度不超过 0.065 m/s，角速度绝对值不超过 0.55 rad/s。第一组通行测试在 66.9 秒到达目标：334 次决策中，<strong>272 次执行了 PPO 动作，62 次由 Isaac 路线接管</strong>，接触力采样为 0。故意完全堵路的第九组在 34.3 秒因无进展停止，也未采样到接触。</p>
-      <p>272/334 = 81.4% 说明 PPO 并非只坐在副驾驶；但“执行过动作”仍不等于“提供了净收益”。而且这 62 次接管全部来自路线方向分歧，短时净空检查单独没有拒绝动作。要回答它是否有用，还得做同场景对照。</p>
+      <p>272/334 = 81.4% 说明 PPO 并非只坐在副驾驶；但“执行过动作”仍不等于“提供了净收益”。这组记录中，62 次接管全部因为 PPO 转向与 A* 路线方向差超过阈值，短时净空检查没有单独拒绝动作。要回答它是否有用，还得做同场景对照。</p>
     </div></section>
 
     <section class="isaac-physics" id="abc"><div class="section-shell">
