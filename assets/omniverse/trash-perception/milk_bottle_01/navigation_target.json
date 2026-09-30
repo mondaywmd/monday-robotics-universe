@@ -1,0 +1,25 @@
+{
+  "goal_world_xy": [
+    -0.2748459006687534,
+    -2.268513939143218
+  ],
+  "detected": {
+    "class": "milk jug",
+    "confidence": 0.506691038608551,
+    "box_xyxy": [
+      446.10296630859375,
+      174.675537109375,
+      538.1728515625,
+      329.14947509765625
+    ],
+    "surface_median_world_xyz": [
+      -0.27287305105850124,
+      -1.9885208894715962,
+      0.11967103769987593
+    ],
+    "valid_depth_pixels": 9685,
+    "navigation_goal_approved": false
+  },
+  "standoff_m": 0.28,
+  "source": "YOLOE predicted mask + RGB-aligned depth; no asset coordinates used"
+}

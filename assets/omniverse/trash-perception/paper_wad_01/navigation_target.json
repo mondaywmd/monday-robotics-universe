@@ -1,0 +1,25 @@
+{
+  "goal_world_xy": [
+    -0.27938231116056933,
+    -2.2451622043531954
+  ],
+  "detected": {
+    "class": "crumpled tissue paper",
+    "confidence": 0.7345515489578247,
+    "box_xyxy": [
+      463.48504638671875,
+      312.1141662597656,
+      497.54547119140625,
+      329.2994689941406
+    ],
+    "surface_median_world_xyz": [
+      -0.2791531853561499,
+      -1.9651622981007724,
+      0.016237405102707547
+    ],
+    "valid_depth_pixels": 423,
+    "navigation_goal_approved": false
+  },
+  "standoff_m": 0.28,
+  "source": "YOLOE predicted mask + RGB-aligned depth; no asset coordinates used"
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "case": "paper_wad_01",
+    "passed": true,
+    "reason": "goal_reached",
+    "duration_s": 4.4333335645496845,
+    "policy_decisions": 19,
+    "route_fallbacks": 1,
+    "max_contact_force_n": 0.0,
+    "annotated_samples": 22,
+    "target_detected_samples": 22,
+    "annotation_mode": "Post-run YOLOE on each recorded RGB frame; navigation goal generated before driving from initial detection + depth."
+  },
+  {
+    "case": "milk_bottle_01",
+    "passed": true,
+    "reason": "goal_reached",
+    "duration_s": 6.233333658427,
+    "policy_decisions": 24,
+    "route_fallbacks": 5,
+    "max_contact_force_n": 0.0,
+    "annotated_samples": 31,
+    "target_detected_samples": 20,
+    "annotation_mode": "Post-run YOLOE on each recorded RGB frame; navigation goal generated before driving from initial detection + depth."
+  },
+  {
+    "case": "water_bottle_01",
+    "passed": true,
+    "reason": "goal_reached",
+    "duration_s": 6.433333668857813,
+    "policy_decisions": 26,
+    "route_fallbacks": 4,
+    "max_contact_force_n": 0.0,
+    "annotated_samples": 32,
+    "target_detected_samples": 26,
+    "annotation_mode": "Post-run YOLOE on each recorded RGB frame; navigation goal generated before driving from initial detection + depth."
+  }
+]

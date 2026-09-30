@@ -1,0 +1,28 @@
+{
+  "model": "yoloe-11s-seg.pt",
+  "prompts": [
+    "milk jug",
+    "plastic water bottle",
+    "crumpled tissue paper"
+  ],
+  "detections": [
+    {
+      "class": "plastic water bottle",
+      "confidence": 0.9185803532600403,
+      "box_xyxy": [
+        459.84686279296875,
+        192.50721740722656,
+        500.3031005859375,
+        327.85693359375
+      ],
+      "surface_median_world_xyz": [
+        -0.27920145894090354,
+        -1.978319175134628,
+        0.11140319146520355
+      ],
+      "valid_depth_pixels": 4562,
+      "navigation_goal_approved": false
+    }
+  ],
+  "note": "Surface coordinates from predicted masks and rendered depth; not object centers or validated navigation goals."
+}

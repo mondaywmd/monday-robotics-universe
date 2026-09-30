@@ -1,0 +1,25 @@
+{
+  "goal_world_xy": [
+    -0.2794203055932144,
+    -2.25831908960987
+  ],
+  "detected": {
+    "class": "plastic water bottle",
+    "confidence": 0.9185803532600403,
+    "box_xyxy": [
+      459.84686279296875,
+      192.50721740722656,
+      500.3031005859375,
+      327.85693359375
+    ],
+    "surface_median_world_xyz": [
+      -0.27920145894090354,
+      -1.978319175134628,
+      0.11140319146520355
+    ],
+    "valid_depth_pixels": 4562,
+    "navigation_goal_approved": false
+  },
+  "standoff_m": 0.28,
+  "source": "YOLOE predicted mask + RGB-aligned depth; no asset coordinates used"
+}
