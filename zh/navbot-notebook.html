@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="NavBot 实验笔记本：空场标定、障碍基线、Residual PPO、训练设置、指标与逐轮设计决策。" name="description"/>
+<meta content="#07110f" name="theme-color"/>
+<title>NavBot 实验笔记本 · Monday’s Robotics Universe</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../styles.css?v=20260930" rel="stylesheet"/>
+<link href="https://mondaywmd.github.io/monday-robotics-universe/zh/navbot-notebook.html" rel="canonical"/><link href="https://mondaywmd.github.io/monday-robotics-universe/navbot-notebook.html" hreflang="en" rel="alternate"/><link href="https://mondaywmd.github.io/monday-robotics-universe/zh/navbot-notebook.html" hreflang="zh-CN" rel="alternate"/><link href="https://mondaywmd.github.io/monday-robotics-universe/navbot-notebook.html" hreflang="x-default" rel="alternate"/><link href="../bilingual.css?v=20260930" rel="stylesheet"/></head>
+<body class="article-page notebook-page" id="top">
+<div aria-hidden="true" class="noise"></div>
+<header class="site-header">
+<a aria-label="阅读 About Monday" class="brand" href="about.html"><img alt="Monday 的头像" class="profile-avatar" height="42" src="../assets/monday-profile.jpg" style="width:42px;height:42px;box-sizing:border-box;object-fit:cover;object-position:72% 38%;padding:3px;border-radius:50%;background:#d8ef8b" width="42"/><span class="brand-text">Monday’s<br/><strong>Robotics Universe</strong></span></a>
+<a class="article-back" href="navbot.html#evidence-notebook">← 返回 NavBot 档案</a>
+<nav aria-label="Language / 语言" class="language-switch"><a data-language="en" href="../navbot-notebook.html" hreflang="en" lang="en">English</a><a aria-current="page" data-language="zh" href="navbot-notebook.html" hreflang="zh-CN" lang="zh-CN">中文</a></nav></header>
+<main>
+<header class="notebook-hero"><div class="section-shell"><p class="eyebrow"><span class="status-dot"></span> NAVBOT · RAW EXPERIMENT NOTEBOOK</p><h1>不是一条漂亮曲线，<br/>而是一连串可以追问的决定。</h1><p>这份详细记录把 Google Sheet 截图、训练 CSV、TensorBoard 事件、评估 JSON 和 WSL 报告放回同一条时间线。每一轮都按“设置 → 结果 → 判断 → 下一步”整理；训练数据、冻结评估与 OOD 考试不会混用。</p></div></header>
+<nav aria-label="实验笔记章节" class="notebook-tabs"><div class="section-shell"><a href="#empty-room">01 空房间</a><a href="#obstacle">02 加障碍物</a><a href="#residual-ppo">03 PPO 迭代</a><a href="#workflow">04 Agent 工作流</a><a href="#training-design">05 网络与指标</a></div></nav>
+<section class="notebook-section section-shell" id="empty-room">
+<div class="notebook-heading reveal"><span>01 / EMPTY ROOM</span><h2>先证明机器人能稳定地走，再讨论它能不能学。</h2><p>最早期直接提高速度，希望缩短训练时间。结果是仿真跑得更快，数据却更差。回到直线、转向和重复到达测试后，速度从约 0.80 m/s 退到 0.30，再冻结在 0.25 m/s。</p></div>
+<div class="decision-strip reveal"><div><b>0.80</b><span>m/s · too fast</span></div><i>→</i><div><b>0.30</b><span>m/s · drift</span></div><i>→</i><div class="chosen"><b>0.25</b><span>m/s · retained</span></div></div>
+<div class="archive-warning reveal"><strong>档案差异</strong><p>Google Sheet 截图保存的是训练中途状态：54 回合、8 次成功、14.8%。当前同名 CSV 则包含 74 回合、6 次成功、8.1%。这说明同名日志后来可能被继续写入或重新运行。两组数字各自保留，不把它们伪装成同一次最终结果。</p></div>
+<div aria-label="早期训练对比" class="run-table reveal" role="table">
+<div class="run-row run-head"><span>Run</span><span>Steps</span><span>Episodes</span><span>Success</span><span>Collision</span><span>Timeout</span></div>
+<div class="run-row"><span>timepenalty_5k · CSV archive</span><span>7,003</span><span>74</span><span>6 · 8.1%</span><span>0</span><span>68</span></div>
+<div class="run-row"><span>speed25_stabletargets_10k</span><span>10,072</span><span>130</span><span>26 · 20.0%</span><span>37</span><span>67</span></div>
+<div class="run-row"><span>headless_fixedtargets_20k</span><span>19,112</span><span>221</span><span>30 · 13.6%</span><span>40</span><span>151</span></div>
+<div class="run-row"><span>turnfirst_aggressive_20k</span><span>20,071</span><span>227</span><span>63 · 27.8%</span><span>0</span><span>164</span></div>
+</div>
+<div class="iteration-note reveal"><strong>读数如何改变设计</strong><p>增加训练预算并没有自动提高成功率：固定目标 20k 反而从 20.0% 降到 13.6%。Turn-first aggressive 把碰撞降为 0，却留下 164 次 timeout。下一步因此不再是“继续跑更多 batch”，而是分离安全、前进效率和到达能力，并重新设计可诊断的障碍任务。</p></div>
+</section>
+<section class="notebook-section notebook-dark" id="obstacle"><div class="section-shell">
+<div class="notebook-heading reveal"><span>02 / FORCED OBSTACLE</span><h2>如果基线偶尔也能绕过去，PPO 的贡献就无法被证明。</h2><p>场景被故意设计成必然失败：机器人、圆柱和目标共线。纯 Goal-Seeking 只知道目标方向，不知道如何绕行。</p></div>
+<div class="geometry-grid reveal"><div><span>ROBOT</span><b>(0, 0)</b></div><div><span>PILLAR</span><b>(1, 0)</b></div><div><span>TARGET</span><b>(2, 0)</b></div><div><span>SAFETY STOP</span><b>LiDAR &lt; 0.20 m</b></div></div>
+<div class="obstacle-proof"><video autoplay="" class="reveal" loop="" muted="" playsinline="" poster="../assets/navbot/videos/02-forced-obstacle-baseline.jpg" preload="auto"><source src="../assets/navbot/videos/02-forced-obstacle-baseline.mp4" type="video/mp4"/></video><div class="proof-copy reveal"><small>4× SPEED · NOT REAL TIME</small><strong>0 / 20 success</strong><p>20/20 碰撞，0 timeout，多数在 12–22 步终止。另一次零 residual 集成测试在第 13 步碰撞，总 return −255.484。失败稳定、位置明确，才适合作为学习任务。</p><p>下一轮不是让 PPO 从零学会导航，而是保留 Direct Goal，只学习小幅速度与转向修正。</p></div></div>
+</div></section>
+<section class="notebook-section section-shell" id="residual-ppo">
+<div class="notebook-heading reveal"><span>03 / RESIDUAL PPO ITERATIONS</span><h2>每次训练都必须解释：结果为什么不好，下一次究竟改什么。</h2><p>下面不是版本号清单，而是连续的因果链。每一轮只在前一轮暴露的问题上增加新的证据或约束。</p></div>
+<div class="reward-note reveal"><a href="../assets/navbot/notebook/reward-logic-original-note.png" target="_blank"><img alt="Google Sheet 中关于 PPO reward 与 penalty 逻辑的原始记录" src="../assets/navbot/notebook/reward-logic-original-note.png"/></a><div><small>ORIGINAL QUESTION · REWARD DESIGN</small><h3>“现在 PPO 得奖励和惩罚逻辑大概是什么？”</h3><code>100 × distance_rate − 1<br/>+ 12 × heading_improvement<br/>+ 0.5 × heading_alignment</code><p>成功到达 +500；碰撞与当时的 150-step timeout 均记 −150。关键盲点是：这个 reward 强烈鼓励接近目标与对准目标，却没有直接奖励“离障碍越来越远”；真正的硬安全仍由 LiDAR 终止规则负责。</p></div></div>
+<div aria-label="PPO 版本逻辑演化" class="logic-table reveal" role="table">
+<div class="logic-row logic-head"><span>阶段</span><span>控制 / Action</span><span>Reward 或数据变化</span><span>为什么改</span><span>结果与新问题</span></div>
+<div class="logic-row"><span>Early direct PPO</span><span>Actor 直接输出线速度与角速度</span><span><code>500×Δdistance</code>；collision −100，success +120</span><span>先让策略学会朝目标走</span><span>信号集中在距离，成功终奖偏弱；高速动作还会放大物理漂移</span></div>
+<div class="logic-row"><span>Reward / motion fix</span><span>线速度缩放、turn-first、近目标减速</span><span><code>100×Δdistance −1 + heading terms</code>；success +500，collision −150</span><span>减少绕圈、鼓励尽快结束并改善车头方向</span><span>直达能力改善，但“对准目标”与“绕开障碍”仍可能冲突</span></div>
+<div class="logic-row"><span>V1 residual</span><span>Direct Goal + bounded Δv / Δω；±0.05 m/s、±0.30 rad/s</span><span>保持基础 reward；zero residual 必须复现 baseline</span><span>不让 PPO 重新学习已经会的目标追踪</span><span>接口正确但 5k 后仍 0/10，修正动作太弱</span></div>
+<div class="logic-row"><span>V2 control gate</span><span>LiDAR &lt;0.80 m 接管；连续 3 扫描 &gt;1.10 m 退出</span><span>Gate 外完全保留 Direct Goal</span><span>只在危险窗口允许 PPO 干预，保护正常路径</span><span>手工 −ω 可成功，证明可解；但路线超过旧 200-step 上限</span></div>
+<div class="logic-row"><span>V3 clearance shaping</span><span>沿用 V2 gate</span><span>Gate 内 heading 奖励缩为 10%；新增 <code>40×clip(Δclearance,±0.10)</code>；collision −300</span><span>障碍附近不应继续被“朝目标对齐”拉回柱子</span><span>策略方向正确但幅度不足，35 步仍碰撞；reward 不能代替动作示范</span></div>
+<div class="logic-row"><span>V4 BC → PPO</span><span>Actor 先模仿 [+1,−1] 专家动作，再微调</span><span>Reward 基本不变；新增 648 个 16D 成功样本</span><span>给策略正确方向与幅度的锚点</span><span>BC 3/3，PPO 24/24 train，固定评估 10/10；但仍需 held-out</span></div>
+<div class="logic-row"><span>V5 curriculum</span><span>仍是 16D residual Actor</span><span>不改 reward，改成柱子 y 的 ±0.03 → ±0.06 m 课程</span><span>用数据分布修复 pillar-right 敏感性</span><span>Held-out 仍 59/60，失败只是转移到 yaw-left</span></div>
+<div class="logic-row"><span>V6 failure modes</span><span>继续使用 V5 Actor 与安全边界</span><span>两类失败场景 50/50 在线生成；永久 OOD 防泄漏</span><span>直接训练真实失败家族，而不是继续调单一 reward</span><span>10,001 steps 后训练 rollout 57.4%；仍必须冻结 acceptance</span></div>
+<div class="logic-row"><span>V7 / V8 / clean start</span><span>严格 mirror 数据；最终升级 78D 时序 LiDAR</span><span>从“输出对称损失”转向“成对成功轨迹 + BC + PPO”</span><span>V7 证明对称输出不等于安全动作</span><span>V8 重做数据闭环；clean-start 公平评估 29/30</span></div>
+</div>
+<div class="iteration-note reveal"><strong>这条演化线最重要的变化</strong><p>早期主要修改 reward，希望一个公式同时解决前进、朝向、安全与效率；后期逐渐把问题拆开：基础控制器负责去目标，LiDAR gate 负责何时介入，residual Actor 负责怎么避障，BC 提供正确动作锚点，curriculum 改训练分布，held-out 与 OOD 单独负责验收。</p></div>
+<div class="experiment-chain">
+<article class="reveal"><span>V1 · CONNECT THE LOOP</span><h3>5k checkpoint：接口通了，行为没学会。</h3><b>0/10 success · 10/10 collision</b><p>确定性评估平均 15.6 步撞柱。动作确实送进 Gazebo，但 residual 幅度与策略结构不足以形成绕行。</p></article>
+<article class="reveal"><span>V2 · CONTROL GATE</span><h3>先证明物理上存在一条可行方向。</h3><b>−ω：214 steps success</b><p>最大正转向仍碰撞；最大负转向能绕行并到达。零 residual 在 30 步碰撞。旧的 200-step 上限也被证明太短。</p></article>
+<article class="reveal"><span>V3 · REWARD SHAPING</span><h3>方向对了，幅度仍然太弱。</h3><b>35-step collision</b><p>平均 residual 约 (−0.219, −0.086)。角速度符号与成功专家一致，但远弱于验证过的 [+1, −1]。继续调 reward 无法替代成功动作锚点。</p></article>
+<article class="reveal"><span>V4 · BEHAVIOR CLONING</span><h3>先教会一次，再让 PPO 微调。</h3><b>648 samples · 1,200 epochs</b><p>3 条专家轨迹全部成功；BC MSE 从 0.9293 降到 0.0000176。随后 5,299 steps、24/24 训练成功，最终固定场景 10/10。</p></article>
+<article class="reveal"><span>V4 HELD-OUT</span><h3>固定场景成功以后，第一次认真测试泛化。</h3><b>59/60 · 98.33%</b><p>六个未训练的小扰动场景中只有 pillar-right 一次早期碰撞。局部泛化很强，但出现轻微左右敏感性。</p></article>
+<article class="reveal"><span>V5 · CURRICULUM</span><h3>10k 柱子横向课程没有提高总可靠性。</h3><b>10,421 steps · 46/50 train success</b><p>Held-out 仍为 59/60，只是唯一失败从 pillar-right 转移到 yaw-left。“修好一个 case”不等于系统能力提高。</p></article>
+<article class="reveal"><span>V5 · ADVERSARIAL OOD</span><h3>更难的考试把漂亮数字拉回现实。</h3><b>43/60 success · 11 collision · 6 timeout</b><p>task 06/07 各有 4 次碰撞，task 02 有 4 次 timeout。小扰动的 98.33% 不能代表更大分布。</p></article>
+<article class="reveal"><span>V6 · FAILURE MODES</span><h3>用失败家族生成训练场景，同时隔离永久考题。</h3><b>10,001 steps · 54 episodes</b><p>seed 61129，两个场景族 50/50 交替；31 success、15 collision、8 timeout。训练 rollout 不能当 acceptance。</p></article>
+<article class="reveal"><span>V7 → V8 → CLEAN START</span><h3>输出更对称仍可能更差，于是再次重构数据。</h3><b>mirror loss 3.20 → 0.19，OOD 却降到 38.33%</b><p>只约束输出对称没有正确动作锚点。随后改为成对成功轨迹、严格 mirror 数据与 78D 时序 LiDAR；最终 clean-start PPO 在公平评估中达到 29/30。</p></article>
+</div>
+</section>
+<section class="notebook-section workflow-detail" id="workflow"><div class="section-shell">
+<div class="notebook-heading reveal"><span>04 / AGENT WORKFLOW</span><h2>效率提升来自职责分工，不是把判断交给 AI。</h2><p>Windows 端负责 high-level plan、spec、结果解释和 next step；WSL Codex Agent 直接修改共享源码并在 Docker 中执行 ROS / Gazebo。</p></div>
+<div class="workflow-loop reveal"><div><span>01</span><b>Human</b><small>定义问题与验收门</small></div><i>→</i><div><span>02</span><b>ChatGPT Work</b><small>整理证据、写 spec</small></div><i>→</i><div><span>03</span><b>WSL Codex</b><small>实现、运行、收集日志</small></div><i>→</i><div><span>04</span><b>Human</b><small>看 Gazebo / TensorBoard，决定继续或推倒</small></div></div>
+<div class="guardrail-grid reveal"><div><strong>不可覆盖基线</strong><p>10/10 Direct Goal baseline 单独保存并校验。</p></div><div><strong>每个实验独立目录</strong><p>checkpoint、CSV、TensorBoard 与评估结果不互相污染。</p></div><div><strong>训练后冻结评估</strong><p>关闭探索、禁止 optimizer update，再测固定、held-out 与 OOD。</p></div><div><strong>失败也必须归档</strong><p>0/10、碰撞轨迹和 timeout 与成功模型同样重要。</p></div></div>
+</div></section>
+<section class="notebook-section section-shell" id="training-design">
+<div class="notebook-heading reveal"><span>05 / NETWORK &amp; METRICS</span><h2>TensorBoard 的作用不是证明“训练在动”，而是判断它在学什么。</h2><p>早期 Actor 使用 16 维输入：LiDAR 摘要、目标相对几何与上一动作。维度选择遵循信息充分性，而不是越多越好；clean-start 路线升级为 78D 时序观察。</p></div>
+<div class="observation-grid reveal"><div><b>LiDAR</b><p>最近障碍与方向摘要</p></div><div><b>Goal</b><p>距离与相对角度</p></div><div><b>Action history</b><p>上一时刻的线/角动作</p></div><div><b>78D upgrade</b><p>36 LiDAR + 36 range-rate + history + goal</p></div></div>
+<div class="network-question reveal">
+<a href="../assets/navbot/notebook/neural-network-16d-question.png" target="_blank"><img alt="Google Sheet 神经网络 tab 中关于 16 维观察空间的学习记录" src="../assets/navbot/notebook/neural-network-16d-question.png"/></a>
+<div><small>NEURAL NETWORK TAB · ORIGINAL QUESTION</small><h3>“为什么神经网络是 16 维？怎么决定需要多少维？”</h3><p>这里的 16 维不是地图坐标，也不是“网络越大越聪明”。它是每个控制时刻交给 Actor 的<strong>传感器摘要</strong>：障碍在哪里、目标相对机器人在哪里，以及上一拍采取了什么动作。具体分量应以当时环境代码中的 observation 构造为准。</p><p>这种相对观察不会要求网络死记一张固定地图，因此比绝对坐标更容易迁移到不同障碍布局。</p></div>
+</div>
+<div class="dimension-questions reveal">
+<article><span>01 · TASK VISIBILITY</span><strong>删掉以后，任务会不会变得不可观察？</strong><p>没有前方 LiDAR，策略无法预判柱子；没有目标相对方向，它只知道避障，却不知道最终往哪里走。</p></article>
+<article><span>02 · REDUNDANCY</span><strong>它是否与已有信息高度重复？</strong><p>相邻激光束几乎相同时，全塞进去只会增加学习难度。早期 16D 用压缩摘要降低样本需求。</p></article>
+<article><span>03 · MEMORY</span><strong>单帧能否解释运动趋势？</strong><p>单帧距离无法区分“正在靠近”与“正在远离”。上一动作补充控制连续性；后期 78D 又加入 range-rate，让变化方向可见。</p></article>
+<article><span>04 · GENERALIZATION</span><strong>特征是在描述关系，还是背诵场景？</strong><p>相对目标、局部 LiDAR 和变化率描述的是可迁移关系；绝对位置更容易把策略绑定在训练地图上。</p></article>
+</div>
+<div class="network-evolution reveal"><div><span>EARLY · 16D</span><b>少量、压缩、够用</b><p>障碍摘要 + 目标相对几何 + 动作历史。网络更容易训练，但压缩也可能丢掉几何细节和时间趋势。</p></div><i>→</i><div><span>CLEAN START · 78D</span><b>空间结构 + 时间变化</b><p>36 路 LiDAR、36 路距离变化率，再加动作历史与目标信息。升级不是为了“更大”，而是因为失败分析证明策略需要看见更完整的局部形状与运动趋势。</p></div></div>
+<div class="iteration-note reveal"><strong>这次学习形成的原则</strong><p>观察维度应该从任务最低信息需求出发：先确保可观察，再删除重复项；只有当失败证据显示信息不足时才增加维度。16D 与 78D 不是优劣排名，而是两个阶段对“策略究竟需要知道什么”的不同答案。</p></div>
+<div class="metric-figures"><figure class="reveal"><img alt="Actor 参数更新量对比图" src="../assets/navbot/notebook/actor-update-deltas.png"/><figcaption><strong>Actor update deltas</strong><p>大幅初始变化后逐渐围绕零波动。仅凭“变小”不能判断策略更好，必须与行为评估同时阅读。</p></figcaption></figure><figure class="reveal"><img alt="Critic 参数更新量对比图" src="../assets/navbot/notebook/critic-update-deltas.png"/><figcaption><strong>Critic update deltas</strong><p>Critic 更新迅速进入小幅波动，但 V1 仍可能 0/10。优化稳定不等于任务成功。</p></figcaption></figure></div>
+<div class="training-settings reveal"><div><span>EARLY PPO</span><b>γ 0.99 · clip 0.2 · lr 3e−4</b><p>200 timesteps/batch，50 updates/iteration，100-step episode。</p></div><div><span>TURN-FIRST</span><b>lr 2e−4 · 400/batch · 10 updates</b><p>碰撞归零但 timeout 增多，显示安全和完成任务是不同指标。</p></div><div><span>SYMMETRY STAGE</span><b>600/batch · 150-step episode</b><p>增加 episode 长度并要求完整回合，但仍需检查日志是否真的跑满预算。</p></div><div><span>WHAT TO WATCH</span><b>success · collision · timeout · KL</b><p>同时记录 episode length、return、critic loss、explained variance 与 checkpoint。</p></div></div>
+<div class="question-heading reveal"><small>QUESTIONS FROM THE ORIGINAL LOG</small><h3>真正推动项目向前的，往往不是答案，而是你及时问出的那个问题。</h3><p>下面保留 Google Sheet 中的原始截图。点击图片可以查看完整尺寸；旁边的文字说明这张截图怎样改变了实验判断。</p></div>
+<div class="source-screenshot-grid">
+<figure class="reveal"><a href="../assets/navbot/notebook/hybrid-smoke-timeouts.png" target="_blank"><img alt="Hybrid PPO smoke test 三个回合全部 timeout 的原始记录" src="../assets/navbot/notebook/hybrid-smoke-timeouts.png"/></a><figcaption><span>HYBRID SMOKE · 400 STEPS</span><strong>网络已经接通，不代表策略已经有效。</strong><p>16D state、2D action；Actor 52,466 参数、Critic 52,433，总计 104,899。400-step smoke test 的前三回合全部 timeout。这个阶段验证的是训练链路、checkpoint 和 TensorBoard 输出，而不是性能。</p></figcaption></figure>
+<figure class="reveal"><a href="../assets/navbot/notebook/hybrid-fast-mask-result.png" target="_blank"><img alt="Hybrid fast-mask smoke test 的训练汇总" src="../assets/navbot/notebook/hybrid-fast-mask-result.png"/></a><figcaption><span>FAST MASK · 699 TIMESTEPS</span><strong>2 次成功并不能掩盖 3 次 timeout。</strong><p>6 个回合中 2 success、1 collision、3 timeout；success 33.3%，collision 16.7%，timeout 50%。Actor residual 只在 101/699 步激活，说明 hybrid PPO 只在小部分 edge-case 时间窗真正介入。</p></figcaption></figure>
+<figure class="reveal"><a href="../assets/navbot/notebook/formal-20k-question.png" target="_blank"><img alt="正式 20k 训练与 66.7% 目标的原始讨论" src="../assets/navbot/notebook/formal-20k-question.png"/></a><figcaption><span>BEFORE THE 20K RUN</span><strong>“目标就是超过 66.7% 吗？”</strong><p>这个提问迫使实验先定义公平比较：相同随机场景、相同 target 生成规则、相同超时与碰撞标准。没有统一协议，20k 只会产生更多不可比较的数据。</p></figcaption></figure>
+<figure class="reveal"><a href="../assets/navbot/notebook/evaluation-reflection.png" target="_blank"><img alt="关于 66.7% 小样本和 paired comparison 的思考" src="../assets/navbot/notebook/evaluation-reflection.png"/></a><figcaption><span>THE EVALUATION BLIND SPOT</span><strong>66.7% 只是 3 次测试里的 2 次成功。</strong><p>样本太小，不能称为稳定 baseline。于是评估被拆成两层：20–50 个常规随机场景看总体表现；专门的困难场景看 PPO 是否真的修正 edge case。纯 LiDAR 与 hybrid PPO 必须跑同一组初始条件。</p></figcaption></figure>
+</div>
+<div class="beginner-lessons reveal"><strong>给刚开始做 Robot RL 的人</strong><ul><li>Smoke test 的目标是验证管线，不是宣布模型成功。</li><li>成功率必须同时写出分母；2/3 和 40/60 都是 66.7%，证据强度完全不同。</li><li>Hybrid policy 可能只介入少数步骤，所以总体成功率变化很小并不代表它没有价值。</li><li>公平比较需要 paired scenes：同一个机器人起点、柱子和目标，再比较 baseline 与 PPO。</li><li>把 collision、timeout、路径长度和安全净空分开看，避免用单一 reward 掩盖失败机制。</li></ul></div>
+<div class="iteration-note reveal"><strong>最终原则</strong><p>训练曲线回答“优化器发生了什么”；冻结 Gazebo 评估回答“机器人会做什么”；永久 OOD 回答“它在没见过的环境里还能做什么”。三个问题必须分开。</p></div>
+</section>
+<section class="notebook-closing"><div class="section-shell reveal"><p class="section-number">SOURCE DISCIPLINE</p><h2>这里记录的是证据边界，而不是英雄叙事。</h2><p>来源包括 Google Sheet 五个过程 tab、项目 CSV、TensorBoard event、评估 JSON、checkpoint 报告和 WSL 状态文档。页面明确标注截图快照与当前存档不一致之处；没有证据的推断不会写成结论。</p><a class="button button-primary" href="navbot.html#evidence-notebook">返回 NavBot 主档案</a></div></section>
+</main>
+<footer><div class="section-shell footer-grid"><div><img alt="Monday 的头像" class="profile-avatar" height="42" src="../assets/monday-profile.jpg" style="width:42px;height:42px;box-sizing:border-box;object-fit:cover;object-position:72% 38%;padding:3px;border-radius:50%;background:#d8ef8b" width="42"/><p>Monday’s Robotics Universe</p></div><p>Building digital worlds where robots learn.</p><div class="footer-links"><a href="navbot.html">NavBot 档案</a><a href="#top">回到顶部 ↑</a></div></div></footer>
+<script src="../script.js"></script>
+<script defer="" src="../language.js?v=20260930"></script></body>
+</html>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 850" role="img" aria-labelledby="title desc">
+  <title id="title">NavBot control before and after Gazebo PPO transfer</title>
+  <desc id="desc">Parallel PPO and A* branches enter a selector. PPO runs only if clearance and direction checks pass. Otherwise A* controls the wheels. Depth feeds the map, not PPO directly.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#526660" /></marker>
+    <style>
+      .title{font:700 26px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#10211d}
+      .text{font:600 17px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#10211d}
+      .small{font:14px "Noto Sans SC","Microsoft YaHei",sans-serif;fill:#53645f}
+      .mono{font:600 15px "DM Mono",monospace;fill:#53645f}
+      .box{fill:#fff;stroke:#a5b8ae;stroke-width:2}
+      .ppo{fill:#e5f1db;stroke:#64895f;stroke-width:2}
+      .guard{fill:#e6f1ee;stroke:#35836f;stroke-width:2}
+      .path{fill:none;stroke:#526660;stroke-width:2.6;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1300" height="850" fill="#f6f6f0" />
+  <text x="40" y="51" class="title">Which module changed?</text>
+  <text x="40" y="91" class="mono">BEFORE · HAND-WRITTEN ISAAC CONTROLLER</text>
+
+  <rect x="40" y="108" width="230" height="115" rx="14" class="box" />
+  <text x="62" y="155" class="text">LiDAR + depth</text><text x="62" y="186" class="small">Obstacle observations</text>
+  <path d="M270 166H313" class="path" />
+  <rect x="320" y="108" width="240" height="115" rx="14" class="box" />
+  <text x="342" y="155" class="text">Floor filter + grid</text><text x="342" y="186" class="small">2.5 cm grid / 14 cm clearance</text>
+  <path d="M560 166H603" class="path" />
+  <rect x="610" y="108" width="265" height="115" rx="14" class="box" />
+  <text x="632" y="155" class="text">A* + control rules</text><text x="632" y="186" class="small">Direct v, w output</text>
+  <path d="M875 166H918" class="path" />
+  <rect x="925" y="108" width="325" height="115" rx="14" class="box" />
+  <text x="947" y="155" class="text">Speed limit → wheels</text><text x="947" y="186" class="small">Execute / monitor contact</text>
+
+  <line x1="40" y1="265" x2="1250" y2="265" stroke="#cbd7cd" stroke-width="2" />
+  <text x="40" y="305" class="mono">AFTER · GAZEBO-TRAINED PPO IN ISAAC SIM</text>
+  <text x="40" y="333" class="small">Both branches run at each update. Propose above, plan below; execute only the selected action.</text>
+
+  <rect x="40" y="350" width="185" height="105" rx="14" class="box" />
+  <text x="60" y="392" class="text">Isaac LiDAR</text><text x="60" y="424" class="small">Scan returns</text>
+  <path d="M225 402H253" class="path" />
+  <rect x="260" y="350" width="210" height="105" rx="14" class="box" />
+  <text x="280" y="392" class="text">78D observation</text><text x="280" y="424" class="small">Ranges / rates / action / goal</text>
+  <path d="M470 402H498" class="path" />
+  <rect x="505" y="350" width="195" height="105" rx="14" class="ppo" />
+  <text x="525" y="392" class="text">Gazebo PPO</text><text x="525" y="424" class="small">Inference only</text>
+  <path d="M700 402H728" class="path" />
+  <rect x="735" y="350" width="195" height="105" rx="14" class="ppo" />
+  <text x="755" y="392" class="text">PPO proposal v, w</text><text x="755" y="424" class="small">Not yet sent to wheels</text>
+  <path d="M930 402H968" class="path" />
+
+  <rect x="40" y="520" width="185" height="105" rx="14" class="box" />
+  <text x="60" y="562" class="text">LiDAR + depth</text><text x="60" y="594" class="small">Detect low obstacles</text>
+  <path d="M225 572H253" class="path" />
+  <rect x="260" y="520" width="210" height="105" rx="14" class="box" />
+  <text x="280" y="562" class="text">Obstacle grid</text><text x="280" y="594" class="small">14 cm center clearance</text>
+  <path d="M470 572H498" class="path" />
+  <rect x="505" y="520" width="195" height="105" rx="14" class="box" />
+  <text x="525" y="562" class="text">A* route</text><text x="525" y="594" class="small">Plan in parallel</text>
+  <path d="M700 572H728" class="path" />
+  <rect x="735" y="520" width="195" height="105" rx="14" class="guard" />
+  <text x="755" y="562" class="text">A* fallback v, w</text><text x="755" y="594" class="small">Map evidence for checks</text>
+  <path d="M930 572H968" class="path" />
+
+  <rect x="975" y="350" width="275" height="275" rx="16" class="guard" />
+  <text x="998" y="390" class="text">Select each update</text>
+  <text x="998" y="427" class="small">Check the PPO proposal:</text>
+  <text x="998" y="457" class="small">1. Center clearance ≥ 14 cm</text>
+  <text x="998" y="487" class="small">2. A* direction error &lt; 25°</text>
+  <line x1="998" y1="509" x2="1226" y2="509" stroke="#9cbdb1" />
+  <text x="998" y="544" class="small">Both pass → PPO v, w</text>
+  <text x="998" y="574" class="small">Either fails → A* v, w</text>
+  <text x="998" y="604" class="small">No route / stale depth → stop</text>
+  <path d="M1112 625V654" class="path" />
+  <rect x="975" y="660" width="275" height="77" rx="14" class="box" />
+  <text x="998" y="692" class="text">Speed limit → wheels</text><text x="998" y="719" class="small">Only execution output</text>
+
+  <rect x="40" y="769" width="1210" height="60" rx="12" fill="#fff6e3" stroke="#e3c685" />
+  <text x="61" y="793" class="text">Not enabled: depth → virtual LiDAR → PPO observations</text>
+  <text x="61" y="818" class="small">Depth currently enters the lower map branch only. Book fusion was a static perception test.</text>
+</svg>
