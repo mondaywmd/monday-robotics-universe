@@ -1,0 +1,420 @@
+{
+  "reason": "patrol_waypoint_unreachable",
+  "duration_s": 173.63334238901734,
+  "max_contact_force_n": 0.0,
+  "mission_events": [
+    {
+      "event": "trash_confirmed",
+      "time_s": 1.6333334185183048,
+      "target_id": 1,
+      "position": [
+        -0.5733806641134062,
+        -1.8862072606011437
+      ]
+    },
+    {
+      "event": "patrol_interrupted",
+      "time_s": 1.6333334185183048,
+      "target_id": 1,
+      "resume_waypoint": 0
+    },
+    {
+      "event": "arrived_at_selected_parking",
+      "time_s": 7.833333741873503
+    },
+    {
+      "event": "collection_requested",
+      "request_id": "collect-1",
+      "target_id": 1,
+      "target_xy": [
+        -0.5733806641134062,
+        -1.8862072606011437
+      ],
+      "arrival_visual_confirmed": false,
+      "time_s": 8.233333762735128
+    },
+    {
+      "event": "collection_result",
+      "time_s": 8.900000464171171,
+      "success": true,
+      "mode": "mock",
+      "request_id": "collect-1",
+      "removed_prim": "/World/Trash/milk_bottle_01",
+      "reason": "simulated_collection_acknowledged"
+    },
+    {
+      "event": "target_finished",
+      "time_s": 8.900000464171171,
+      "target_id": 1,
+      "status": "collected_mock"
+    },
+    {
+      "event": "patrol_resumed",
+      "time_s": 8.900000464171171,
+      "waypoint": 0
+    },
+    {
+      "event": "waypoint_reached",
+      "time_s": 18.966667655855417,
+      "waypoint": 0,
+      "position": [
+        -0.25,
+        -0.7
+      ]
+    },
+    {
+      "event": "trash_confirmed",
+      "time_s": 25.666668005287647,
+      "target_id": 2,
+      "position": [
+        -0.3432561616162118,
+        3.277861904822792
+      ]
+    },
+    {
+      "event": "patrol_interrupted",
+      "time_s": 25.666668005287647,
+      "target_id": 2,
+      "resume_waypoint": 1
+    },
+    {
+      "event": "trash_confirmed",
+      "time_s": 30.23333491012454,
+      "target_id": 4,
+      "position": [
+        -0.5147571445222506,
+        1.937253502488935
+      ]
+    },
+    {
+      "event": "trash_confirmed",
+      "time_s": 34.500001799315214,
+      "target_id": 5,
+      "position": [
+        -0.5412638024992893,
+        2.83766351660498
+      ]
+    },
+    {
+      "event": "arrived_at_selected_parking",
+      "time_s": 41.43333549425006
+    },
+    {
+      "event": "collection_requested",
+      "request_id": "collect-2",
+      "target_id": 2,
+      "target_xy": [
+        -0.3432561616162118,
+        3.277861904822792
+      ],
+      "arrival_visual_confirmed": false,
+      "time_s": 41.833335515111685
+    },
+    {
+      "event": "collection_result",
+      "time_s": 42.50000221654773,
+      "success": true,
+      "mode": "mock",
+      "request_id": "collect-2",
+      "removed_prim": "/World/Trash/milk_bottle_03",
+      "reason": "simulated_collection_acknowledged"
+    },
+    {
+      "event": "target_finished",
+      "time_s": 42.50000221654773,
+      "target_id": 2,
+      "status": "collected_mock"
+    },
+    {
+      "event": "patrol_resumed",
+      "time_s": 42.50000221654773,
+      "waypoint": 1
+    },
+    {
+      "event": "patrol_interrupted",
+      "time_s": 42.53333555161953,
+      "target_id": 5,
+      "resume_waypoint": 1
+    },
+    {
+      "event": "arrived_at_selected_parking",
+      "time_s": 42.600002221763134
+    },
+    {
+      "event": "collection_requested",
+      "request_id": "collect-5",
+      "target_id": 5,
+      "target_xy": [
+        -0.5412638024992893,
+        2.83766351660498
+      ],
+      "arrival_visual_confirmed": false,
+      "time_s": 43.00000224262476
+    },
+    {
+      "event": "collection_result",
+      "time_s": 43.6666689440608,
+      "success": true,
+      "mode": "mock",
+      "request_id": "collect-5",
+      "removed_prim": "/World/Trash/paper_wad_02",
+      "reason": "simulated_collection_acknowledged"
+    },
+    {
+      "event": "target_finished",
+      "time_s": 43.6666689440608,
+      "target_id": 5,
+      "status": "collected_mock"
+    },
+    {
+      "event": "patrol_resumed",
+      "time_s": 43.6666689440608,
+      "waypoint": 1
+    },
+    {
+      "event": "patrol_interrupted",
+      "time_s": 43.700002279132605,
+      "target_id": 4,
+      "resume_waypoint": 1
+    },
+    {
+      "event": "trash_confirmed",
+      "time_s": 45.06666901707649,
+      "target_id": 6,
+      "position": [
+        -2.271731981548787,
+        3.689774849334206
+      ]
+    },
+    {
+      "event": "trash_confirmed",
+      "time_s": 45.76666905358434,
+      "target_id": 3,
+      "position": [
+        -1.1519503425448818,
+        3.081854070191523
+      ]
+    },
+    {
+      "event": "arrived_at_selected_parking",
+      "time_s": 55.63333623483777
+    },
+    {
+      "event": "collection_requested",
+      "request_id": "collect-4",
+      "target_id": 4,
+      "target_xy": [
+        -0.5147571445222506,
+        1.937253502488935
+      ],
+      "arrival_visual_confirmed": false,
+      "time_s": 56.033336255699396
+    },
+    {
+      "event": "collection_result",
+      "time_s": 56.70000295713544,
+      "success": true,
+      "mode": "mock",
+      "request_id": "collect-4",
+      "removed_prim": "/World/Trash/paper_wad_01",
+      "reason": "simulated_collection_acknowledged"
+    },
+    {
+      "event": "target_finished",
+      "time_s": 56.70000295713544,
+      "target_id": 4,
+      "status": "collected_mock"
+    },
+    {
+      "event": "patrol_resumed",
+      "time_s": 56.70000295713544,
+      "waypoint": 1
+    },
+    {
+      "event": "patrol_interrupted",
+      "time_s": 56.73333629220724,
+      "target_id": 3,
+      "resume_waypoint": 1
+    },
+    {
+      "event": "arrived_at_selected_parking",
+      "time_s": 67.83333687111735
+    },
+    {
+      "event": "collection_requested",
+      "request_id": "collect-3",
+      "target_id": 3,
+      "target_xy": [
+        -1.1519503425448818,
+        3.081854070191523
+      ],
+      "arrival_visual_confirmed": false,
+      "time_s": 68.23333689197898
+    },
+    {
+      "event": "collection_result",
+      "time_s": 68.90000359341502,
+      "success": true,
+      "mode": "mock",
+      "request_id": "collect-3",
+      "removed_prim": "/World/Trash/water_bottle_01",
+      "reason": "simulated_collection_acknowledged"
+    },
+    {
+      "event": "target_finished",
+      "time_s": 68.90000359341502,
+      "target_id": 3,
+      "status": "collected_mock"
+    },
+    {
+      "event": "patrol_resumed",
+      "time_s": 68.90000359341502,
+      "waypoint": 1
+    },
+    {
+      "event": "patrol_interrupted",
+      "time_s": 68.93333692848682,
+      "target_id": 6,
+      "resume_waypoint": 1
+    },
+    {
+      "event": "arrived_at_selected_parking",
+      "time_s": 80.23333751782775
+    },
+    {
+      "event": "collection_requested",
+      "request_id": "collect-6",
+      "target_id": 6,
+      "target_xy": [
+        -2.271731981548787,
+        3.689774849334206
+      ],
+      "arrival_visual_confirmed": false,
+      "time_s": 80.63333753868937
+    },
+    {
+      "event": "collection_result",
+      "time_s": 81.30000424012542,
+      "success": true,
+      "mode": "mock",
+      "request_id": "collect-6",
+      "removed_prim": "/World/Trash/water_bottle_02",
+      "reason": "simulated_collection_acknowledged"
+    },
+    {
+      "event": "target_finished",
+      "time_s": 81.30000424012542,
+      "target_id": 6,
+      "status": "collected_mock"
+    },
+    {
+      "event": "patrol_resumed",
+      "time_s": 81.30000424012542,
+      "waypoint": 1
+    },
+    {
+      "event": "trash_confirmed",
+      "time_s": 84.53333774209023,
+      "target_id": 7,
+      "position": [
+        -3.272411534151281,
+        2.821368325097007
+      ]
+    },
+    {
+      "event": "patrol_interrupted",
+      "time_s": 84.53333774209023,
+      "target_id": 7,
+      "resume_waypoint": 1
+    },
+    {
+      "event": "trash_confirmed",
+      "time_s": 89.33333799242973,
+      "target_id": 8,
+      "position": [
+        -3.138869909970135,
+        3.6466689230852203
+      ]
+    },
+    {
+      "event": "arrived_at_selected_parking",
+      "time_s": 105.63333884254098
+    },
+    {
+      "event": "collection_requested",
+      "request_id": "collect-7",
+      "target_id": 7,
+      "target_xy": [
+        -3.272411534151281,
+        2.821368325097007
+      ],
+      "arrival_visual_confirmed": false,
+      "time_s": 106.0333388634026
+    },
+    {
+      "event": "collection_result",
+      "time_s": 106.70000556483865,
+      "success": true,
+      "mode": "mock",
+      "request_id": "collect-7",
+      "removed_prim": "/World/Trash/milk_bottle_02",
+      "reason": "simulated_collection_acknowledged"
+    },
+    {
+      "event": "target_finished",
+      "time_s": 106.70000556483865,
+      "target_id": 7,
+      "status": "collected_mock"
+    },
+    {
+      "event": "patrol_resumed",
+      "time_s": 106.70000556483865,
+      "waypoint": 1
+    },
+    {
+      "event": "patrol_interrupted",
+      "time_s": 106.73333889991045,
+      "target_id": 8,
+      "resume_waypoint": 1
+    },
+    {
+      "event": "arrived_at_selected_parking",
+      "time_s": 119.03333954140544
+    },
+    {
+      "event": "collection_requested",
+      "request_id": "collect-8",
+      "target_id": 8,
+      "target_xy": [
+        -3.138869909970135,
+        3.6466689230852203
+      ],
+      "arrival_visual_confirmed": false,
+      "time_s": 119.43333956226707
+    },
+    {
+      "event": "collection_result",
+      "time_s": 120.10000626370311,
+      "success": true,
+      "mode": "mock",
+      "request_id": "collect-8",
+      "removed_prim": "/World/Trash/paper_wad_03",
+      "reason": "simulated_collection_acknowledged"
+    },
+    {
+      "event": "target_finished",
+      "time_s": 120.10000626370311,
+      "target_id": 8,
+      "status": "collected_mock"
+    },
+    {
+      "event": "patrol_resumed",
+      "time_s": 120.10000626370311,
+      "waypoint": 1
+    }
+  ],
+  "patrol_waypoints_completed": 1,
+  "mock_collected": 8,
+  "placed_litter": 8,
+  "last_collection_s": 120.10000626370311
+}

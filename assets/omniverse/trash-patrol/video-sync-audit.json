@@ -1,0 +1,10 @@
+{
+  "run": "20261001-114404-patrol-dual-01-paper_wad_01",
+  "paired_samples": 417,
+  "timestamp_mismatch_count": 0,
+  "render_fps": 20,
+  "output_frames": 2974,
+  "output_duration_s": 148.7,
+  "end_card_s": 3,
+  "notes": "Same source snapshots for both views. Actual online detector outputs. Frames held to simulation timestamps; physics capture pauses omitted. Not hardware real-time footage."
+}
