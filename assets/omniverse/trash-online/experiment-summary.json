@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-01",
+  "detector": "YOLOE-11s-seg",
+  "threshold": 0.4,
+  "training": "No fine-tuning",
+  "prompts": [
+    "milk bottle with handle",
+    "plastic water bottle",
+    "crumpled tissue paper"
+  ],
+  "additional_prompt_tested": "plastic bottle lying on its side",
+  "selected": "Original prompts plus 0/-90/+90 degree inference",
+  "offline": {
+    "baseline": {
+      "positive_water_detections": 7,
+      "positive_total": 20,
+      "negative_frames_with_detection": 0,
+      "negative_total": 6,
+      "median_inference_s": 0.25296755001181737
+    },
+    "side_prompt": {
+      "positive_water_detections": 12,
+      "positive_total": 20,
+      "negative_frames_with_detection": 1,
+      "negative_total": 6,
+      "median_inference_s": 0.24889295001048595
+    },
+    "rotation": {
+      "positive_water_detections": 20,
+      "positive_total": 20,
+      "negative_frames_with_detection": 0,
+      "negative_total": 6,
+      "median_inference_s": 0.6064127000281587
+    },
+    "side_rotation": {
+      "positive_water_detections": 20,
+      "positive_total": 20,
+      "negative_frames_with_detection": 1,
+      "negative_total": 6,
+      "median_inference_s": 0.6044276499887928
+    }
+  },
+  "online": [
+    {
+      "layout_id": "05",
+      "reason": "goal_reached",
+      "passed": true,
+      "arrival_time_s": 10.800000563263893,
+      "arrival_visual_confirmed": true,
+      "duration_s": 13.800000719726086,
+      "max_contact_force_n": 0.0,
+      "policy_decisions": 20,
+      "route_fallbacks": 0,
+      "terminal_decisions": 20,
+      "vision_result_max_age_s": 1.2
+    },
+    {
+      "layout_id": "08",
+      "reason": "goal_reached",
+      "passed": true,
+      "arrival_time_s": 8.000000417232513,
+      "arrival_visual_confirmed": true,
+      "duration_s": 9.000000469386578,
+      "max_contact_force_n": 0.0,
+      "policy_decisions": 17,
+      "route_fallbacks": 1,
+      "terminal_decisions": 9,
+      "vision_result_max_age_s": 1.2
+    },
+    {
+      "layout_id": "09",
+      "reason": "goal_reached",
+      "passed": true,
+      "arrival_time_s": 8.600000448524952,
+      "arrival_visual_confirmed": true,
+      "duration_s": 9.600000500679016,
+      "max_contact_force_n": 0.0,
+      "policy_decisions": 17,
+      "route_fallbacks": 1,
+      "terminal_decisions": 12,
+      "vision_result_max_age_s": 1.2
+    },
+    {
+      "layout_id": "10",
+      "reason": "no_reachable_parking",
+      "passed": false,
+      "arrival_time_s": null,
+      "arrival_visual_confirmed": false,
+      "duration_s": 5.233333606272936,
+      "max_contact_force_n": 0.0,
+      "policy_decisions": 9,
+      "route_fallbacks": 4,
+      "terminal_decisions": 0,
+      "vision_result_max_age_s": 1.2
+    }
+  ]
+}

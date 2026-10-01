@@ -1,0 +1,30 @@
+<!doctype html><meta charset="utf-8"><title>YOLOE prompt comparison</title><style>body{font:17px/1.6 system-ui;max-width:1280px;margin:25px auto;padding:20px;background:#f5f4ed}img{max-width:100%}pre{white-space:pre-wrap}</style><h1>YOLOE Zero-Shot Baseline: prompt and rotation comparison</h1><p>Fresh 20 positive views and 6 all-trash-hidden book/shoe negatives. Same asset and room. Top: baseline / added lying-bottle prompt. Bottom: rotations / added prompt plus rotations. All classes count as trash; no fine-tuning. Boxes use actual model outputs. Object bounds are used only for offline association, which can be affected by depth error.</p><pre>{
+  &quot;baseline&quot;: {
+    &quot;positive_water_detections&quot;: 7,
+    &quot;positive_total&quot;: 20,
+    &quot;negative_frames_with_detection&quot;: 0,
+    &quot;negative_total&quot;: 6,
+    &quot;median_inference_s&quot;: 0.25296755001181737
+  },
+  &quot;side_prompt&quot;: {
+    &quot;positive_water_detections&quot;: 12,
+    &quot;positive_total&quot;: 20,
+    &quot;negative_frames_with_detection&quot;: 1,
+    &quot;negative_total&quot;: 6,
+    &quot;median_inference_s&quot;: 0.24889295001048595
+  },
+  &quot;rotation&quot;: {
+    &quot;positive_water_detections&quot;: 20,
+    &quot;positive_total&quot;: 20,
+    &quot;negative_frames_with_detection&quot;: 0,
+    &quot;negative_total&quot;: 6,
+    &quot;median_inference_s&quot;: 0.6064127000281587
+  },
+  &quot;side_rotation&quot;: {
+    &quot;positive_water_detections&quot;: 20,
+    &quot;positive_total&quot;: 20,
+    &quot;negative_frames_with_detection&quot;: 1,
+    &quot;negative_total&quot;: 6,
+    &quot;median_inference_s&quot;: 0.6044276499887928
+  }
+}</pre><h2>000 · yaw -145 · 0.4 m · negative False</h2><img src="000-comparison.jpg"><h2>001 · yaw -145 · 0.6 m · negative False</h2><img src="001-comparison.jpg"><h2>002 · yaw -145 · 0.85 m · negative False</h2><img src="002-comparison.jpg"><h2>003 · yaw -145 · 1.1 m · negative False</h2><img src="003-comparison.jpg"><h2>004 · yaw -85 · 0.4 m · negative False</h2><img src="004-comparison.jpg"><h2>005 · yaw -85 · 0.6 m · negative False</h2><img src="005-comparison.jpg"><h2>006 · yaw -85 · 0.85 m · negative False</h2><img src="006-comparison.jpg"><h2>007 · yaw -85 · 1.1 m · negative False</h2><img src="007-comparison.jpg"><h2>008 · yaw -20 · 0.4 m · negative False</h2><img src="008-comparison.jpg"><h2>009 · yaw -20 · 0.6 m · negative False</h2><img src="009-comparison.jpg"><h2>010 · yaw -20 · 0.85 m · negative False</h2><img src="010-comparison.jpg"><h2>011 · yaw -20 · 1.1 m · negative False</h2><img src="011-comparison.jpg"><h2>012 · yaw 40 · 0.4 m · negative False</h2><img src="012-comparison.jpg"><h2>013 · yaw 40 · 0.6 m · negative False</h2><img src="013-comparison.jpg"><h2>014 · yaw 40 · 0.85 m · negative False</h2><img src="014-comparison.jpg"><h2>015 · yaw 40 · 1.1 m · negative False</h2><img src="015-comparison.jpg"><h2>016 · yaw 100 · 0.4 m · negative False</h2><img src="016-comparison.jpg"><h2>017 · yaw 100 · 0.6 m · negative False</h2><img src="017-comparison.jpg"><h2>018 · yaw 100 · 0.85 m · negative False</h2><img src="018-comparison.jpg"><h2>019 · yaw 100 · 1.1 m · negative False</h2><img src="019-comparison.jpg"><h2>020 · yaw 0 · 0.35 m · negative True</h2><img src="020-comparison.jpg"><h2>021 · yaw 0 · 0.55 m · negative True</h2><img src="021-comparison.jpg"><h2>022 · yaw 0 · 0.8 m · negative True</h2><img src="022-comparison.jpg"><h2>023 · yaw 0 · 1.05 m · negative True</h2><img src="023-comparison.jpg"><h2>024 · yaw 0 · 1.25 m · negative True</h2><img src="024-comparison.jpg"><h2>025 · yaw 0 · 1.45 m · negative True</h2><img src="025-comparison.jpg">

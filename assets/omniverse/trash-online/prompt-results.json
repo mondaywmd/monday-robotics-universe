@@ -1,0 +1,2703 @@
+{
+  "summary": {
+    "baseline": {
+      "positive_water_detections": 7,
+      "positive_total": 20,
+      "negative_frames_with_detection": 0,
+      "negative_total": 6,
+      "median_inference_s": 0.25296755001181737
+    },
+    "side_prompt": {
+      "positive_water_detections": 12,
+      "positive_total": 20,
+      "negative_frames_with_detection": 1,
+      "negative_total": 6,
+      "median_inference_s": 0.24889295001048595
+    },
+    "rotation": {
+      "positive_water_detections": 20,
+      "positive_total": 20,
+      "negative_frames_with_detection": 0,
+      "negative_total": 6,
+      "median_inference_s": 0.6064127000281587
+    },
+    "side_rotation": {
+      "positive_water_detections": 20,
+      "positive_total": 20,
+      "negative_frames_with_detection": 1,
+      "negative_total": 6,
+      "median_inference_s": 0.6044276499887928
+    }
+  },
+  "records": [
+    {
+      "stem": "000",
+      "angle": -145,
+      "distance_m": 0.4,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7382387518882751,
+            "box_xyxy": [
+              426,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.32163000002037734
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7382391691207886,
+            "box_xyxy": [
+              426,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.24570920004043728
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7382387518882751,
+            "box_xyxy": [
+              426,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6279935836791992,
+            "box_xyxy": [
+              306,
+              233,
+              408,
+              344
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6217358999419957
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7382391691207886,
+            "box_xyxy": [
+              426,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6279942393302917,
+            "box_xyxy": [
+              306,
+              233,
+              408,
+              344
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.5717973000137135
+      }
+    },
+    {
+      "stem": "001",
+      "angle": -145,
+      "distance_m": 0.6,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8579569458961487,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.578930675983429,
+            "box_xyxy": [
+              320,
+              205,
+              388,
+              269
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.254148600040935
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8579569458961487,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6699607968330383,
+            "box_xyxy": [
+              320,
+              205,
+              388,
+              269
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.24104760005138814
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8579569458961487,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7020323872566223,
+            "box_xyxy": [
+              319,
+              205,
+              386,
+              269
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6961966999806464
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8579569458961487,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7020339369773865,
+            "box_xyxy": [
+              319,
+              205,
+              386,
+              269
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.5772596000460908
+      }
+    },
+    {
+      "stem": "002",
+      "angle": -145,
+      "distance_m": 0.85,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7320824265480042,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2488872999092564
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7320824265480042,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.26620930002536625
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7320824265480042,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.5573002099990845,
+            "box_xyxy": [
+              327,
+              187,
+              374,
+              228
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6144357000011951
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7320824265480042,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.5573021173477173,
+            "box_xyxy": [
+              327,
+              187,
+              374,
+              228
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6035655000014231
+      }
+    },
+    {
+      "stem": "003",
+      "angle": -145,
+      "distance_m": 1.1,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6362220644950867,
+            "box_xyxy": [
+              398,
+              120,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.24040550005156547
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6362233757972717,
+            "box_xyxy": [
+              398,
+              120,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.23338029999285936
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6362220644950867,
+            "box_xyxy": [
+              398,
+              120,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.452237993478775,
+            "box_xyxy": [
+              332,
+              177,
+              369,
+              206
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.5765147000784054
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6362233757972717,
+            "box_xyxy": [
+              398,
+              120,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.45223867893218994,
+            "box_xyxy": [
+              332,
+              177,
+              369,
+              206
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6048160999780521
+      }
+    },
+    {
+      "stem": "004",
+      "angle": -85,
+      "distance_m": 0.4,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7287134528160095,
+            "box_xyxy": [
+              426,
+              110,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2387371000368148
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7287134528160095,
+            "box_xyxy": [
+              426,
+              110,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2331461999565363
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.9372985363006592,
+            "box_xyxy": [
+              250,
+              240,
+              453,
+              314
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7287134528160095,
+            "box_xyxy": [
+              426,
+              110,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5998725000536069
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.9372982978820801,
+            "box_xyxy": [
+              250,
+              240,
+              453,
+              314
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7287134528160095,
+            "box_xyxy": [
+              426,
+              110,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6190382000058889
+      }
+    },
+    {
+      "stem": "005",
+      "angle": -85,
+      "distance_m": 0.6,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8573153614997864,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.23066280002240092
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8573153614997864,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.4881892800331116,
+            "box_xyxy": [
+              284,
+              209,
+              420,
+              256
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.22421149990987033
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.9625134468078613,
+            "box_xyxy": [
+              280,
+              208,
+              419,
+              256
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8573153614997864,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.7431163000874221
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.96251380443573,
+            "box_xyxy": [
+              280,
+              208,
+              419,
+              256
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8573153614997864,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5769011999946088
+      }
+    },
+    {
+      "stem": "006",
+      "angle": -85,
+      "distance_m": 0.85,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7422798275947571,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.5537058115005493,
+            "box_xyxy": [
+              300,
+              188,
+              400,
+              221
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.2641066999640316
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7422805428504944,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6053026914596558,
+            "box_xyxy": [
+              300,
+              188,
+              400,
+              221
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.23546320002060384
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7422798275947571,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.5846744179725647,
+            "box_xyxy": [
+              300,
+              187,
+              400,
+              219
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.4324986934661865,
+            "box_xyxy": [
+              501,
+              182,
+              640,
+              234
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "unmatched"
+          }
+        ],
+        "inference_s": 0.6040110000176355
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7422805428504944,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.7204556465148926,
+            "box_xyxy": [
+              300,
+              187,
+              400,
+              220
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.4324986934661865,
+            "box_xyxy": [
+              501,
+              182,
+              640,
+              234
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "unmatched"
+          }
+        ],
+        "inference_s": 0.6156216999515891
+      }
+    },
+    {
+      "stem": "007",
+      "angle": -85,
+      "distance_m": 1.1,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.6081264615058899,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.25178649998269975
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6490142345428467,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.47249019145965576,
+            "box_xyxy": [
+              311,
+              178,
+              389,
+              202
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.25023020000662655
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.6081264615058899,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.5691554546356201,
+            "box_xyxy": [
+              311,
+              176,
+              388,
+              200
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6064240999985486
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6490142345428467,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.5691549181938171,
+            "box_xyxy": [
+              311,
+              176,
+              388,
+              200
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6264188999775797
+      }
+    },
+    {
+      "stem": "008",
+      "angle": -20,
+      "distance_m": 0.4,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7319600582122803,
+            "box_xyxy": [
+              426,
+              110,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.279827699996531
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7319616079330444,
+            "box_xyxy": [
+              426,
+              110,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2589670999441296
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.739800751209259,
+            "box_xyxy": [
+              252,
+              230,
+              416,
+              325
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7319600582122803,
+            "box_xyxy": [
+              426,
+              110,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5980224000522867
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7398003935813904,
+            "box_xyxy": [
+              252,
+              230,
+              416,
+              325
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7319616079330444,
+            "box_xyxy": [
+              426,
+              110,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6113424000795931
+      }
+    },
+    {
+      "stem": "009",
+      "angle": -20,
+      "distance_m": 0.6,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8491731882095337,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6650906801223755,
+            "box_xyxy": [
+              288,
+              205,
+              398,
+              258
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.40495220001321286
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8491728901863098,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6668291091918945,
+            "box_xyxy": [
+              287,
+              205,
+              398,
+              258
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.27613080001901835
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8491731882095337,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.837460458278656,
+            "box_xyxy": [
+              287,
+              203,
+              397,
+              258
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6191241000778973
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8491728901863098,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.8374611735343933,
+            "box_xyxy": [
+              287,
+              203,
+              397,
+              258
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6143651000456885
+      }
+    },
+    {
+      "stem": "010",
+      "angle": -20,
+      "distance_m": 0.85,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.76215660572052,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.4908490777015686,
+            "box_xyxy": [
+              306,
+              187,
+              386,
+              222
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.25808800000231713
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7621579766273499,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.7045231461524963,
+            "box_xyxy": [
+              306,
+              186,
+              386,
+              222
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.2450396999483928
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7899355888366699,
+            "box_xyxy": [
+              306,
+              187,
+              384,
+              222
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.76215660572052,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5904800000134856
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7899362444877625,
+            "box_xyxy": [
+              306,
+              187,
+              384,
+              222
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7621579766273499,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5882489000214264
+      }
+    },
+    {
+      "stem": "011",
+      "angle": -20,
+      "distance_m": 1.1,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.6048767566680908,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.24916100001428276
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6537987589836121,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.5974248647689819,
+            "box_xyxy": [
+              317,
+              176,
+              378,
+              203
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.29562699992675334
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.7026663422584534,
+            "box_xyxy": [
+              316,
+              174,
+              378,
+              201
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.6048767566680908,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6463315000291914
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.7026667594909668,
+            "box_xyxy": [
+              316,
+              174,
+              378,
+              201
+            ],
+            "rotation_quarters": -1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6537987589836121,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6432796999579296
+      }
+    },
+    {
+      "stem": "012",
+      "angle": 40,
+      "distance_m": 0.4,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7119426131248474,
+            "box_xyxy": [
+              426,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.22171399998478591
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7119420170783997,
+            "box_xyxy": [
+              426,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2290264000184834
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7119426131248474,
+            "box_xyxy": [
+              426,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.46139076352119446,
+            "box_xyxy": [
+              304,
+              228,
+              420,
+              343
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.5894438000395894
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7119420170783997,
+            "box_xyxy": [
+              426,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.46139004826545715,
+            "box_xyxy": [
+              304,
+              228,
+              420,
+              343
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.5908582999836653
+      }
+    },
+    {
+      "stem": "013",
+      "angle": 40,
+      "distance_m": 0.6,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8555173873901367,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.807673454284668,
+            "box_xyxy": [
+              316,
+              203,
+              395,
+              265
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.3869035999523476
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8555179238319397,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.841360330581665,
+            "box_xyxy": [
+              316,
+              203,
+              395,
+              265
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.23970719997305423
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8555173873901367,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.8135253190994263,
+            "box_xyxy": [
+              315,
+              203,
+              394,
+              266
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6001515999669209
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8555179238319397,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.841360330581665,
+            "box_xyxy": [
+              316,
+              203,
+              395,
+              265
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.6296584999654442
+      }
+    },
+    {
+      "stem": "014",
+      "angle": 40,
+      "distance_m": 0.85,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7285378575325012,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.46610933542251587,
+            "box_xyxy": [
+              324,
+              186,
+              381,
+              224
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.27038050000555813
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.761056661605835,
+            "box_xyxy": [
+              324,
+              186,
+              381,
+              224
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7285378575325012,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2664151000790298
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.745938777923584,
+            "box_xyxy": [
+              324,
+              186,
+              380,
+              225
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7285378575325012,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6067991000600159
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.761056661605835,
+            "box_xyxy": [
+              324,
+              186,
+              381,
+              224
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7285378575325012,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5844947000732645
+      }
+    },
+    {
+      "stem": "015",
+      "angle": 40,
+      "distance_m": 1.1,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.5877504348754883,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2441814000485465
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6210782527923584,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.5475739240646362,
+            "box_xyxy": [
+              330,
+              177,
+              374,
+              204
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.2198674000101164
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6746850609779358,
+            "box_xyxy": [
+              329,
+              177,
+              373,
+              205
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.5877504348754883,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5837406000355259
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6746850609779358,
+            "box_xyxy": [
+              329,
+              177,
+              373,
+              205
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6210782527923584,
+            "box_xyxy": [
+              398,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5938092999858782
+      }
+    },
+    {
+      "stem": "016",
+      "angle": 100,
+      "distance_m": 0.4,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7200657725334167,
+            "box_xyxy": [
+              427,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.23987220006529242
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7200652360916138,
+            "box_xyxy": [
+              427,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2380032999208197
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.9479262828826904,
+            "box_xyxy": [
+              249,
+              240,
+              455,
+              308
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7200657725334167,
+            "box_xyxy": [
+              427,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.7188738000113517
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.9479261636734009,
+            "box_xyxy": [
+              249,
+              240,
+              455,
+              308
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7200652360916138,
+            "box_xyxy": [
+              427,
+              111,
+              488,
+              205
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6155714999185875
+      }
+    },
+    {
+      "stem": "017",
+      "angle": 100,
+      "distance_m": 0.6,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8455699682235718,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2602608000161126
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8455702066421509,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.2519105999963358
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.9494519233703613,
+            "box_xyxy": [
+              281,
+              210,
+              420,
+              254
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8455699682235718,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.5967109999619424
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.9494516849517822,
+            "box_xyxy": [
+              281,
+              210,
+              420,
+              254
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.8455702066421509,
+            "box_xyxy": [
+              415,
+              115,
+              466,
+              194
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6040391999995336
+      }
+    },
+    {
+      "stem": "018",
+      "angle": 100,
+      "distance_m": 0.85,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7289087176322937,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.47083166241645813,
+            "box_xyxy": [
+              301,
+              189,
+              400,
+              220
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.26964349998161197
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.753093421459198,
+            "box_xyxy": [
+              301,
+              189,
+              400,
+              220
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7289096713066101,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.26404140004888177
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.8264353275299072,
+            "box_xyxy": [
+              300,
+              190,
+              400,
+              221
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7289087176322937,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6260650999611244
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.8264353275299072,
+            "box_xyxy": [
+              300,
+              190,
+              400,
+              221
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.7289096713066101,
+            "box_xyxy": [
+              405,
+              119,
+              447,
+              184
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.586162899970077
+      }
+    },
+    {
+      "stem": "019",
+      "angle": 100,
+      "distance_m": 1.1,
+      "negative": false,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6157002449035645,
+            "box_xyxy": [
+              397,
+              120,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.24734200001694262
+      },
+      "side_prompt": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6319127082824707,
+            "box_xyxy": [
+              397,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.4113292992115021,
+            "box_xyxy": [
+              312,
+              178,
+              390,
+              201
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "water_bottle_01"
+          }
+        ],
+        "inference_s": 0.25247720000334084
+      },
+      "rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.8229343891143799,
+            "box_xyxy": [
+              311,
+              178,
+              389,
+              202
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "milk jug",
+            "prompt": "milk bottle with handle",
+            "confidence": 0.6157002449035645,
+            "box_xyxy": [
+              397,
+              120,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.6064013000577688
+      },
+      "side_rotation": {
+        "water_detected": true,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic water bottle",
+            "confidence": 0.8229343891143799,
+            "box_xyxy": [
+              311,
+              178,
+              389,
+              202
+            ],
+            "rotation_quarters": 1,
+            "associated_object": "water_bottle_01"
+          },
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.6319127082824707,
+            "box_xyxy": [
+              397,
+              121,
+              433,
+              178
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "milk_bottle_01"
+          }
+        ],
+        "inference_s": 0.599154399940744
+      }
+    },
+    {
+      "stem": "020",
+      "angle": 0,
+      "distance_m": 0.35,
+      "negative": true,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.23043009999673814
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.37290169997140765
+      },
+      "rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.5997903000097722
+      },
+      "side_rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.570952899986878
+      }
+    },
+    {
+      "stem": "021",
+      "angle": 0,
+      "distance_m": 0.55,
+      "negative": true,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.2556410999968648
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.24755570001434535
+      },
+      "rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.5836651000427082
+      },
+      "side_rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.6743782999692485
+      }
+    },
+    {
+      "stem": "022",
+      "angle": 0,
+      "distance_m": 0.8,
+      "negative": true,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.28284809994511306
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.2626382999587804
+      },
+      "rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.642929800087586
+      },
+      "side_rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.6770899000111967
+      }
+    },
+    {
+      "stem": "023",
+      "angle": 0,
+      "distance_m": 1.05,
+      "negative": true,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.2804923999356106
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.2626017000293359
+      },
+      "rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.6505003999918699
+      },
+      "side_rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.7464879000326619
+      }
+    },
+    {
+      "stem": "024",
+      "angle": 0,
+      "distance_m": 1.25,
+      "negative": true,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.24312310002278537
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.26498960005119443
+      },
+      "rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.6009055000031367
+      },
+      "side_rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.598920900025405
+      }
+    },
+    {
+      "stem": "025",
+      "angle": 0,
+      "distance_m": 1.45,
+      "negative": true,
+      "fx": 381.33068520357494,
+      "fy": 381.33068520357494,
+      "baseline": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.24543579993769526
+      },
+      "side_prompt": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.4891510605812073,
+            "box_xyxy": [
+              191,
+              415,
+              220,
+              443
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "unmatched"
+          }
+        ],
+        "inference_s": 0.23524400009773672
+      },
+      "rotation": {
+        "water_detected": false,
+        "detections": [],
+        "inference_s": 0.6375589000526816
+      },
+      "side_rotation": {
+        "water_detected": false,
+        "detections": [
+          {
+            "class": "plastic water bottle",
+            "prompt": "plastic bottle lying on its side",
+            "confidence": 0.4891510605812073,
+            "box_xyxy": [
+              191,
+              415,
+              220,
+              443
+            ],
+            "rotation_quarters": 0,
+            "associated_object": "unmatched"
+          }
+        ],
+        "inference_s": 0.6887713000178337
+      }
+    }
+  ]
+}
