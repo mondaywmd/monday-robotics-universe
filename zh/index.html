@@ -22,8 +22,8 @@
 <button aria-expanded="false" aria-label="打开导航" class="menu-toggle">菜单</button>
 <nav aria-label="主导航" class="site-nav">
 <a href="#universe">宇宙地图</a>
-<a href="#projects">项目</a>
 <a href="#journal">开发日志</a>
+<a href="#projects">项目</a>
 <a href="#usd">USD 之路</a>
 <a href="about.html">关于我</a>
 <a class="nav-github" href="https://github.com/mondaywmd" rel="noreferrer" target="_blank">GitHub ↗</a>
@@ -131,39 +131,9 @@
 </article>
 </div>
 </section>
-<section class="projects" id="projects">
-<div class="section-shell">
-<div class="section-heading light reveal">
-<p class="section-number">02 / FIELD NOTES</p>
-<h2>第一个被点亮的星系：NavBot。</h2>
-</div>
-<div class="project-feature reveal">
-<div class="project-image">
-<img alt="Blender 中的 NavBot 导航测试场" src="../assets/navbot-arena-overview.png"/>
-<div class="image-label">BLENDER OUTPUT · 1280 × 1000</div>
-</div>
-<div class="project-copy">
-<p class="project-status">CASE STUDY 001 · ACTIVE</p>
-<h3>从 Gazebo 中的碰撞，<br/>到 AI 创造的训练场。</h3>
-<p>NavBot 最初只是一个 TurtleBot3 导航实验。机器人能够朝目标前进，却会撞上挡在正中的柱子。这个明确的失败案例，推动了 residual PPO、control gate、reward shaping、behavior cloning 与泛化测试。</p>
-<p>后来我意识到：策略学习之外，可信、可变、可复现的环境本身也是瓶颈。于是 SimForge Agent 出现了。</p>
-<dl class="project-stats">
-<div><dt>10 / 10</dt><dd>受保护基线成功</dd></div>
-<div><dt>410</dt><dd>导航动画帧</dd></div>
-<div><dt>05+</dt><dd>控制与学习阶段</dd></div>
-</dl>
-<div class="project-links">
-<a class="text-link" href="navbot.html">阅读 NavBot 完整档案 <span>→</span></a>
-<a class="text-link" href="https://github.com/mondaywmd/navbot-ppo-navigation" rel="noreferrer" target="_blank">NavBot 源代码 <span>↗</span></a>
-<a class="text-link" href="https://github.com/mondaywmd/simforge-agent" rel="noreferrer" target="_blank">SimForge 源代码 <span>↗</span></a>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section class="journal section-shell" id="journal">
 <div class="section-heading reveal">
-<p class="section-number">03 / DEVLOG</p>
+<p class="section-number">02 / DEVLOG</p>
 <h2>开发不是直线。<br/>把弯路也记录下来。</h2>
 </div>
 <div class="journal-grid">
@@ -217,6 +187,36 @@
 <p>一次动画渲染如何带我们看清 Blender、FFmpeg、文件缓存与恢复风险。</p>
 <span class="coming">文章整理中</span>
 </article>
+</div>
+</section>
+<section class="projects" id="projects">
+<div class="section-shell">
+<div class="section-heading light reveal">
+<p class="section-number">03 / FIELD NOTES</p>
+<h2>第一个被点亮的星系：NavBot。</h2>
+</div>
+<div class="project-feature reveal">
+<div class="project-image">
+<img alt="Blender 中的 NavBot 导航测试场" src="../assets/navbot-arena-overview.png"/>
+<div class="image-label">BLENDER OUTPUT · 1280 × 1000</div>
+</div>
+<div class="project-copy">
+<p class="project-status">CASE STUDY 001 · ACTIVE</p>
+<h3>从 Gazebo 中的碰撞，<br/>到 AI 创造的训练场。</h3>
+<p>NavBot 最初只是一个 TurtleBot3 导航实验。机器人能够朝目标前进，却会撞上挡在正中的柱子。这个明确的失败案例，推动了 residual PPO、control gate、reward shaping、behavior cloning 与泛化测试。</p>
+<p>后来我意识到：策略学习之外，可信、可变、可复现的环境本身也是瓶颈。于是 SimForge Agent 出现了。</p>
+<dl class="project-stats">
+<div><dt>10 / 10</dt><dd>受保护基线成功</dd></div>
+<div><dt>410</dt><dd>导航动画帧</dd></div>
+<div><dt>05+</dt><dd>控制与学习阶段</dd></div>
+</dl>
+<div class="project-links">
+<a class="text-link" href="navbot.html">阅读 NavBot 完整档案 <span>→</span></a>
+<a class="text-link" href="https://github.com/mondaywmd/navbot-ppo-navigation" rel="noreferrer" target="_blank">NavBot 源代码 <span>↗</span></a>
+<a class="text-link" href="https://github.com/mondaywmd/simforge-agent" rel="noreferrer" target="_blank">SimForge 源代码 <span>↗</span></a>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section class="usd-path" id="usd">
