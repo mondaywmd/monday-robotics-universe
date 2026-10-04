@@ -1,0 +1,18 @@
+{
+  "collection_mode": "mock",
+  "duration_s": 47.20000246167183,
+  "passed": true,
+  "reason": "collection_demo_complete",
+  "max_contact_force_n": 0.0,
+  "patrol_waypoints_completed": 1,
+  "localization": "simulator ground truth",
+  "planning_clearance_m": 0.14,
+  "sampling_note": "RGB/depth/pose captured during brief physics pauses; inference runs concurrently with navigation. Not a hardware real-time benchmark.",
+  "successful_mock_collections": 3,
+  "collection_times_s": [
+    18.000000938773155,
+    37.400001950562,
+    47.20000246167183
+  ],
+  "presentation": "Recorded Isaac motion in native moving-camera GS, Blender robot/litter/shadows, tracked occlusion repair; dense grey geometry swipe with railings retained."
+}
