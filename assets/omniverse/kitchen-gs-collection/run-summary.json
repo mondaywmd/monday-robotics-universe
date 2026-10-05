@@ -1,0 +1,24 @@
+{
+  "task": "Kitchen litter mock collection in Isaac Sim with GS presentation",
+  "items_placed": 5,
+  "items_collected": 5,
+  "duration_s": 78.20000407844782,
+  "max_contact_force_n": 0.0,
+  "passed": true,
+  "reason": "collection_demo_complete",
+  "collection_mode": "mock, not grasping",
+  "localization": "simulator ground truth",
+  "visual_targeting": "online RGB/depth, multi-frame confirmation; no scene target coordinates supplied to navigation",
+  "false_positive_collection_attempts": 2,
+  "full_patrol_coverage": false,
+  "presentation": {
+    "camera": "user-approved fixed kitchen camera",
+    "lens_mm": 27.0,
+    "resolution": [
+      1400,
+      800
+    ],
+    "GS_color": "linear native GS output to sRGB, no AgX tone mapping of GS",
+    "bottle": "approved A blue/white label, packed texture, transparent PET"
+  }
+}
