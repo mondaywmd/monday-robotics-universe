@@ -461,3 +461,13 @@ footer { padding: 55px 0; color: white; background: #030907; }
   .planet-featured:hover, .planet-featured:focus-visible, .planet-featured:hover .planet-photo img, .planet-featured:focus-visible .planet-photo img { transform: none; }
 }
 
+
+/* About: verified OpenUSD credential */
+.about-journey .about-certified-title { margin: 22px 0 28px; line-height: 1.08; letter-spacing: -.045em; }
+.about-certification { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 16px; max-width: 100%; color: white; text-decoration: none; }
+.about-certification img { display: block; width: 220px; height: auto; max-width: 100%; }
+.about-certification-name { font-size: 15px; line-height: 1.65; color: #b5c2bd; }
+.about-certification-link { color: var(--lime); font-size: 14px; text-underline-offset: 5px; }
+.about-certification:hover .about-certification-link { text-decoration: underline; }
+.about-certification:focus-visible { outline: 2px solid var(--lime); outline-offset: 8px; }
+@media(max-width:600px) { .about-certification img { width: 180px; } }
