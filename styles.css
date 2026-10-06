@@ -471,3 +471,6 @@ footer { padding: 55px 0; color: white; background: #030907; }
 .about-certification:hover .about-certification-link { text-decoration: underline; }
 .about-certification:focus-visible { outline: 2px solid var(--lime); outline-offset: 8px; }
 @media(max-width:600px) { .about-certification img { width: 180px; } }
+
+.about-playground-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.about-manifesto .about-playground-actions .button { margin-top: 0; }
