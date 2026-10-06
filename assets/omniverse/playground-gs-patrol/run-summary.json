@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-06",
+  "mode": "existing policy evaluation; no new training",
+  "simulation_duration_s": 183.25000955723226,
+  "wall_duration_s": 413.4689999999973,
+  "mock_collections": 8,
+  "simulated_litter_count": 8,
+  "obstacle_count": 6,
+  "patrol_waypoints_completed": 4,
+  "patrol_waypoints_total": 5,
+  "max_sampled_contact_force_n": 0.0,
+  "localization": "simulator ground truth",
+  "perception": "actual online YOLOE RGB/depth detections",
+  "gs_during_navigation": false,
+  "presentation": "GS-enabled recorded physics replay",
+  "playback_speed": 3,
+  "capture_resolution": [
+    1920,
+    1080
+  ],
+  "capture_frames": 1833,
+  "capture_wall_s": 1082.4851596355438,
+  "settling_updates_per_frame": 24,
+  "collection": "mock acknowledgement, not robotic grasping",
+  "future_work": [
+    "procedural layout randomization",
+    "parallel Isaac Sim tests",
+    "manipulation",
+    "VLA"
+  ],
+  "music": {
+    "title": "Local Forecast - Slower",
+    "artist": "Kevin MacLeod",
+    "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300011",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "excerpt, loudness adjustment, fade-in and fade-out"
+  }
+}
