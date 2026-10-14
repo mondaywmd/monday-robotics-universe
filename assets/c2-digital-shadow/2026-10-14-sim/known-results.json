@@ -1,0 +1,66 @@
+{
+  "duration_s": 58.0,
+  "fps": 5,
+  "frames_per_video": 290,
+  "phases": [
+    {
+      "phase": "default",
+      "start_s": 0.0
+    },
+    {
+      "phase": "base_approach",
+      "start_s": 2.0
+    },
+    {
+      "phase": "parked_default",
+      "start_s": 8.0
+    },
+    {
+      "phase": "prepare",
+      "start_s": 10.0
+    },
+    {
+      "phase": "hover",
+      "start_s": 16.0
+    },
+    {
+      "phase": "hover_hold",
+      "start_s": 22.0
+    },
+    {
+      "phase": "descend",
+      "start_s": 28.0
+    },
+    {
+      "phase": "close",
+      "start_s": 34.0
+    },
+    {
+      "phase": "lift",
+      "start_s": 40.0
+    },
+    {
+      "phase": "hold",
+      "start_s": 46.0
+    },
+    {
+      "phase": "release",
+      "start_s": 52.0
+    }
+  ],
+  "sampled_peak_joint_rad_s": [
+    0.03249396002429371,
+    0.37193733098768,
+    0.4591693019409293,
+    0.2623762193587553,
+    0.05200275250415637,
+    0.5144118827160499
+  ],
+  "hold_min_z_m": 0.12111133337020874,
+  "hold_z_range_m": 1.4901161193847656e-08,
+  "strict_hold_pass": true,
+  "release_fell": true,
+  "real_robot_access": false,
+  "paper_visual_offset_m": 0.0002,
+  "recording": "Both views replay identical recorded physics samples; not live camera inference"
+}

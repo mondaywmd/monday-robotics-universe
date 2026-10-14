@@ -1,0 +1,26 @@
+{
+  "frames": [
+    {
+      "name": "previous",
+      "detected_corners": 11,
+      "common_corners": 11,
+      "render_vs_real_rms_px": 25.729241685466892,
+      "render_vs_projection_rms_px": 0.14054076205575247
+    },
+    {
+      "name": "rotation_only",
+      "detected_corners": 14,
+      "common_corners": 14,
+      "render_vs_real_rms_px": 2.3204010919746034,
+      "render_vs_projection_rms_px": 0.10385199143413773
+    },
+    {
+      "name": "position_rotation",
+      "detected_corners": 22,
+      "common_corners": 22,
+      "render_vs_real_rms_px": 0.2754396960724874,
+      "render_vs_projection_rms_px": 0.1318431011533575
+    }
+  ],
+  "locks_verified": true
+}

@@ -1,0 +1,23 @@
+{
+  "evaluation_only": true,
+  "target_error_xyz_mm": [
+    -0.5036566110274143,
+    -0.1627460389923927,
+    0.0
+  ],
+  "target_position_error_mm": 0.5292978887538978,
+  "planner_input_sha256": {
+    "detection.json": "9b655fb91972e6fb5c7316318e658de2c7083eb75642bfc6ed9d96a304d831d0",
+    "sensor_calibration.json": "512fe999e3c028057f20418f0515e0b3c72395d7062b9df23fc4ff1ed30f1009"
+  },
+  "plan_target_equals_detection": true,
+  "detector_reads_scene_setup": false,
+  "planner_reads_scene_setup": false,
+  "object_world_coordinate_used_only_by": [
+    "scene initialization",
+    "physics result scoring",
+    "post-run evaluation",
+    "rendering recorded scene"
+  ],
+  "not_generalized_accuracy": "One ideal simulated scene, known size and floor; no real-world precision claim"
+}
