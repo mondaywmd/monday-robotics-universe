@@ -1,0 +1,25 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:04.167
+Move the camera into observation pose
+
+00:00:04.167 --> 00:00:05.867
+Locate the red cube and select a parking point
+
+00:00:05.867 --> 00:00:13.133
+Drive to the planned stopping point
+
+00:00:13.133 --> 00:00:16.500
+Restore the default grasping pose
+
+00:00:16.500 --> 00:00:19.333
+Take a fresh RGB-D pair and approach the cube
+
+00:00:19.333 --> 00:00:24.000
+Take a fresh RGB-D pair and approach the cube
+
+00:00:24.000 --> 00:00:29.333
+Close the gripper and lift the red cube
+
+00:00:29.333 --> 00:00:32.333
+Release the cube and return the arm
