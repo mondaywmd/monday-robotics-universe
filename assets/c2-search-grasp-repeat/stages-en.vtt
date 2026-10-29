@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:02.000 --> 00:00:03.000
+OBSERVE / Move the camera into observation pose
+
+00:00:03.000 --> 00:00:06.000
+SEARCH / Rotate the base and search for the cube
+
+00:00:06.000 --> 00:00:07.000
+LOCATE / Stop and localize before approaching
+
+00:00:07.000 --> 00:00:09.000
+APPROACH / Approach the planned parking point
+
+00:00:09.000 --> 00:00:10.000
+ARM POSE / Prepare the arm for a fresh grasp
+
+00:00:10.000 --> 00:00:12.000
+REACQUIRE / Reacquire the cube and approach with the arm
+
+00:00:12.000 --> 00:00:28.000
+GRASP + LIFT / Close the gripper and lift the cube
+
+00:00:28.000 --> 00:00:36.000
+COMPLETE / Release the cube and finish the run
+
+00:00:38.000 --> 00:00:40.000
+OBSERVE / Move the camera into observation pose
+
+00:00:40.000 --> 00:00:43.000
+SEARCH / Rotate the base and search for the cube
+
+00:00:43.000 --> 00:00:44.000
+LOCATE / Stop and localize before approaching
+
+00:00:44.000 --> 00:00:46.000
+APPROACH / Approach the planned parking point
+
+00:00:46.000 --> 00:00:47.000
+ARM POSE / Prepare the arm for a fresh grasp
+
+00:00:47.000 --> 00:00:49.000
+REACQUIRE / Reacquire the cube and approach with the arm
+
+00:00:49.000 --> 00:00:57.000
+GRASP + LIFT / Close the gripper and lift the cube
+
+00:00:57.000 --> 00:00:58.000
+COMPLETE / Release the cube and finish the run
